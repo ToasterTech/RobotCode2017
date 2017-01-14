@@ -5,15 +5,21 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
 import edu.wpi.first.wpilibj.TalonSRX;
 
 public class DriveHardware extends DriveHardwareBase {
+
+	// Create TalonSRX Variables. E-Dunbar
 	
 	private TalonSRX driveRight1;
 	private TalonSRX driveRight2;
 	private TalonSRX driveLeft1;
 	private TalonSRX driveLeft2;
 	
+	//Create double variables. E-Dunbar
 	private double right;
 	private double left;
 	
+	/** 
+	 * Constructor. Creates Constructor for TalonSRX.
+	 */
 	public DriveHardware(){
 		driveRight1 = new TalonSRX(1);
 		driveRight2 = new TalonSRX(2);
