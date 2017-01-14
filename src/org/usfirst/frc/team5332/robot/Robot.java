@@ -47,7 +47,7 @@ public class Robot extends IterativeRobot{
 		
 	}
 	
-	// Runs the dsInitTasks once the ds is attached. No other usage for this method.
+	// Runs the dsInitTasks once the DS is attached. No other usage for this method.
 	@Override
 	public void robotPeriodic(){
 		if(m_ds.isDSAttached()){
