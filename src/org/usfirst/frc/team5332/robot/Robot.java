@@ -1,5 +1,11 @@
 package org.usfirst.frc.team5332.robot;
 
+import org.usfirst.frc.team5332.robot.gearscorerthing.GearHardware;
+import org.usfirst.frc.team5332.robot.gearscorerthing.GearSystem;
+import org.usfirst.frc.team5332.robot.gearscorerthing.base.GearCommandBase;
+import org.usfirst.frc.team5332.robot.gearscorerthing.base.GearHardwareBase;
+import org.usfirst.frc.team5332.robot.gearscorerthing.base.GearSystemBase;
+import org.usfirst.frc.team5332.robot.gearscorerthing.command.GearCommandTeleop;
 import org.usfirst.frc.team5332.robot.westtoastdrive.DriveHardware;
 import org.usfirst.frc.team5332.robot.westtoastdrive.DriveSystem;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
@@ -11,13 +17,15 @@ import org.usfirst.frc.team5332.subsystem.Subsystem;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 /*
- * The Linux JVM on the robot is configured to run this class upon startup. Do not refactor it.
+ * The Linux JVM on the robot is configured to run this class upon startup. Do not refactor it. 
  */
 public class Robot extends IterativeRobot{
 	
 	// Drive Subsystem component.
 	Subsystem<DriveHardwareBase,DriveSystemBase,DriveCommandBase> drive = new Subsystem
 			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), new DriveCommandFancyArcade());
+	Subsystem<GearHardwareBase,GearSystemBase,GearCommandBase> gear = new Subsystem
+			<GearHardwareBase,GearSystemBase,GearCommandBase>(new GearHardware(), new GearSystem(), new GearCommandTeleop());
 	
 	/*
 	 * Robot-wide initialization code goes here.
