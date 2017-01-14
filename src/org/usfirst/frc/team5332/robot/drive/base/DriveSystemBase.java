@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5332.robot.drive.base;
 
-public abstract class DriveSystemBase {
+import org.usfirst.frc.team5332.subsystem.Layer;
+
+public abstract class DriveSystemBase implements Layer<DriveHardwareBase>{
 
 }
