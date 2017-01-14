@@ -1,22 +1,23 @@
 package org.usfirst.frc.team5332.robot;
 
-import org.usfirst.frc.team5332.robot.drive.DriveCommand;
 import org.usfirst.frc.team5332.robot.drive.DriveHardware;
 import org.usfirst.frc.team5332.robot.drive.DriveSystem;
 import org.usfirst.frc.team5332.robot.drive.base.DriveCommandBase;
 import org.usfirst.frc.team5332.robot.drive.base.DriveHardwareBase;
 import org.usfirst.frc.team5332.robot.drive.base.DriveSystemBase;
+import org.usfirst.frc.team5332.robot.drive.command.DriveCommandSimple;
 import org.usfirst.frc.team5332.subsystem.Subsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 
-/**
+/*
  * The Linux JVM on the robot is configured to run this class upon startup. Do not refactor it.
  */
 public class Robot extends IterativeRobot{
 	
+	// Drive Subsystem component.
 	Subsystem<DriveHardwareBase,DriveSystemBase,DriveCommandBase> drive = new Subsystem
-			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), new DriveCommand());
+			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), new DriveCommandSimple());
 	
 	/*
 	 * Robot-wide initialization code goes here.
@@ -27,6 +28,7 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void robotInit(){
+		// Initialize the drive subsystem.
 		drive.init();
 	}
 	
@@ -74,6 +76,7 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void teleopPeriodic(){
+		// Call the periodicUpdate method for the drive Subsystem.
 		drive.periodicUpdate();
 	}
 	

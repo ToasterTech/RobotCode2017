@@ -41,7 +41,7 @@ public class DriveSystem extends DriveSystemBase{
 	}
 
 	@Override
-	public double distanceForward(double distance) {
+	public double distanceForward() {
 		return 0;
 	}
 	
