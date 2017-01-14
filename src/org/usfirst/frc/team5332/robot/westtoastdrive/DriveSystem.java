@@ -21,6 +21,7 @@ public class DriveSystem extends DriveSystemBase{
 
 	@Override
 	public void periodicUpdate() {
+		// Set the motors to what our current motor speed variable is.
 		hardwareLayer.setDriveLeft(left);
 		hardwareLayer.setDriveRight(right);
 	}
@@ -29,19 +30,22 @@ public class DriveSystem extends DriveSystemBase{
 	public void setChild(DriveHardwareBase c) {
 		hardwareLayer = c;
 	}
-
+	
 	@Override
 	public void setDriveRight(double speed) {
+		// Sets the right drive-motor speed.
 		right = speed;
 	}
 	
 	@Override
 	public void setDriveLeft(double speed) {
+		// Sets the left drive-motor speed.
 		left = speed;
 	}
-
+	
 	@Override
 	public double distanceForward() {
+		// Sets the distance driven forward.
 		return 0;
 	}
 	
