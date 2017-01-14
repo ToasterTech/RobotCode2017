@@ -1,14 +1,14 @@
-package org.usfirst.frc.team5332.robot.drive.command;
+package org.usfirst.frc.team5332.robot.westtoastdrive.command;
 
-import org.usfirst.frc.team5332.robot.drive.base.DriveCommandBase;
 import org.usfirst.frc.team5332.robot.util.JoystickInterface;
+import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
 
 /**
  * The simple drive command layer that directly sets joystick input to the drive train.
  * 
  * @author J-Dierberger
  */
-public class DriveCommandSimple extends DriveCommandBase{
+public class DriveCommandTank extends DriveCommandBase{
 	
 	// Create a joystick variable.
 	private JoystickInterface js;
@@ -16,7 +16,7 @@ public class DriveCommandSimple extends DriveCommandBase{
 	/**
 	 * Create a DriveCommandSimple command layer.
 	 */
-	public DriveCommandSimple(){
+	public DriveCommandTank(){
 		// Create the joystick.
 		js = new JoystickInterface(1);
 	}

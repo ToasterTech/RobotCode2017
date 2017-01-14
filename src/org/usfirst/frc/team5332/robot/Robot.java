@@ -1,11 +1,11 @@
 package org.usfirst.frc.team5332.robot;
 
-import org.usfirst.frc.team5332.robot.drive.DriveHardware;
-import org.usfirst.frc.team5332.robot.drive.DriveSystem;
-import org.usfirst.frc.team5332.robot.drive.base.DriveCommandBase;
-import org.usfirst.frc.team5332.robot.drive.base.DriveHardwareBase;
-import org.usfirst.frc.team5332.robot.drive.base.DriveSystemBase;
-import org.usfirst.frc.team5332.robot.drive.command.DriveCommandSimple;
+import org.usfirst.frc.team5332.robot.westtoastdrive.DriveHardware;
+import org.usfirst.frc.team5332.robot.westtoastdrive.DriveSystem;
+import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
+import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
+import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
+import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTank;
 import org.usfirst.frc.team5332.subsystem.Subsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -17,7 +17,7 @@ public class Robot extends IterativeRobot{
 	
 	// Drive Subsystem component.
 	Subsystem<DriveHardwareBase,DriveSystemBase,DriveCommandBase> drive = new Subsystem
-			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), new DriveCommandSimple());
+			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), new DriveCommandTank());
 	
 	/*
 	 * Robot-wide initialization code goes here.
