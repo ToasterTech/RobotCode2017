@@ -43,14 +43,10 @@ public class Constants{
 	public static final int gmShiftEncoderPort2 = 5;
 	
 	// Gear Manipulator Solenoid ports (note: currently we have four solenoids, we may only need 2)
-	public static final int gmUpperSolenoidPort10 = 0;
-	public static final int gmUpperSolenoidPort11 = 1;
-	public static final int gmUpperSolenoidPort20 = 2;
-	public static final int gmUpperSolenoidPort21 = 3;
-	public static final int gmLowerSolenoidPort10 = 4;
-	public static final int gmLowerSolenoidPort11 = 5;
-	public static final int gmLowerSolenoidPort20 = 6;
-	public static final int gmLowerSolenoidPort21 = 7;
+	public static final int gmUpperSolenoidPort1 = 0;
+	public static final int gmUpperSolenoidPort2 = 1;
+	public static final int gmLowerSolenoidPort1 = 2;
+	public static final int gmLowerSolenoidPort2 = 3;
 	
 	// Gear Manipulator open and closed values (these will need to be checked once depending on how they wire it)
 	public static final Value gmUpperSolenoidOpenValue = Value.kForward;

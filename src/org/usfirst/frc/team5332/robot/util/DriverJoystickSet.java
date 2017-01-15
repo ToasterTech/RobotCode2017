@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Joystick;
  * 
  * @author J-Dierberger
  */
-public class JoystickInterface{
+public class DriverJoystickSet{
 	
 	// The Joystick object to get stuff from.
 	private Joystick turningJs;
@@ -18,7 +18,7 @@ public class JoystickInterface{
 	 * 
 	 * @param port The USB port index.
 	 */
-	public JoystickInterface(){
+	public DriverJoystickSet(){
 		turningJs = new Joystick(Constants.driverTurnJoystickPort);
 		throttleJs = new Joystick(Constants.driverThrottleJoystickPort);
 	}

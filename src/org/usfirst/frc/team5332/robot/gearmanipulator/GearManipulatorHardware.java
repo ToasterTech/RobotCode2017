@@ -11,10 +11,8 @@ public class GearManipulatorHardware extends GearManipulatorHardwareBase{
 	
 	private TalonSRX shiftMotor;
 	private Encoder shiftEncoder;
-	private DoubleSolenoid upperSolenoid1;
-	private DoubleSolenoid upperSolenoid2;
-	private DoubleSolenoid lowerSolenoid1;
-	private DoubleSolenoid lowerSolenoid2;
+	private DoubleSolenoid upperSolenoid;
+	private DoubleSolenoid lowerSolenoid;
 	
 	private double speed;
 	private boolean upperPistons;
@@ -23,10 +21,8 @@ public class GearManipulatorHardware extends GearManipulatorHardwareBase{
 	public GearManipulatorHardware(){
 		shiftMotor = new TalonSRX(Constants.gmShiftMotorPort);
 		shiftEncoder = new Encoder(Constants.gmShiftEncoderPort1, Constants.gmShiftEncoderPort2);
-		upperSolenoid1 = new DoubleSolenoid(Constants.gmUpperSolenoidPort10, Constants.gmUpperSolenoidPort11);
-		upperSolenoid2 = new DoubleSolenoid(Constants.gmUpperSolenoidPort20, Constants.gmUpperSolenoidPort21);
-		lowerSolenoid1 = new DoubleSolenoid(Constants.gmLowerSolenoidPort10, Constants.gmLowerSolenoidPort11);
-		lowerSolenoid2 = new DoubleSolenoid(Constants.gmLowerSolenoidPort20, Constants.gmLowerSolenoidPort21);
+		upperSolenoid = new DoubleSolenoid(Constants.gmUpperSolenoidPort1, Constants.gmUpperSolenoidPort2);
+		lowerSolenoid = new DoubleSolenoid(Constants.gmLowerSolenoidPort1, Constants.gmLowerSolenoidPort2);
 		speed = 0;
 		upperPistons = false;
 		lowerPistons = false;
@@ -43,18 +39,14 @@ public class GearManipulatorHardware extends GearManipulatorHardwareBase{
 	public void periodicUpdate(){
 		shiftMotor.set(speed);
 		if(upperPistons){
-			upperSolenoid1.set(Constants.gmUpperSolenoidOpenValue);
-			upperSolenoid2.set(Constants.gmUpperSolenoidOpenValue);
+			upperSolenoid.set(Constants.gmUpperSolenoidOpenValue);
 		}else{
-			upperSolenoid1.set(Constants.gmUpperSolenoidClosedValue);
-			upperSolenoid2.set(Constants.gmUpperSolenoidClosedValue);
+			upperSolenoid.set(Constants.gmUpperSolenoidClosedValue);
 		}
 		if(lowerPistons){
-			lowerSolenoid1.set(Constants.gmLowerSolenoidOpenValue);
-			lowerSolenoid2.set(Constants.gmLowerSolenoidOpenValue);
+			lowerSolenoid.set(Constants.gmLowerSolenoidOpenValue);
 		}else{
-			lowerSolenoid1.set(Constants.gmLowerSolenoidClosedValue);
-			lowerSolenoid2.set(Constants.gmLowerSolenoidClosedValue);
+			lowerSolenoid.set(Constants.gmLowerSolenoidClosedValue);
 		}
 	}
 

@@ -1,16 +1,16 @@
 package org.usfirst.frc.team5332.robot.westtoastdrive.command;
 
 import org.usfirst.frc.team5332.robot.util.Constants;
-import org.usfirst.frc.team5332.robot.util.JoystickInterface;
+import org.usfirst.frc.team5332.robot.util.DriverJoystickSet;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
 
 public class DriveCommandFancyArcade extends DriveCommandBase{
 	
-	private JoystickInterface js;
+	private DriverJoystickSet js;
 	private double gain = 1;
 	
 	public DriveCommandFancyArcade(){
-		js = new JoystickInterface();
+		js = new DriverJoystickSet();
 	}
 	
 	
