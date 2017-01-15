@@ -1,11 +1,11 @@
 package org.usfirst.frc.team5332.robot;
 
-import org.usfirst.frc.team5332.robot.gearscorerthing.GearHardware;
-import org.usfirst.frc.team5332.robot.gearscorerthing.GearSystem;
-import org.usfirst.frc.team5332.robot.gearscorerthing.base.GearCommandBase;
-import org.usfirst.frc.team5332.robot.gearscorerthing.base.GearHardwareBase;
-import org.usfirst.frc.team5332.robot.gearscorerthing.base.GearSystemBase;
-import org.usfirst.frc.team5332.robot.gearscorerthing.command.GearCommandTeleop;
+import org.usfirst.frc.team5332.robot.gearmanipulator.GearManipulatorHardware;
+import org.usfirst.frc.team5332.robot.gearmanipulator.GearManipulatorSystem;
+import org.usfirst.frc.team5332.robot.gearmanipulator.base.GearManipulatorCommandBase;
+import org.usfirst.frc.team5332.robot.gearmanipulator.base.GearManipulatorHardwareBase;
+import org.usfirst.frc.team5332.robot.gearmanipulator.base.GearManipulatorSystemBase;
+import org.usfirst.frc.team5332.robot.gearmanipulator.command.GearManipulatorCommandTeleop;
 import org.usfirst.frc.team5332.robot.westtoastdrive.DriveHardware;
 import org.usfirst.frc.team5332.robot.westtoastdrive.DriveSystem;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
@@ -24,8 +24,8 @@ public class Robot extends IterativeRobot{
 	// Drive Subsystem component.
 	Subsystem<DriveHardwareBase,DriveSystemBase,DriveCommandBase> drive = new Subsystem
 			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), new DriveCommandFancyArcade());
-	Subsystem<GearHardwareBase,GearSystemBase,GearCommandBase> gear = new Subsystem
-			<GearHardwareBase,GearSystemBase,GearCommandBase>(new GearHardware(), new GearSystem(), new GearCommandTeleop());
+	Subsystem<GearManipulatorHardwareBase,GearManipulatorSystemBase,GearManipulatorCommandBase> gear = new Subsystem
+			<GearManipulatorHardwareBase,GearManipulatorSystemBase,GearManipulatorCommandBase>(new GearManipulatorHardware(), new GearManipulatorSystem(), new GearManipulatorCommandTeleop());
 	
 	/*
 	 * Robot-wide initialization code goes here.
