@@ -13,6 +13,9 @@ public class Constants{
 	public static final double turningJoystickFixedSpeed = 0.5;
 	public static final double turningScalar = 1;
 	
+	public static final double gearManipulatorMoveSpeed = 0.5;
+	public static final int gearManipulatorMoveSign = 1;
+	
 	// Motor ports
 	public static final int driveLeftPort1 = 0;
 	public static final int driveLeftPort2 = 1;
