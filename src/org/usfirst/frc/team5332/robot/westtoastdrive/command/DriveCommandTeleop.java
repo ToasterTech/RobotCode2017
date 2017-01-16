@@ -1,15 +1,15 @@
 package org.usfirst.frc.team5332.robot.westtoastdrive.command;
 
-import org.usfirst.frc.team5332.robot.util.Constants;
-import org.usfirst.frc.team5332.robot.util.DriverJoystickSet;
+import org.usfirst.frc.team5332.robot.control.DriverJoystickSet;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
+import org.usfirst.frc.team5332.util.Constants;
 
-public class DriveCommandFancyArcade extends DriveCommandBase{
+public class DriveCommandTeleop extends DriveCommandBase{
 	
 	private DriverJoystickSet js;
 	private double gain = 1;
 	
-	public DriveCommandFancyArcade(){
+	public DriveCommandTeleop(){
 		js = new DriverJoystickSet();
 	}
 	
@@ -53,6 +53,11 @@ public class DriveCommandFancyArcade extends DriveCommandBase{
 		else if(vel < -1)
 			return -((vel + 1.0) * gain);
 		return 0;
+	}
+	
+	@Override
+	public String getName() {
+		return "TELEOP_DNU";
 	}
 	
 }

@@ -1,4 +1,6 @@
-package org.usfirst.frc.team5332.robot.util;
+package org.usfirst.frc.team5332.robot.control;
+
+import org.usfirst.frc.team5332.util.Constants;
 
 import edu.wpi.first.wpilibj.Joystick;
 

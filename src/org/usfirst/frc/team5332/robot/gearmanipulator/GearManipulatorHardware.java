@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5332.robot.gearmanipulator;
 
 import org.usfirst.frc.team5332.robot.gearmanipulator.base.GearManipulatorHardwareBase;
-import org.usfirst.frc.team5332.robot.util.Constants;
+import org.usfirst.frc.team5332.util.Constants;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.TalonSRX;
 
 public class GearManipulatorHardware extends GearManipulatorHardwareBase{
 	
-	private TalonSRX shiftMotor;
-	private Encoder shiftEncoder;
+	private TalonSRX motor;
+	private Encoder encoder;
 	private DoubleSolenoid upperSolenoid;
 	private DoubleSolenoid lowerSolenoid;
 	
@@ -19,8 +19,8 @@ public class GearManipulatorHardware extends GearManipulatorHardwareBase{
 	private boolean lowerPistons;
 	
 	public GearManipulatorHardware(){
-		shiftMotor = new TalonSRX(Constants.gmShiftMotorPort);
-		shiftEncoder = new Encoder(Constants.gmShiftEncoderPort1, Constants.gmShiftEncoderPort2);
+		motor = new TalonSRX(Constants.gmShiftMotorPort);
+		encoder = new Encoder(Constants.gmShiftEncoderPort1, Constants.gmShiftEncoderPort2);
 		upperSolenoid = new DoubleSolenoid(Constants.gmUpperSolenoidPort1, Constants.gmUpperSolenoidPort2);
 		lowerSolenoid = new DoubleSolenoid(Constants.gmLowerSolenoidPort1, Constants.gmLowerSolenoidPort2);
 		speed = 0;
@@ -37,7 +37,7 @@ public class GearManipulatorHardware extends GearManipulatorHardwareBase{
 
 	@Override
 	public void periodicUpdate(){
-		shiftMotor.set(speed);
+		motor.set(speed);
 		if(upperPistons){
 			upperSolenoid.set(Constants.gmUpperSolenoidOpenValue);
 		}else{
@@ -67,12 +67,17 @@ public class GearManipulatorHardware extends GearManipulatorHardwareBase{
 
 	@Override
 	public int getEncoderCounts() {
-		return shiftEncoder.get();
+		return encoder.get();
 	}
 
 	@Override
 	public void resetEncoderCounts() {
-		shiftEncoder.reset();
+		encoder.reset();
+	}
+	
+	@Override
+	public String getName() {
+		return "FIXED_LAYER_DNU";
 	}
 	
 }

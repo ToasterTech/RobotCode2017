@@ -14,4 +14,9 @@ public class GearManipulatorCommandTeleop extends GearManipulatorCommandBase{
 		
 	}
 
+	@Override
+	public String getName() {
+		return "TELEOP_DNU";
+	}
+
 }

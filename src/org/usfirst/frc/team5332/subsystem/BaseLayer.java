@@ -16,4 +16,12 @@ public interface BaseLayer{
 	 * Called during the periodic loops of the Robot.
 	 */
 	public void periodicUpdate();
+	
+	/**
+	 * Get the name of the Layer. Generally used for autonomous command layers. 
+	 * 
+	 * @return The name of the Layer.
+	 */
+	public String getName();
+	
 }

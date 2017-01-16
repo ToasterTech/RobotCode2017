@@ -66,5 +66,10 @@ public class DriveHardware extends DriveHardwareBase {
 	public void encoderReset() {
 		
 	}
+	
+	@Override
+	public String getName() {
+		return "FIXED_LAYER_DNU";
+	}
 
 }
