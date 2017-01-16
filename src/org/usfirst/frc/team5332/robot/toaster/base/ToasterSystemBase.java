@@ -10,4 +10,10 @@ public abstract class ToasterSystemBase implements Layer<ToasterHardwareBase>{
 	@Override
 	public abstract void setChild(ToasterHardwareBase c);
 	
+	public abstract void shoot();
+	
+	public abstract void feed();
+	
+	public abstract void stop();
+	
 }
