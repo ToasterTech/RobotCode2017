@@ -2,9 +2,16 @@ package org.usfirst.frc.team5332.robot.toaster;
 
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterHardwareBase;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterSystemBase;
+import org.usfirst.frc.team5332.util.Constants;
 
 public class ToasterSystem extends ToasterSystemBase{
 
+	private ToasterHardwareBase hardwareLayer;
+	
+	private double shooterSpeed;
+	private double feederSpeed;
+	
+	
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
@@ -14,36 +21,43 @@ public class ToasterSystem extends ToasterSystemBase{
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return null;
+		return "FIXED_LAYER_DNU";
 	}
 
 	@Override
 	public void periodicUpdate() {
-		// TODO Auto-generated method stub
+		hardwareLayer.setFeedSpeed(feederSpeed);
+		hardwareLayer.setShooterSpeed(shooterSpeed);
 		
 	}
 
 	@Override
 	public void setChild(ToasterHardwareBase c) {
-		// TODO Auto-generated method stub
+		hardwareLayer = c;
 		
 	}
 
 	@Override
 	public void shoot() {
-		// TODO Auto-generated method stub
+		shooterSpeed = Constants.shooterShooterSpeed;
 		
 	}
 
 	@Override
 	public void feed() {
-		// TODO Auto-generated method stub
+		feederSpeed = Constants.shooterFeederSpeed;
 		
 	}
 
 	@Override
-	public void stop() {
-		// TODO Auto-generated method stub
+	public void shootStop() {
+		shooterSpeed = 0.0;
+		
+	}
+
+	@Override
+	public void feedStop() {
+		feederSpeed = 0.0;
 		
 	}
 	
