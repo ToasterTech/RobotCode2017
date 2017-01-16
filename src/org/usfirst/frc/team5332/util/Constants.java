@@ -26,6 +26,9 @@ public class Constants{
 	
 	public static final int intakeMotorPort = 5;
 	
+	public static final int shooterShooterMotorPort = 6;
+	public static final int shooterFeederMotorPort = 7;
+	
 	// Encoder ports
 	public static final int driveEncoderLeftPort1 = 0;
 	public static final int driveEncoderLeftPort2 = 1;
