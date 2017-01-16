@@ -16,6 +16,9 @@ public class Constants{
 	public static final double gearManipulatorMoveSpeed = 0.5;
 	public static final int gearManipulatorMoveSign = 1;
 	
+	public static final double shooterShooterSpeed = 1;
+	public static final double shooterFeederSpeed = 1;
+	
 	// Motor ports
 	public static final int driveLeftPort1 = 0;
 	public static final int driveLeftPort2 = 1;
