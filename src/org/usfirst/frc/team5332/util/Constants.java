@@ -9,12 +9,20 @@ public class Constants{
 	public static int driverThrottleJoystickPort = 1;
 	public static int operatorJoystickPort = 2;
 	
+	// Joystick Action IDs
+	
+	public static final int shootButtonID = 0;
+	public static final int feedButtonID = 1;
+	
 	// Turning variables
 	public static final double turningJoystickFixedSpeed = 0.5;
 	public static final double turningScalar = 1;
 	
 	public static final double gearManipulatorMoveSpeed = 0.5;
 	public static final int gearManipulatorMoveSign = 1;
+	
+	public static final double shooterShooterSpeed = 1;
+	public static final double shooterFeederSpeed = 1;
 	
 	// Motor ports
 	public static final int driveLeftPort1 = 0;
