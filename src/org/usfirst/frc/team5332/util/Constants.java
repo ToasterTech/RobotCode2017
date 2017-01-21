@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5332.util;
 
+import org.opencv.core.Scalar;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 public class Constants{
@@ -67,5 +69,9 @@ public class Constants{
 	public static final int operatorJoystickRightBumperAxisIndex = 3;
 	public static final int operatorJoystickLeftBumperAxisIndex = 4;
 	public static final double operatorJoystickBumperThresh = 0.5;
+	
+	// Vision Tracking
+	public static final Scalar colorTrackingMin = new Scalar(40, 100, 100); // Values subject to change
+	public static final Scalar colorTrackingMax = new Scalar (70, 100, 50); // Values subject to change 
 	
 }
