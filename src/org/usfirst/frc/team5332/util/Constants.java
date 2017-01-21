@@ -68,4 +68,7 @@ public class Constants{
 	public static final int operatorJoystickLeftBumperAxisIndex = 4;
 	public static final double operatorJoystickBumperThresh = 0.5;
 	
+	// Camera address
+	public static final int address = 0;
+	
 }
