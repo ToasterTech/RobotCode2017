@@ -20,6 +20,7 @@ public class ObjectTracking {
 		
 	public static void getContour(Mat frame) {
 		Imgproc.blur(frame, blurredImage, new Size(7, 7));
+		
 	}
 
 }
