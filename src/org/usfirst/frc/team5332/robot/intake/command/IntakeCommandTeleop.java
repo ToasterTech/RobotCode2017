@@ -19,9 +19,9 @@ public class IntakeCommandTeleop extends IntakeCommandBase{
 	@Override
 	public void periodicUpdate(){
 		if(js.getLeftBumper()){
-			systemLayer.forwardIntake();
+			systemLayer.intake();
 		}else if(js.getRightBumper()){
-			systemLayer.reverseIntake();
+			systemLayer.reverse();
 		}else{
 			systemLayer.stopIntake();
 		}
