@@ -7,12 +7,19 @@ import edu.wpi.first.wpilibj.TalonSRX;
 
 public class IntakeHardware extends IntakeHardwareBase{
 	
+	// Motor object.
 	private TalonSRX motor;
 	
+	// Speed variable.
 	private double speed;
 	
+	/**
+	 * Constructor, sets the speed of the motors to 0 by default.
+	 */
 	public IntakeHardware(){
+		//Sets TalonSRX to a new intake motor port constant.
 		motor = new TalonSRX(Constants.intakeMotorPort);
+		//speed set to 0 by default
 		speed = 0;
 	}
 	
