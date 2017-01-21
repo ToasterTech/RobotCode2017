@@ -3,7 +3,6 @@ package org.usfirst.frc.team5332.robot.gearmanipulator.command;
 import org.usfirst.frc.team5332.robot.gearmanipulator.base.GearManipulatorCommandBase;
 import org.usfirst.frc.team5332.util.Constants;
 import org.usfirst.frc.team5332.robot.control.OperatorJoystick;
-import org.usfirst.frc.team5332.robot.control.DriverJoystickSet;
 
 public class GearManipulatorCommandTeleop extends GearManipulatorCommandBase{
 	
