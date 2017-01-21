@@ -7,6 +7,7 @@ import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.MatOfPoint2f;
+import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
@@ -26,7 +27,7 @@ public class ObjectTracking {
 		return coloredImg;
 	}
 		
-	public static void getContour(Mat coloredImg) {
+	public static Point[] getContour(Mat coloredImg) {
 		Imgproc.blur(coloredImg, blurredImage, new Size(7, 7));
 		Imgproc.findContours(coloredImg, contours, contouredImg, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
 		MatOfPoint largestBlob = contours.get(0);
@@ -40,6 +41,7 @@ public class ObjectTracking {
 		
 		Imgproc.drawContours(contouredImg, contours, -1, new Scalar(250, 0, 0));
 		Imgproc.approxPolyDP(new MatOfPoint2f(contouredImg), finalImg, 3.0, true);
+		return finalImg.toArray();
 	}
 
 }
