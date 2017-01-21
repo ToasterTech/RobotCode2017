@@ -10,14 +10,12 @@ public class GearManipulatorSystem extends GearManipulatorSystemBase{
 	private double motorSpeed;
 	private int targetCounts;
 	private boolean goToCounts;
-	private boolean toggleGates;
 	
 	@Override
 	public void init() {
 		motorSpeed = 0;
 		targetCounts = 0;
 		goToCounts = false;
-		toggleGates = true;
 	}
 
 	@Override
