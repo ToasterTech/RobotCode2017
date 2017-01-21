@@ -16,6 +16,8 @@ public class Constants{
 	public static final int shootButtonID = 0;
 	public static final int feedButtonID = 1;
 	
+	public static final int gmPistonToggleButton = 2;
+	
 	// Turning variables
 	public static final double turningJoystickFixedSpeed = 0.5;
 	public static final double turningScalar = 1;
@@ -76,6 +78,5 @@ public class Constants{
 	// Vision Tracking
 	public static final Scalar colorTrackingMin = new Scalar(40, 100, 100); // Values subject to change
 	public static final Scalar colorTrackingMax = new Scalar (70, 100, 50); // Values subject to change 
-
 	
 }
