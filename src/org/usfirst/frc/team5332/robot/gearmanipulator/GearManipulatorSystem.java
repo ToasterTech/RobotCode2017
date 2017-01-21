@@ -40,6 +40,8 @@ public class GearManipulatorSystem extends GearManipulatorSystemBase{
 		hardwareLayer.toggleLowerPistons();
 		hardwareLayer.toggleUpperPistons();
 	}
+	
+	
 
 	@Override
 	public void goLeft() {
@@ -93,6 +95,11 @@ public class GearManipulatorSystem extends GearManipulatorSystemBase{
 	@Override
 	public void userControlOverride() {
 		goToCounts = false;
+	}
+	
+	@Override
+	public void stop(){
+		motorSpeed = 0;
 	}
 	
 }

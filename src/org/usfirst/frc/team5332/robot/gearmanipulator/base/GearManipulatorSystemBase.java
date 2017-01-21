@@ -21,5 +21,6 @@ public abstract class GearManipulatorSystemBase implements Layer<GearManipulator
 	public abstract void centerManipulator();
 	public abstract int getCounts();
 	public abstract void userControlOverride();
+	public abstract void stop();
 	
 }
