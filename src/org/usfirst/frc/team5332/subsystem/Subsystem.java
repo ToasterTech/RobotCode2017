@@ -9,7 +9,7 @@ package org.usfirst.frc.team5332.subsystem;
  * <li><b>System:</b> The system layer must implement the Layer interface and have the Child parameter of Layer set to the hardware layer.
  * The system layer provides the higher levels of abstraction for the hardware and retains fixed 'commands' that the command layers
  * can call later.</li>
- * <li><b>Command:</b></li> The command layer must imlement the Layer interface and have the Child parameter of Layer set to the system
+ * <li><b>Command:</b></li> The command layer must implement the Layer interface and have the Child parameter of Layer set to the system
  * layer. The command layer provides the actual control algorithms and groups that utilize system layer commands to control the robot.
  * 
  * @author J-Dierberger

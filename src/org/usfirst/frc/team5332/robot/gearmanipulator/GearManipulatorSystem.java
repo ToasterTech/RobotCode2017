@@ -4,8 +4,6 @@ import org.usfirst.frc.team5332.robot.gearmanipulator.base.GearManipulatorHardwa
 import org.usfirst.frc.team5332.robot.gearmanipulator.base.GearManipulatorSystemBase;
 import org.usfirst.frc.team5332.util.Constants;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-
 public class GearManipulatorSystem extends GearManipulatorSystemBase{
 	
 	private GearManipulatorHardwareBase hardwareLayer;
