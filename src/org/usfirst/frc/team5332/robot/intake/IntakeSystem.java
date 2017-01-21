@@ -29,12 +29,12 @@ public class IntakeSystem extends IntakeSystemBase{
 	}
 
 	@Override
-	public void forwardIntake(){
+	public void intake(){
 		speed = 1;
 	}
 
 	@Override
-	public void reverseIntake(){
+	public void reverse(){
 		speed = -1;
 	}
 
