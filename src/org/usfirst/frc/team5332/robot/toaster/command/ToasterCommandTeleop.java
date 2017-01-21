@@ -14,7 +14,6 @@ public class ToasterCommandTeleop extends ToasterCommandBase{
 	
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
 		
 	}
 
