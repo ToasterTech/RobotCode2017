@@ -5,8 +5,6 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.path.Path;
 
 public class DriveCommandTeleopPathFollow extends DriveCommandBase{
 	
-	// Remove when we actually use the path.
-	@SuppressWarnings("unused")
 	private Path path;
 	
 	public DriveCommandTeleopPathFollow(Path path){
