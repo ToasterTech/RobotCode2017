@@ -22,7 +22,9 @@ public class GearManipulatorSystem extends GearManipulatorSystemBase{
 	@Override
 	public void periodicUpdate() {
 		// Encoder controlled movement if we are less than the target counts.
-		if(goToCounts && hardwareLayer.getEncoderCounts() < targetCounts){
+		if(goToCounts && (hardwareLayer.getEncoderCounts() < targetCounts - 5 || hardwareLayer.getEncoderCounts() > targetCounts + 5)){
+			stop();
+		}else if(goToCounts && hardwareLayer.getEncoderCounts() < targetCounts){
 			hardwareLayer.driveGearManiupulator(motorSpeed * Constants.gearManipulatorMoveSpeed);
 		}
 		// Encoder controlled movement if we are greater than the target counts.

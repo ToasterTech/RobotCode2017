@@ -57,7 +57,7 @@ public class DriveCommandTeleop extends DriveCommandBase{
 	
 	@Override
 	public String getName() {
-		return "TELEOP_DNU";
+		return "TELEOP_USER";
 	}
 	
 }
