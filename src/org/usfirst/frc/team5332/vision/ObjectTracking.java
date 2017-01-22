@@ -36,7 +36,7 @@ public class ObjectTracking {
 				biggestArea1 = Imgproc.contourArea(contour);
 				biggestContour1 = contour;
 			}
-			if (Imgproc.contourArea(contour) > biggestArea2) {
+			else if (Imgproc.contourArea(contour) > biggestArea2) {
 				biggestArea2 = Imgproc.contourArea(contour);
 				biggestContour2 = contour;
 			}
