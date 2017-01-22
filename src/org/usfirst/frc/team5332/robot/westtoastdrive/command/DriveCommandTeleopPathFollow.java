@@ -1,11 +1,16 @@
 package org.usfirst.frc.team5332.robot.westtoastdrive.command;
 
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
+import org.usfirst.frc.team5332.robot.westtoastdrive.path.Path;
 
 public class DriveCommandTeleopPathFollow extends DriveCommandBase{
 	
-	public DriveCommandTeleopPathFollow(){
-		
+	// Remove when we actually use the path.
+	@SuppressWarnings("unused")
+	private Path path;
+	
+	public DriveCommandTeleopPathFollow(Path path){
+		this.path = path;
 	}
 
 	@Override
