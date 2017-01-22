@@ -27,16 +27,23 @@ public class ObjectTracking {
 		List<MatOfPoint> contours = new ArrayList<>();
 		Mat contourHierarchy = new Mat();
 		Imgproc.findContours(coloredImg, contours, contourHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
-		double biggestArea = 0;
-		MatOfPoint biggestContour = null;
+		double biggestArea1 = 0;
+		MatOfPoint biggestContour1 = null;
+		double biggestArea2 = 0;
+		MatOfPoint biggestContour2 = null;
 		for (MatOfPoint contour: contours) {
-			if (Imgproc.contourArea(contour) > biggestArea) {
-				biggestArea = Imgproc.contourArea(contour);
-				biggestContour = contour;
+			if (Imgproc.contourArea(contour) > biggestArea1) {
+				biggestArea1 = Imgproc.contourArea(contour);
+				biggestContour1 = contour;
+			}
+			if (Imgproc.contourArea(contour) > biggestArea2) {
+				biggestArea2 = Imgproc.contourArea(contour);
+				biggestContour2 = contour;
 			}
 		}
-		if (biggestContour != null) {
-			contours.remove(biggestContour);
+		if (biggestContour1 != null) {
+			contours.remove(biggestContour1);
+			contours.remove(biggestContour2);
 			Imgproc.drawContours(coloredImg, contours, -1, new Scalar(0, 255, 255), -1);
 		}
 	}
