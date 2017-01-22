@@ -6,8 +6,6 @@ import java.util.List;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
-import org.opencv.core.MatOfPoint2f;
-import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
@@ -15,33 +13,32 @@ import org.usfirst.frc.team5332.util.Constants;
 
 public class ObjectTracking {
 	
-	private static Mat blurredImage = new Mat();
-	private static Mat hsvImage = new Mat();
-	private static Mat coloredImg = new Mat();
-	private static List<MatOfPoint> contours = new ArrayList<>();
-	private static Mat contouredImg = new Mat();
-	
 	public static Mat filterColor(Mat unedited) {
-		Imgproc.cvtColor(blurredImage, hsvImage, Imgproc.COLOR_BGR2HSV);
+		Mat coloredImg = new Mat();
+		Mat hsvImage = new Mat();
+		Imgproc.cvtColor(unedited, hsvImage, Imgproc.COLOR_BGR2HSV);
 		Core.inRange(unedited, Constants.colorTrackingMin, Constants.colorTrackingMax, coloredImg);
 		return coloredImg;
 	}
 		
-	public static Point[] getContour(Mat coloredImg) {
+	public static void getContour(Mat coloredImg) {
+		Mat blurredImage = new Mat();
 		Imgproc.blur(coloredImg, blurredImage, new Size(7, 7));
-		Imgproc.findContours(coloredImg, contours, contouredImg, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
-		MatOfPoint largestBlob = contours.get(0);
-		MatOfPoint2f finalImg = new MatOfPoint2f();
-		
+		List<MatOfPoint> contours = new ArrayList<>();
+		Mat contourHierarchy = new Mat();
+		Imgproc.findContours(coloredImg, contours, contourHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
+		double biggestArea = 0;
+		MatOfPoint biggestContour = null;
 		for (MatOfPoint contour: contours) {
-			if (contour.size().area() >= largestBlob.size().area()) {
-				largestBlob = contour;
+			if (Imgproc.contourArea(contour) > biggestArea) {
+				biggestArea = Imgproc.contourArea(contour);
+				biggestContour = contour;
 			}
 		}
-		
-		Imgproc.drawContours(contouredImg, contours, -1, new Scalar(250, 0, 0));
-		Imgproc.approxPolyDP(new MatOfPoint2f(contouredImg), finalImg, 3.0, true);
-		return finalImg.toArray();
+		if (biggestContour != null) {
+			contours.remove(biggestContour);
+			Imgproc.drawContours(coloredImg, contours, -1, new Scalar(0, 255, 255), -1);
+		}
 	}
 
 }

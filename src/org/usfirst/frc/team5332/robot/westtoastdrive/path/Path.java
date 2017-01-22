@@ -131,6 +131,11 @@ public class Path{
 	 * @return The next coordinate in the path.
 	 */
 	public double[] getNextCoordinate(){
+		
+		if(currentReadIndex > x.size()-1){
+			return null;
+		}
+		
 		// Create the pair of doubles to return.
 		double[] pair = new double[2];
 		
@@ -174,26 +179,12 @@ public class Path{
 	}
 	
 	/**
-	 * Serialize the path object to a file.
+	 * Get the name of the Path.
+	 * 
+	 * @return The name of the Path.
 	 */
-	public void serialize(){
-		// Set the file we're writing to to the path directory plus the name
-		File file = new File(Constants.pathDirectory+name);
-		try{
-			// Create a print stream that writes to the given file.
-			PrintStream fileWriter = new PrintStream(file);
-			
-			// For the current index of what we have stored in the coordinate arrays...
-			for(int i = 0; i < x.size(); i++){
-				// ...print it to the file.
-				fileWriter.println(x.get(i)+","+y.get(i));
-			}
-			
-			// Close the writer.
-			fileWriter.close();
-		}catch (IOException e){
-			e.printStackTrace();
-		}
+	public String getName(){
+		return name;
 	}
 	
 }
