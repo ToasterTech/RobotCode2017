@@ -42,12 +42,36 @@ public class DriveSystem extends DriveSystemBase{
 		// Sets the left drive-motor speed.
 		left = speed;
 	}
-	
+
 	@Override
-	public double distanceForward() {
-		// Sets the distance driven forward.
+	public int getLeftEncoderCounts() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int getRightEncoderCounts() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double[] getCurrentGlobalCoords() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double[] getCurrentLocalCoords() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getOrientation() {
+		// TODO Auto-generated method stub
+		return 0;
+	} 
 	
 	@Override
 	public String getName() {

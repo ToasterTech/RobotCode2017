@@ -18,7 +18,7 @@ public class DriveCommandTeleopPathFollow extends DriveCommandBase{
 
 	@Override
 	public void periodicUpdate(){
-		
+		double[] coords = path.getNextCoordinate();
 	}
 
 	@Override
