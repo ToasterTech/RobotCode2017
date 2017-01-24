@@ -2,15 +2,19 @@ package org.usfirst.frc.team5332.robot.westtoastdrive.command;
 
 import org.usfirst.frc.team5332.robot.control.DriverJoystickSet;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
+import org.usfirst.frc.team5332.robot.westtoastdrive.path.Path;
 import org.usfirst.frc.team5332.util.Constants;
 
-public class DriveCommandTeleop extends DriveCommandBase{
+public class DriveCommandTeleopPathPlot extends DriveCommandBase{
 	
 	private DriverJoystickSet js;
 	private double gain = 1;
 	
-	public DriveCommandTeleop(){
+	private Path path;
+	
+	public DriveCommandTeleopPathPlot(String pathName){
 		js = new DriverJoystickSet();
+		path = new Path(pathName);
 	}
 	
 	
@@ -41,6 +45,13 @@ public class DriveCommandTeleop extends DriveCommandBase{
 		
 		leftSpeed = turnLeft + skim(turnRight);
 		rightSpeed = turnRight + skim(turnLeft);
+		
+		/*
+		 * if finishButton.isPressed
+		 * 	serializePath
+		 * else
+		 * 	addCurrentCoordinatesToPath
+		 */
 		
 		systemLayer.setDriveLeft(leftSpeed);
 		systemLayer.setDriveRight(rightSpeed);

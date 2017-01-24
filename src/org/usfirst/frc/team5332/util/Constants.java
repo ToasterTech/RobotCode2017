@@ -12,11 +12,13 @@ public class Constants{
 	public static int operatorJoystickPort = 2;
 	
 	// Joystick Action IDs
-	
 	public static final int shootButtonID = 0;
 	public static final int feedButtonID = 1;
 	
 	public static final int gmPistonToggleButton = 2;
+	
+	// File directories
+	public static final String pathDirectory = "D:\\paths\\";
 	
 	// Turning variables
 	public static final double turningJoystickFixedSpeed = 0.5;
