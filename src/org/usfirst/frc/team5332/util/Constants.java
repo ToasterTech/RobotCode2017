@@ -55,8 +55,6 @@ public class Constants{
 	// Solenoid ports
 	public static final int gmUpperSolenoidPort1 = 0;
 	public static final int gmUpperSolenoidPort2 = 1;
-	public static final int gmLowerSolenoidPort1 = 2;
-	public static final int gmLowerSolenoidPort2 = 3;
 	
 	// Solenoid values
 	public static final Value gmUpperSolenoidOpenValue = Value.kForward;
