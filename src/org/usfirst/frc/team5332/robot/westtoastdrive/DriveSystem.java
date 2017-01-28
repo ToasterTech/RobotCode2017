@@ -37,19 +37,21 @@ public class DriveSystem extends DriveSystemBase{
 		
 		double encoderCountChangeRight = this.getRightEncoderCounts() - encoderCountTotalRight;
 		double encoderCountChangeLeft = this.getLeftEncoderCounts() - encoderCountTotalLeft;
+		double angleMeasure;
+		double curveMeasure;
 		// All cases for turning.
 		if(encoderCountChangeRight < encoderCountChangeLeft) {
-			double angleMeasure = (encoderCountChangeRight / encoderCountChangeLeft) * 90;
-			double curveMeasure = 90 - angleMeasure;
+			angleMeasure = (encoderCountChangeRight / encoderCountChangeLeft) * 90;
+			curveMeasure = 90 - angleMeasure;
 		}
 		if(encoderCountChangeRight > encoderCountChangeLeft) {
-			double angleMeasure = 180 - ((encoderCountChangeLeft / encoderCountChangeRight) * 90);
-			double curveMeasure = angleMeasure - 90;
+			angleMeasure = 180 - ((encoderCountChangeLeft / encoderCountChangeRight) * 90);
+			curveMeasure = angleMeasure - 90;
 		}
 	
 		if(encoderCountChangeRight == encoderCountChangeLeft) {
-			double angleMeasure = (encoderCountChangeRight / encoderCountChangeLeft) * 90;
-			double curveMeasure = 90;
+			angleMeasure = (encoderCountChangeRight / encoderCountChangeLeft) * 90;
+			curveMeasure = 90;
 		}
 		
 	}
