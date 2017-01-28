@@ -38,6 +38,8 @@ public abstract class DriveSystemBase implements Layer<DriveHardwareBase>{
 	
 	public abstract double[] getCurrentLocalCoords();
 	
+	public abstract void resetLocalCoords();
+	
 	public abstract double getOrientation();
 	
 }

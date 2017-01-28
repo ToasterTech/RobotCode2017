@@ -10,13 +10,20 @@ public class DriveSystem extends DriveSystemBase{
 	private double right;
 	private double left;
 	
+	private double[] localCoords;
+	private double[] globalCoords;
+	
 	public DriveSystem(){
-		
+		localCoords = new double[2];
+		globalCoords = new double[2];
 	}
 	
 	@Override
 	public void init(){
-		
+		localCoords[0] = 0;
+		localCoords[1] = 0;
+		globalCoords[0] = 0;
+		globalCoords[1] = 0;
 	}
 
 	@Override
@@ -44,34 +51,35 @@ public class DriveSystem extends DriveSystemBase{
 	}
 
 	@Override
-	public int getLeftEncoderCounts() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getLeftEncoderCounts(){
+		return hardwareLayer.leftDriveCount();
 	}
 
 	@Override
 	public int getRightEncoderCounts() {
-		// TODO Auto-generated method stub
-		return 0;
+		return hardwareLayer.rightDriveCount();
 	}
 
 	@Override
 	public double[] getCurrentGlobalCoords() {
-		// TODO Auto-generated method stub
-		return null;
+		return globalCoords;
 	}
 
 	@Override
 	public double[] getCurrentLocalCoords() {
-		// TODO Auto-generated method stub
-		return null;
+		return localCoords;
 	}
 
 	@Override
 	public double getOrientation() {
-		// TODO Auto-generated method stub
-		return 0;
+		return hardwareLayer.getGyroAngle();
 	} 
+	
+	@Override
+	public void resetLocalCoords(){
+		localCoords[0] = 0;
+		localCoords[1] = 0;
+	}
 	
 	@Override
 	public String getName() {
