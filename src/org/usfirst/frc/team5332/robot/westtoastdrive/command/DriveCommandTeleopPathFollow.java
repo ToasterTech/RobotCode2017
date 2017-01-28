@@ -29,10 +29,11 @@ public class DriveCommandTeleopPathFollow extends DriveCommandBase{
 		
 		// Magically rotate the other point to the x axis around the origin (May not need this)
 		double a = Math.atan2(coords[0], coords[1]);
-		double[] rP = {coords[0] * Math.cos(a) - coords[1] * Math.sin(a), coords[0] * Math.sin(a) + coords[1] * Math.cos(a)};
+		double[] rotCoord = {coords[0] * Math.cos(a) - coords[1] * Math.sin(a), coords[0] * Math.sin(a) + coords[1] * Math.cos(a)};
 		
 		// Set the speed proportionally to the next coord relative to the origin (e.g (40,50) gives a ratio of 4/5)
-		
+		systemLayer.setDriveLeft(Math.abs(coords[0]/coords[1]));
+		systemLayer.setDriveRight(Math.abs(coords[1]/coords[0]));
 		
 	}
 
