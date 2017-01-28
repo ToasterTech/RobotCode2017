@@ -1,14 +1,14 @@
 package org.usfirst.frc.team5332.robot.intake.command;
 
-import org.usfirst.frc.team5332.robot.control.OperatorJoystick;
+import org.usfirst.frc.team5332.robot.control.GamePad;
 import org.usfirst.frc.team5332.robot.intake.base.IntakeCommandBase;
 
 public class IntakeCommandTeleop extends IntakeCommandBase{
 	
-	private OperatorJoystick js;
+	private GamePad js;
 	
 	public IntakeCommandTeleop(){
-		js = new OperatorJoystick();
+		js = new GamePad();
 	}
 	
 	@Override
