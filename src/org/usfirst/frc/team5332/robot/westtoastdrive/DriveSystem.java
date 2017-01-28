@@ -31,6 +31,29 @@ public class DriveSystem extends DriveSystemBase{
 		// Set the motors to what our current motor speed variable is.
 		hardwareLayer.setDriveLeft(left);
 		hardwareLayer.setDriveRight(right);
+		// Getting encoder change over time period.
+		double  encoderCountTotalRight = this.getRightEncoderCounts();
+		double  encoderCountTotalLeft = this.getLeftEncoderCounts();
+		
+		double encoderCountChangeRight = this.getRightEncoderCounts() - encoderCountTotalRight;
+		double encoderCountChangeLeft = this.getLeftEncoderCounts() - encoderCountTotalLeft;
+		double angleMeasure;
+		double curveMeasure;
+		// All cases for turning.
+		if(encoderCountChangeRight < encoderCountChangeLeft) {
+			angleMeasure = (encoderCountChangeRight / encoderCountChangeLeft) * 90;
+			curveMeasure = 90 - angleMeasure;
+		}
+		if(encoderCountChangeRight > encoderCountChangeLeft) {
+			angleMeasure = 180 - ((encoderCountChangeLeft / encoderCountChangeRight) * 90);
+			curveMeasure = angleMeasure - 90;
+		}
+	
+		if(encoderCountChangeRight == encoderCountChangeLeft) {
+			angleMeasure = (encoderCountChangeRight / encoderCountChangeLeft) * 90;
+			curveMeasure = 90;
+		}
+		
 	}
 
 	@Override
