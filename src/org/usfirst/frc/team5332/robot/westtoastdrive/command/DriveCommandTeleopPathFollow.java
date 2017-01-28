@@ -36,8 +36,8 @@ public class DriveCommandTeleopPathFollow extends DriveCommandBase{
 		 * Set the speed proportionally to the next coord relative to the origin (e.g (40,50) gives a ratio of 4/5); skim the extra.
 		 * Since the path's first point is our current position it will be a ratio relative to the origin.
 		 */
-		systemLayer.setDriveLeft(skim(Math.abs(coords[0]/coords[1])));
-		systemLayer.setDriveRight(skim(Math.abs(coords[1]/coords[0])));
+		systemLayer.setDriveLeft(skim(coords[0]/coords[1]));
+		systemLayer.setDriveRight(skim(coords[1]/coords[0]));
 		
 	}
 	
