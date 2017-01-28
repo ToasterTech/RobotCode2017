@@ -1,16 +1,16 @@
 package org.usfirst.frc.team5332.robot.westtoastdrive.command;
 
-import org.usfirst.frc.team5332.robot.control.DriverJoystickSet;
+import org.usfirst.frc.team5332.robot.control.GamePad;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
 import org.usfirst.frc.team5332.util.Constants;
 
 public class DriveCommandTeleop extends DriveCommandBase{
 	
-	private DriverJoystickSet js;
+	private GamePad js;
 	private double gain = 1;
 	
 	public DriveCommandTeleop(){
-		js = new DriverJoystickSet();
+		js = new GamePad();
 	}
 	
 	
@@ -27,17 +27,14 @@ public class DriveCommandTeleop extends DriveCommandBase{
 		 * Throttle: Left joystick
 		 * Turn: Right joystick
 		 */
-		if(js.getThrottleValue() < 0.05){
-			if(js.doFixedSpeedTurn() && js.getTurnValue() < 0.05)
-				turn = Constants.turningJoystickFixedSpeed;
-			else
-				turn = js.getTurnValue()*(Constants.turningScalar);
+		if(js.getLeftAxisValue() < 0.05){
+			turn = js.getRightAxisValue()*(Constants.turningScalar);
 		}
 		
-		turn = js.getTurnValue()*(Constants.turningScalar * Math.abs(js.getThrottleValue()));
+		turn = js.getRightAxisValue()*(Constants.turningScalar * Math.abs(js.getLeftAxisValue()));
 		
-		turnLeft = js.getThrottleValue() + turn;
-		turnRight = js.getThrottleValue() - turn;
+		turnLeft = js.getLeftAxisValue() + turn;
+		turnRight = js.getLeftAxisValue() - turn;
 		
 		leftSpeed = turnLeft + skim(turnRight);
 		rightSpeed = turnRight + skim(turnLeft);

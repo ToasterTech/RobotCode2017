@@ -62,15 +62,12 @@ public class Constants{
 	public static final Value gmLowerSolenoidOpenValue = Value.kForward;
 	public static final Value gmLowerSolenoidClosedValue = Value.kReverse;
 	
-	// Joystick axes
-	public static final int throttleJoystickAxisIndex = 0;
-	public static final int turningJoystickRangeAxisIndex = 1;
-	public static final int turningJoystickFixedAxisIndex = 2;
-	public static final double turningJoystickFixedThresh = 0.5;
-	
-	public static final int operatorJoystickRightBumperAxisIndex = 3;
-	public static final int operatorJoystickLeftBumperAxisIndex = 4;
-	public static final double operatorJoystickBumperThresh = 0.5;
+	// Joystick axes	
+	public static final int gamePadLeftAxis = 0;
+	public static final int gamePadRightAxis =1;
+	public static final int gamePadRightBumperAxisIndex = 3;
+	public static final int gamePadLeftBumperAxisIndex = 4;
+	public static final double gamePadBumperThresh = 0.5;
 	
 	// Camera address
 	public static final int address = 0;
