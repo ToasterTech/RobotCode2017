@@ -6,6 +6,9 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 public class Constants{
 	
+	// Network table string name
+	public static final String netTableName = "";
+	
 	// Joystick USB ports
 	public static int driverTurnJoystickPort = 0;
 	public static int driverThrottleJoystickPort = 1;
