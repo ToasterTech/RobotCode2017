@@ -29,11 +29,17 @@ public abstract class DriveSystemBase implements Layer<DriveHardwareBase>{
 	 */
 	public abstract void setDriveLeft(double speed);
 	
-	/**
-	 * Get the distance forward, in {@literal<UNIT>}s, the robot has driven.
-	 * 
-	 * @return The distance forward, in {@literal<UNIT>}s.
-	 */
-	// TODO Decided on a unit.
-	public abstract double distanceForward();
+	
+	public abstract int getLeftEncoderCounts();
+	
+	public abstract int getRightEncoderCounts();
+	
+	public abstract double[] getCurrentGlobalCoords();
+	
+	public abstract double[] getCurrentLocalCoords();
+	
+	public abstract void resetLocalCoords();
+	
+	public abstract double getOrientation();
+	
 }

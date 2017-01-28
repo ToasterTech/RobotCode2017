@@ -10,13 +10,20 @@ public class DriveSystem extends DriveSystemBase{
 	private double right;
 	private double left;
 	
+	private double[] localCoords;
+	private double[] globalCoords;
+	
 	public DriveSystem(){
-		
+		localCoords = new double[2];
+		globalCoords = new double[2];
 	}
 	
 	@Override
 	public void init(){
-		
+		localCoords[0] = 0;
+		localCoords[1] = 0;
+		globalCoords[0] = 0;
+		globalCoords[1] = 0;
 	}
 
 	@Override
@@ -24,6 +31,29 @@ public class DriveSystem extends DriveSystemBase{
 		// Set the motors to what our current motor speed variable is.
 		hardwareLayer.setDriveLeft(left);
 		hardwareLayer.setDriveRight(right);
+		// Getting encoder change over time period.
+		double  encoderCountTotalRight = this.getRightEncoderCounts();
+		double  encoderCountTotalLeft = this.getLeftEncoderCounts();
+		
+		double encoderCountChangeRight = this.getRightEncoderCounts() - encoderCountTotalRight;
+		double encoderCountChangeLeft = this.getLeftEncoderCounts() - encoderCountTotalLeft;
+		double angleMeasure;
+		double curveMeasure;
+		// All cases for turning.
+		if(encoderCountChangeRight < encoderCountChangeLeft) {
+			angleMeasure = (encoderCountChangeRight / encoderCountChangeLeft) * 90;
+			curveMeasure = 90 - angleMeasure;
+		}
+		if(encoderCountChangeRight > encoderCountChangeLeft) {
+			angleMeasure = 180 - ((encoderCountChangeLeft / encoderCountChangeRight) * 90);
+			curveMeasure = angleMeasure - 90;
+		}
+	
+		if(encoderCountChangeRight == encoderCountChangeLeft) {
+			angleMeasure = (encoderCountChangeRight / encoderCountChangeLeft) * 90;
+			curveMeasure = 90;
+		}
+		
 	}
 
 	@Override
@@ -42,11 +72,36 @@ public class DriveSystem extends DriveSystemBase{
 		// Sets the left drive-motor speed.
 		left = speed;
 	}
+
+	@Override
+	public int getLeftEncoderCounts(){
+		return hardwareLayer.leftDriveCount();
+	}
+
+	@Override
+	public int getRightEncoderCounts() {
+		return hardwareLayer.rightDriveCount();
+	}
+
+	@Override
+	public double[] getCurrentGlobalCoords() {
+		return globalCoords;
+	}
+
+	@Override
+	public double[] getCurrentLocalCoords() {
+		return localCoords;
+	}
+
+	@Override
+	public double getOrientation() {
+		return hardwareLayer.getGyroAngle();
+	} 
 	
 	@Override
-	public double distanceForward() {
-		// Sets the distance driven forward.
-		return 0;
+	public void resetLocalCoords(){
+		localCoords[0] = 0;
+		localCoords[1] = 0;
 	}
 	
 	@Override

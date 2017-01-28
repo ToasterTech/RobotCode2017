@@ -33,8 +33,8 @@ public class Constants{
 	// Motor ports
 	public static final int driveLeftPort1 = 0;
 	public static final int driveLeftPort2 = 1;
-	public static final int driveRightPort1 = 2;
-	public static final int driveRightPort2 = 3;
+	public static final int driveRightPort1 = 14;
+	public static final int driveRightPort2 = 15;
 	
 	public static final int gmShiftMotorPort = 4;
 	
@@ -55,8 +55,6 @@ public class Constants{
 	// Solenoid ports
 	public static final int gmUpperSolenoidPort1 = 0;
 	public static final int gmUpperSolenoidPort2 = 1;
-	public static final int gmLowerSolenoidPort1 = 2;
-	public static final int gmLowerSolenoidPort2 = 3;
 	
 	// Solenoid values
 	public static final Value gmUpperSolenoidOpenValue = Value.kForward;
@@ -80,5 +78,7 @@ public class Constants{
 	// Vision Tracking
 	public static final Scalar colorTrackingMin = new Scalar(40, 100, 100); // Values subject to change
 	public static final Scalar colorTrackingMax = new Scalar (70, 100, 50); // Values subject to change 
-	
+
+	// Path Plotting
+	public static final double timeInterval = 1;
 }
