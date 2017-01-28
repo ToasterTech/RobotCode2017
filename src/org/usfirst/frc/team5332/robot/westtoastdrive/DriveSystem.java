@@ -43,16 +43,18 @@ public class DriveSystem extends DriveSystemBase{
 		if(encoderCountChangeRight < encoderCountChangeLeft) {
 			angleMeasure = (encoderCountChangeRight / encoderCountChangeLeft) * 90;
 			curveMeasure = 90 - angleMeasure;
-		}
-		if(encoderCountChangeRight > encoderCountChangeLeft) {
+		}else if(encoderCountChangeRight > encoderCountChangeLeft) {
 			angleMeasure = 180 - ((encoderCountChangeLeft / encoderCountChangeRight) * 90);
 			curveMeasure = angleMeasure - 90;
-		}
-	
-		if(encoderCountChangeRight == encoderCountChangeLeft) {
+		}else{
 			angleMeasure = (encoderCountChangeRight / encoderCountChangeLeft) * 90;
 			curveMeasure = 90;
 		}
+		
+		double beta = 90-angleMeasure;
+		double alpha = 180 - 2*beta;
+		double radius = curveMeasure/alpha;  //signum is not complete...?
+		double distTraveled = Math.signum(encoderCountChangeRight) * Math.sqrt(2* Math.pow(radius, 2) - (2* Math.pow(radius, 2)* Math.cos((alpha*Math.PI)/180)));
 		
 	}
 
