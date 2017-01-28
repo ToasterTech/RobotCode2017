@@ -4,24 +4,27 @@ import org.usfirst.frc.team5332.util.Constants;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-public class OperatorJoystick{
+public class GamePad{
 	
 	private Joystick js;
 	
-	public OperatorJoystick(){
+	public GamePad(){
 		js = new Joystick(Constants.operatorJoystickPort);
 	}
 	
-	public double getGearManipulatorValue(){
-		return js.getRawAxis(Constants.throttleJoystickAxisIndex);
+	public double getLeftAxisValue(){
+		return js.getRawAxis(Constants.gamePadLeftAxis);
+	}
+	public double getRightAxisValue(){
+		return js.getRawAxis(Constants.gamePadRightAxis);
 	}
 	
 	public boolean getRightBumper(){
-		return js.getRawAxis(Constants.operatorJoystickRightBumperAxisIndex) > Constants.operatorJoystickBumperThresh;
+		return js.getRawAxis(Constants.gamePadRightBumperAxisIndex) > Constants.gamePadBumperThresh;
 	}
 	
 	public boolean getLeftBumper(){
-		return js.getRawAxis(Constants.operatorJoystickLeftBumperAxisIndex) > Constants.operatorJoystickBumperThresh;
+		return js.getRawAxis(Constants.gamePadLeftBumperAxisIndex) > Constants.gamePadBumperThresh;
 	}
 	
 	public boolean getButton(int index){

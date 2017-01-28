@@ -1,15 +1,15 @@
 package org.usfirst.frc.team5332.robot.toaster.command;
 
-import org.usfirst.frc.team5332.robot.control.OperatorJoystick;
+import org.usfirst.frc.team5332.robot.control.GamePad;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterCommandBase;
 import org.usfirst.frc.team5332.util.Constants;
 
 public class ToasterCommandTeleop extends ToasterCommandBase{
 
-	private OperatorJoystick js;
+	private GamePad js;
 	
 	public ToasterCommandTeleop() {
-		js = new OperatorJoystick();
+		js = new GamePad();
 	}
 	
 	@Override

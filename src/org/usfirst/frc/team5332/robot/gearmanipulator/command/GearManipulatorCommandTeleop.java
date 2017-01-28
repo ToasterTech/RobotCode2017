@@ -2,14 +2,14 @@ package org.usfirst.frc.team5332.robot.gearmanipulator.command;
 
 import org.usfirst.frc.team5332.robot.gearmanipulator.base.GearManipulatorCommandBase;
 import org.usfirst.frc.team5332.util.Constants;
-import org.usfirst.frc.team5332.robot.control.OperatorJoystick;
+import org.usfirst.frc.team5332.robot.control.GamePad;
 
 public class GearManipulatorCommandTeleop extends GearManipulatorCommandBase{
 	
-	private OperatorJoystick js;
+	private GamePad js;
 	
 	public GearManipulatorCommandTeleop(){
-		js = new OperatorJoystick();
+		js = new GamePad();
 	}
 	
 	@Override
