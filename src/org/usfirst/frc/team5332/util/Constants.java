@@ -78,5 +78,7 @@ public class Constants{
 	// Vision Tracking
 	public static final Scalar colorTrackingMin = new Scalar(40, 100, 100); // Values subject to change
 	public static final Scalar colorTrackingMax = new Scalar (70, 100, 50); // Values subject to change 
-	
+
+	// Path Plotting
+	public static final double timeInterval = 1;
 }
