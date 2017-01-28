@@ -41,4 +41,15 @@ public abstract class DriveHardwareBase implements BaseLayer{
 	 * Reset both encoders on the robot.
 	 */
 	public abstract void encoderReset();
+	
+	/**
+	 * Get the gyro angle.
+	 */
+	public abstract double getGyroAngle();
+	
+	/**
+	 * Get the gyro rotation rate.
+	 */
+	public abstract double getGyroRotationRate();
+	
 }

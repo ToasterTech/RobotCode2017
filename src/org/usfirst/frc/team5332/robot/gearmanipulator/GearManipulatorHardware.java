@@ -11,8 +11,7 @@ public class GearManipulatorHardware extends GearManipulatorHardwareBase{
 	
 	private TalonSRX motor;
 	private Encoder encoder;
-	private DoubleSolenoid upperSolenoid;
-	private DoubleSolenoid lowerSolenoid;
+	private DoubleSolenoid solenoid;
 	
 	private double speed;
 	private boolean upperPistons;
@@ -21,8 +20,7 @@ public class GearManipulatorHardware extends GearManipulatorHardwareBase{
 	public GearManipulatorHardware(){
 		motor = new TalonSRX(Constants.gmShiftMotorPort);
 		encoder = new Encoder(Constants.gmShiftEncoderPort1, Constants.gmShiftEncoderPort2);
-		upperSolenoid = new DoubleSolenoid(Constants.gmUpperSolenoidPort1, Constants.gmUpperSolenoidPort2);
-		lowerSolenoid = new DoubleSolenoid(Constants.gmLowerSolenoidPort1, Constants.gmLowerSolenoidPort2);
+		solenoid = new DoubleSolenoid(Constants.gmUpperSolenoidPort1, Constants.gmUpperSolenoidPort2);
 		speed = 0;
 		upperPistons = false;
 		lowerPistons = false;
@@ -39,14 +37,14 @@ public class GearManipulatorHardware extends GearManipulatorHardwareBase{
 	public void periodicUpdate(){
 		motor.set(speed);
 		if(upperPistons){
-			upperSolenoid.set(Constants.gmUpperSolenoidOpenValue);
+			solenoid.set(Constants.gmUpperSolenoidOpenValue);
 		}else{
-			upperSolenoid.set(Constants.gmUpperSolenoidClosedValue);
+			solenoid.set(Constants.gmUpperSolenoidClosedValue);
 		}
 		if(lowerPistons){
-			lowerSolenoid.set(Constants.gmLowerSolenoidOpenValue);
+			solenoid.set(Constants.gmLowerSolenoidOpenValue);
 		}else{
-			lowerSolenoid.set(Constants.gmLowerSolenoidClosedValue);
+			solenoid.set(Constants.gmLowerSolenoidClosedValue);
 		}
 	}
 
