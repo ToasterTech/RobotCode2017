@@ -65,33 +65,35 @@ public class ObjectTracking {
 			ArrayList<Double> yValues1 = new ArrayList<>(4);
 			ArrayList<Double> xValues2 = new ArrayList<>(4);
 			ArrayList<Double> yValues2 = new ArrayList<>(4);
-			for (Point center1: tape1.toArray()) {
-				xSum += center1.x;
-				ySum += center1.y;
-				xValues1.add(center1.x);
-				yValues1.add(center1.y);
-			}
-			for (Point center2: tape2.toArray()) {
-				xSum += center2.x;
-				ySum += center2.y;
-				xValues2.add(center2.x);
-				yValues2.add(center2.y);
-			}
-			double xCenter = xSum / ((tape1.toArray().length) + (tape2.toArray().length));
-			double yCenter = ySum / ((tape1.toArray().length) + (tape2.toArray().length));
-			Imgproc.circle(uneditedImg, new Point(xCenter, yCenter), 25, new Scalar(0, 255, 255));	
-			Collections.sort(xValues1);
-			Collections.sort(xValues2);
-			Collections.sort(yValues1);
-			Collections.sort(yValues2);
-			double horizontalAngle = 0;
-			if (xValues1.get(0) < xValues2.get(0)) {
-				horizontalAngle = Math.atan((yValues2.get(3) - yValues1.get(2)) / (xValues2.get(3) - xValues1.get(0)));
-				horizontalAngle = Math.toDegrees(horizontalAngle);
-			}
-			else {
-				horizontalAngle = Math.atan((yValues1.get(3) - yValues2.get(2)) / (xValues1.get(0) - xValues2.get(3)));
-				horizontalAngle = Math.toDegrees(horizontalAngle);
+			if (tape1.toArray().length == 4 && tape2.toArray().length == 4) {
+			  for (Point center1: tape1.toArray()) {
+				  xSum += center1.x;
+				  ySum += center1.y;
+				  xValues1.add(center1.x);
+				  yValues1.add(center1.y);
+			  }
+			  for (Point center2: tape2.toArray()) {
+				  xSum += center2.x;
+				  ySum += center2.y;
+				  xValues2.add(center2.x);
+				  yValues2.add(center2.y);
+		      }
+			  double xCenter = xSum / ((tape1.toArray().length) + (tape2.toArray().length));
+			  double yCenter = ySum / ((tape1.toArray().length) + (tape2.toArray().length));
+			  Imgproc.circle(uneditedImg, new Point(xCenter, yCenter), 25, new Scalar(0, 255, 255));	
+			  Collections.sort(xValues1);
+			  Collections.sort(xValues2);
+			  Collections.sort(yValues1);
+			  Collections.sort(yValues2);
+			  double horizontalAngle = 0;
+			  if (xValues1.get(0) < xValues2.get(0)) {
+				  horizontalAngle = Math.atan((yValues2.get(3) - yValues1.get(2)) / (xValues2.get(3) - xValues1.get(0)));
+				  horizontalAngle = Math.toDegrees(horizontalAngle);
+			  }
+			  else {
+				  horizontalAngle = Math.atan((yValues1.get(3) - yValues2.get(2)) / (xValues1.get(0) - xValues2.get(3)));
+				  horizontalAngle = Math.toDegrees(horizontalAngle);
+			  }
 			}
 		}
 	}
