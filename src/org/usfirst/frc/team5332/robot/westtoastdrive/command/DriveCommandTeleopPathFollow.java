@@ -2,7 +2,6 @@ package org.usfirst.frc.team5332.robot.westtoastdrive.command;
 
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.path.Path;
-import org.usfirst.frc.team5332.util.Constants;
 
 public class DriveCommandTeleopPathFollow extends DriveCommandBase{
 	
