@@ -12,6 +12,8 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleop;
+import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopPathFollow;
+import org.usfirst.frc.team5332.robot.westtoastdrive.path.Path;
 import org.usfirst.frc.team5332.subsystem.Subsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -60,7 +62,15 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void autonomousInit(){
-		
+		double[] x = new double[2000];
+		double[] y = new double[2000];
+		for(int i = 0; i < 2000; i++){
+			x[i] = i/100;
+		}
+		for(int i = 0; i < x.length; i++){
+			y[i] = 0.25*(x[i]*x[i]);
+		}
+		drive.setCommandLayer(new DriveCommandTeleopPathFollow(new Path(x,y,"TEST")));
 	}
 	
 	/*
@@ -68,7 +78,7 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void autonomousPeriodic(){
-		
+		drive.periodicUpdate();
 	}
 	
 	/*
