@@ -81,4 +81,13 @@ public class Constants{
 
 	// Path Plotting
 	public static final double timeInterval = 1;
+	
+	public static final double followSecondsBetweenChecks = 0.1;
+	public static final double lengthBetweenWheels = 24;
+	public static final double radiusOfWheels = 3;
+	public static final int ticksPerRevolution = 12;
+	
+	public static final double distConst = 10;
+	public static final double angleConst = 10;
+	
 }

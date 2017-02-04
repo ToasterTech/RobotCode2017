@@ -107,6 +107,16 @@ public class DriveSystem extends DriveSystemBase{
 	}
 	
 	@Override
+	public double getLeftMotorSpeed(){
+		return left;
+	}
+	
+	@Override
+	public double getRightMotorSpeed(){
+		return right;
+	}
+	
+	@Override
 	public String getName() {
 		return "FIXED_LAYER_DNU";
 	}
