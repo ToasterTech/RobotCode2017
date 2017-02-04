@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5332.vision;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.opencv.core.Core;
@@ -23,7 +24,7 @@ public class ObjectTracking {
 		return coloredImg;
 	}
 		
-	public static void getContour(Mat coloredImg) {
+	public static ArrayList<MatOfPoint> getContour(Mat coloredImg) {
 		Mat blurredImage = new Mat();
 		Imgproc.blur(coloredImg, blurredImage, new Size(7, 7));
 		List<MatOfPoint> contours = new ArrayList<>();
@@ -43,28 +44,55 @@ public class ObjectTracking {
 				biggestContour2 = contour;
 			}
 		}
-		if (biggestContour1 != null) {
-			MatOfPoint2f biggestContour12f = new MatOfPoint2f();
-			MatOfPoint2f biggestContour22f = new MatOfPoint2f();
+		ArrayList<MatOfPoint> tape = new ArrayList<>();
+		tape.add(biggestContour1);
+		tape.add(biggestContour2);
+		return tape;
+	}
+	
+	public static void locateTarget(Mat uneditedImg, ArrayList<MatOfPoint> tape) {
+		if (uneditedImg != null && tape.get(0) != null && tape.get(1) != null) {
+			MatOfPoint2f tape1 = new MatOfPoint2f();
+			MatOfPoint2f tape2 = new MatOfPoint2f();
 			double xSum = 0;
 			double ySum = 0;
-			contours.remove(biggestContour1);
-			contours.remove(biggestContour2);
-			Imgproc.drawContours(coloredImg, contours, -1, new Scalar(0, 255, 255), -1);
-			Imgproc.approxPolyDP(new MatOfPoint2f(biggestContour1.toArray()), biggestContour12f, 3.0, true);
-			Imgproc.approxPolyDP(new MatOfPoint2f(biggestContour2.toArray()), biggestContour22f, 3.0, true);
-			for (Point center1: biggestContour12f.toArray()) {
+			Imgproc.drawContours(uneditedImg, tape, -1, new Scalar(60, 255, 255), 5);
+			double arcLength1 = Imgproc.arcLength(new MatOfPoint2f(tape.get(0).toArray()), true);
+			double arcLength2 = Imgproc.arcLength(new MatOfPoint2f(tape.get(1).toArray()), true);
+			Imgproc.approxPolyDP(new MatOfPoint2f(tape.get(0).toArray()), tape1, .02 * arcLength1, true);
+			Imgproc.approxPolyDP(new MatOfPoint2f(tape.get(1).toArray()), tape2, .02 * arcLength2, true);
+			ArrayList<Double> xValues1 = new ArrayList<>(4);
+			ArrayList<Double> yValues1 = new ArrayList<>(4);
+			ArrayList<Double> xValues2 = new ArrayList<>(4);
+			ArrayList<Double> yValues2 = new ArrayList<>(4);
+			for (Point center1: tape1.toArray()) {
 				xSum += center1.x;
 				ySum += center1.y;
+				xValues1.add(center1.x);
+				yValues1.add(center1.y);
 			}
-			for (Point center2: biggestContour22f.toArray()) {
+			for (Point center2: tape2.toArray()) {
 				xSum += center2.x;
 				ySum += center2.y;
+				xValues2.add(center2.x);
+				yValues2.add(center2.y);
 			}
-			double xCenter = xSum / ((biggestContour12f.toArray().length) + (biggestContour22f.toArray().length));
-			double yCenter = ySum / ((biggestContour12f.toArray().length) + (biggestContour22f.toArray().length));
-			Imgproc.circle(coloredImg, new Point(xCenter, yCenter), 5, new Scalar(0, 255, 255));
-				
+			double xCenter = xSum / ((tape1.toArray().length) + (tape2.toArray().length));
+			double yCenter = ySum / ((tape1.toArray().length) + (tape2.toArray().length));
+			Imgproc.circle(uneditedImg, new Point(xCenter, yCenter), 25, new Scalar(0, 255, 255));	
+			Collections.sort(xValues1);
+			Collections.sort(xValues2);
+			Collections.sort(yValues1);
+			Collections.sort(yValues2);
+			double horizontalAngle = 0;
+			if (xValues1.get(0) < xValues2.get(0)) {
+				horizontalAngle = Math.atan((yValues2.get(3) - yValues1.get(2)) / (xValues2.get(3) - xValues1.get(0)));
+				horizontalAngle = Math.toDegrees(horizontalAngle);
+			}
+			else {
+				horizontalAngle = Math.atan((yValues1.get(3) - yValues2.get(2)) / (xValues1.get(0) - xValues2.get(3)));
+				horizontalAngle = Math.toDegrees(horizontalAngle);
+			}
 		}
 	}
 }
