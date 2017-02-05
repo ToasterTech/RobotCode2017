@@ -30,10 +30,10 @@ public class DriveHardware extends DriveHardwareBase {
 	 * Constructor. Creates Constructor for TalonSRX.
 	 */
 	public DriveHardware(){
-		driveRight1 = new TalonSRX(1);
-		driveRight2 = new TalonSRX(2);
-		driveLeft1 = new TalonSRX(3);
-		driveLeft2 = new TalonSRX(4);
+		driveRight1 = new TalonSRX(Constants.driveRightPort1);
+		driveRight2 = new TalonSRX(Constants.driveRightPort2);
+		driveLeft1 = new TalonSRX(Constants.driveLeftPort1);
+		driveLeft2 = new TalonSRX(Constants.driveLeftPort2);
 		leftEncoder = new Encoder(Constants.driveEncoderLeftPort1, Constants.driveEncoderLeftPort2);
 		rightEncoder = new Encoder(Constants.driveEncoderRightPort1, Constants.driveEncoderRightPort2);
 		gyro = new ADXRS450_Gyro();
@@ -59,7 +59,7 @@ public class DriveHardware extends DriveHardwareBase {
 
 	@Override
 	public void setDriveLeft(double speed) {
-		left = speed;
+		left = -speed;
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class DriveHardware extends DriveHardwareBase {
 
 	@Override
 	public int leftDriveCount() {
-		return leftEncoder.get();
+		return -leftEncoder.get();
 	}
 
 	@Override

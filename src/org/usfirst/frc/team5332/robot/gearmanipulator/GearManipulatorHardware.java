@@ -18,9 +18,9 @@ public class GearManipulatorHardware extends GearManipulatorHardwareBase{
 	private boolean lowerPistons;
 	
 	public GearManipulatorHardware(){
-		motor = new TalonSRX(Constants.gmShiftMotorPort);
-		encoder = new Encoder(Constants.gmShiftEncoderPort1, Constants.gmShiftEncoderPort2);
-		solenoid = new DoubleSolenoid(Constants.gmUpperSolenoidPort1, Constants.gmUpperSolenoidPort2);
+//		motor = new TalonSRX(Constants.gmShiftMotorPort);
+//		encoder = new Encoder(Constants.gmShiftEncoderPort1, Constants.gmShiftEncoderPort2);
+//		solenoid = new DoubleSolenoid(Constants.gmUpperSolenoidPort1, Constants.gmUpperSolenoidPort2);
 		speed = 0;
 		upperPistons = false;
 		lowerPistons = false;

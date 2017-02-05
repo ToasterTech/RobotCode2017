@@ -18,7 +18,7 @@ public class IntakeHardware extends IntakeHardwareBase{
 	 */
 	public IntakeHardware(){
 		//Sets TalonSRX to a new intake motor port constant.
-		motor = new TalonSRX(Constants.intakeMotorPort);
+//		motor = new TalonSRX(Constants.intakeMotorPort);
 		//speed set to 0 by default
 		speed = 0;
 	}

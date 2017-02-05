@@ -36,12 +36,14 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 		y = coords[1];
 		leftCount = systemLayer.getLeftEncoderCounts();
 		rightCount = systemLayer.getRightEncoderCounts();
+		systemLayer.setDriveLeft(.5);
+		systemLayer.setDriveRight(.5);
 	}
 
 	@Override
 	public void periodicUpdate() {
 		
-		if(System.nanoTime()-lastUpdateTime > (1000000000 * Constants.followSecondsBetweenChecks)){
+//		if(System.nanoTime()-lastUpdateTime > (1000000000 * Constants.followSecondsBetweenChecks)){
 			
 			double deltaLeftCount = systemLayer.getLeftEncoderCounts() - leftCount;
 			double deltaRightCount = systemLayer.getRightEncoderCounts() - rightCount;
@@ -59,7 +61,7 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 			rightCount = systemLayer.getRightEncoderCounts();
 			
 			lastUpdateTime = System.nanoTime();
-		}
+//		}
 		systemLayer.setDriveLeft(leftSpeed);
 		systemLayer.setDriveRight(rightSpeed);
 	}
@@ -70,13 +72,15 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 	}
 	
 	private void mathUpdate(double x, double y, double theta, double targetDist, double targetTheta){
-		double v = Constants.radiusOfWheels/2 * (systemLayer.getRightMotorSpeed() + systemLayer.getRightMotorSpeed());
-		double w = Constants.radiusOfWheels/Constants.lengthBetweenWheels * (systemLayer.getRightMotorSpeed() - systemLayer.getRightMotorSpeed());
-		
+
+		double v = Constants.radiusOfWheels/2 * (systemLayer.getRightMotorSpeed() + systemLayer.getLeftMotorSpeed());
+		double w = Constants.radiusOfWheels/Constants.lengthBetweenWheels * (systemLayer.getRightMotorSpeed() - systemLayer.getLeftMotorSpeed());
+
 		double currentDist = Math.sqrt((x*x)+(y*y));
 		
 		double errorDist = targetDist - currentDist;
 		double errorTheta = targetTheta - theta;
+		System.out.println(errorDist);
 		
 		double xPrime = v*Math.cos(theta)*errorDist*Constants.distConst;
 		double yPrime = v*Math.sin(theta)*errorDist*Constants.distConst;

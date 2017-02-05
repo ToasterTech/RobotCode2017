@@ -14,8 +14,8 @@ public class ToasterHardware extends ToasterHardwareBase{
 	private double feederSpeed = 0;
 	
 	public ToasterHardware(){
-		shooterMotor = new TalonSRX(Constants.shooterShooterMotorPort);
-		feederMotor = new TalonSRX(Constants.shooterFeederMotorPort);
+//		shooterMotor = new TalonSRX(Constants.shooterShooterMotorPort);
+//		feederMotor = new TalonSRX(Constants.shooterFeederMotorPort);
 		shooterSpeed = 0;
 		feederSpeed = 0;
 	}

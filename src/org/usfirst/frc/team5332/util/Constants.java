@@ -12,7 +12,7 @@ public class Constants{
 	// Joystick USB ports
 	public static int driverTurnJoystickPort = 0;
 	public static int driverThrottleJoystickPort = 1;
-	public static int operatorJoystickPort = 2;
+	public static int operatorJoystickPort = 0;
 	
 	// Joystick Action IDs
 	public static final int shootButtonID = 0;
@@ -34,10 +34,10 @@ public class Constants{
 	public static final double shooterFeederSpeed = 1;
 	
 	// Motor ports
-	public static final int driveLeftPort1 = 0;
-	public static final int driveLeftPort2 = 1;
-	public static final int driveRightPort1 = 14;
-	public static final int driveRightPort2 = 15;
+	public static final int driveLeftPort1 = 1;
+	public static final int driveLeftPort2 = 2;
+	public static final int driveRightPort1 = 4;
+	public static final int driveRightPort2 = 5;
 	
 	public static final int gmShiftMotorPort = 4;
 	
@@ -47,10 +47,10 @@ public class Constants{
 	public static final int shooterFeederMotorPort = 7;
 	
 	// Encoder ports
-	public static final int driveEncoderLeftPort1 = 0;
-	public static final int driveEncoderLeftPort2 = 1;
-	public static final int driveEncoderRightPort1 = 2;
-	public static final int driveEncoderRightPort2 = 3;
+	public static final int driveEncoderLeftPort1 = 4;
+	public static final int driveEncoderLeftPort2 = 5;
+	public static final int driveEncoderRightPort1 = 0;
+	public static final int driveEncoderRightPort2 = 1;
 	
 	public static final int gmShiftEncoderPort1 = 4;
 	public static final int gmShiftEncoderPort2 = 5;
@@ -66,8 +66,8 @@ public class Constants{
 	public static final Value gmLowerSolenoidClosedValue = Value.kReverse;
 	
 	// Joystick axes	
-	public static final int gamePadLeftAxis = 0;
-	public static final int gamePadRightAxis =1;
+	public static final int gamePadLeftAxis = 1;
+	public static final int gamePadRightAxis = 5;
 	public static final int gamePadRightBumperAxisIndex = 3;
 	public static final int gamePadLeftBumperAxisIndex = 4;
 	public static final double gamePadBumperThresh = 0.5;
@@ -81,13 +81,13 @@ public class Constants{
 
 	// Path Plotting
 	public static final double timeInterval = 1;
-	
-	public static final double followSecondsBetweenChecks = 0.1;
+
+	public static final double followSecondsBetweenChecks = 0.01;
 	public static final double lengthBetweenWheels = 24;
 	public static final double radiusOfWheels = 3;
-	public static final int ticksPerRevolution = 12;
+	public static final int ticksPerRevolution = 130;
 	
-	public static final double distConst = 10;
-	public static final double angleConst = 10;
+	public static final double distConst = .1;
+	public static final double angleConst = .1;
 	
 }
