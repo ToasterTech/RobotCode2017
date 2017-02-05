@@ -88,6 +88,6 @@ public class Constants{
 	public static final int ticksPerRevolution = 130;
 	
 	public static final double distConst = .1;
-	public static final double angleConst = .1;
+	public static final double angleConst = .2;
 	
 }

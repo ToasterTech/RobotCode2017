@@ -63,7 +63,7 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void autonomousInit(){
-		drive.setCommandLayer(new DriveCommandTeleopDiffDrive(new double[]{10,0}));
+		drive.setCommandLayer(new DriveCommandTeleopDiffDrive(new double[]{48,48}));
 		drive.init();
 	}
 	

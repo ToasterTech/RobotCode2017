@@ -20,6 +20,8 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 	private double targetDist;
 	private double targetTheta;
 	
+	private boolean angleFirst;
+	
 	public DriveCommandTeleopDiffDrive(double[] coords){
 		targetDist = Math.sqrt(coords[0]*coords[0] + coords[1]*coords[1]);
 		targetTheta = Math.atan(coords[1]/coords[0]);
@@ -36,8 +38,7 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 		y = coords[1];
 		leftCount = systemLayer.getLeftEncoderCounts();
 		rightCount = systemLayer.getRightEncoderCounts();
-		systemLayer.setDriveLeft(.5);
-		systemLayer.setDriveRight(.5);
+		angleFirst = true;
 	}
 
 	@Override
@@ -51,11 +52,15 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 			double leftDist = 2*Math.PI*Constants.radiusOfWheels * (deltaLeftCount/Constants.ticksPerRevolution);
 			double rightDist = 2*Math.PI*Constants.radiusOfWheels * (deltaRightCount/Constants.ticksPerRevolution);
 			
+			double v = Constants.radiusOfWheels/2 * (systemLayer.getRightMotorSpeed() + systemLayer.getLeftMotorSpeed());
+			double w = Constants.radiusOfWheels/Constants.lengthBetweenWheels * (systemLayer.getRightMotorSpeed() - systemLayer.getLeftMotorSpeed());
+
 			x += (leftDist + rightDist)/2 * Math.cos(theta);
 			y += (leftDist + rightDist)/2 * Math.sin(theta);
-			theta += (rightDist - leftDist)/Constants.lengthBetweenWheels;
-			
-			mathUpdate(x, y, theta, targetDist, targetTheta);
+			double totalTheta = theta + (rightDist - leftDist)/Constants.lengthBetweenWheels;
+			theta = Math.atan(Math.tan(totalTheta));
+			System.out.println("Theta: " + theta);
+			mathUpdate(x, y, theta, targetDist, targetTheta, v, w);
 			
 			leftCount = systemLayer.getLeftEncoderCounts();
 			rightCount = systemLayer.getRightEncoderCounts();
@@ -71,22 +76,27 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 		return "DRIVE_TELEOP_DIFFDRIVE";
 	}
 	
-	private void mathUpdate(double x, double y, double theta, double targetDist, double targetTheta){
-
-		double v = Constants.radiusOfWheels/2 * (systemLayer.getRightMotorSpeed() + systemLayer.getLeftMotorSpeed());
-		double w = Constants.radiusOfWheels/Constants.lengthBetweenWheels * (systemLayer.getRightMotorSpeed() - systemLayer.getLeftMotorSpeed());
+	private void mathUpdate(double x, double y, double theta, double targetDist, double targetTheta, double v, double w){
 
 		double currentDist = Math.sqrt((x*x)+(y*y));
 		
 		double errorDist = targetDist - currentDist;
 		double errorTheta = targetTheta - theta;
-		System.out.println(errorDist);
 		
-		double xPrime = v*Math.cos(theta)*errorDist*Constants.distConst;
-		double yPrime = v*Math.sin(theta)*errorDist*Constants.distConst;
-		w = w * errorTheta * Constants.angleConst;
-		v = Math.sqrt((xPrime*xPrime) + (yPrime*yPrime));
-		
+		if (Math.abs(errorDist) < 1 || errorDist < 0 || angleFirst) {
+			v = 0;
+			angleFirst = true;
+		} else {
+			v = -errorDist * Constants.distConst;
+		}
+		if (Math.abs(errorTheta) < .2 || !angleFirst) {
+			w = 0;
+			angleFirst = false;
+		} else {
+			w = -errorTheta * Constants.angleConst;
+		}
+		System.out.printf("D: %f, T: %f, Ang: %b \n", errorDist, errorTheta, angleFirst);
+
 		leftSpeed = (2*v+w*Constants.lengthBetweenWheels)/(2*Constants.radiusOfWheels);
 		rightSpeed = (2*v-w*Constants.lengthBetweenWheels)/(2*Constants.radiusOfWheels);
 	}
