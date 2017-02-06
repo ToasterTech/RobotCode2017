@@ -19,16 +19,24 @@ public class GearManipulatorCommandTeleop extends GearManipulatorCommandBase{
 
 	@Override
 	public void periodicUpdate() {
+		// Stop the gear manipulator if getLeftBumper and getRightBumber are detected at the same time.
 		if(js.getLeftBumper() && js.getRightBumper()){
 			systemLayer.stop();
-		}else if(js.getLeftBumper()){
+		}
+		// Tell the gear manipulator to go left  if getLeftBumper is activated.
+		else if(js.getLeftBumper()){
 			systemLayer.goLeft();
-		}else if(js.getRightBumper()){
+		}
+		// Tell the gear manipulator to go right if getRightBumper is activated.
+		else if(js.getRightBumper()){
 			systemLayer.goRight();
-		}else{
+		}
+		// Tell the gear manipulator to stop.
+		else{
 			systemLayer.stop();
 		}
 		
+		// Toggle gates if getButton is equal to gmPistonToggleButton.
 		if(js.getButton(Constants.gmPistonToggleButton)){
 			systemLayer.toggleGates();
 		}
