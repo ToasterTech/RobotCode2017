@@ -85,7 +85,8 @@ public class ObjectTracking {
 			  Collections.sort(xValues2);
 			  Collections.sort(yValues1);
 			  Collections.sort(yValues2);
-			  double horizontalAngle = 0;
+			  // Area Calculations are now prehistoric
+			  /*double horizontalAngle = 0;
 			  if (xValues1.get(0) < xValues2.get(0)) {
 				  horizontalAngle = Math.atan((yValues2.get(3) - yValues1.get(2)) / (xValues2.get(3) - xValues1.get(0)));
 				  horizontalAngle = Math.toDegrees(horizontalAngle);
@@ -93,7 +94,16 @@ public class ObjectTracking {
 			  else {
 				  horizontalAngle = Math.atan((yValues1.get(3) - yValues2.get(2)) / (xValues1.get(0) - xValues2.get(3)));
 				  horizontalAngle = Math.toDegrees(horizontalAngle);
-			  }
+			  }*/
+			  double centerFrameX = uneditedImg.width() / 2.0;
+			  double centerFrameY = uneditedImg.height() / 2.0;
+			  Point centerTot = new Point(centerFrameX, centerFrameY);
+			  double yDisplace = centerTot.y - yCenter;
+			  double xDisplace = centerTot.x - xCenter;
+			  //System.out.printf("x: %6.3f,    y: %6.3f \n", xDisplace, yDisplace);
+			  double yAngle = yDisplace * 43.3 / centerFrameY;
+			  double xAngle = xDisplace * 70.42 / centerFrameX;
+			  System.out.printf("xAngle: %5.3f, yAngle: %5.3f \n", xAngle, yAngle);
 			}
 		}
 	}
