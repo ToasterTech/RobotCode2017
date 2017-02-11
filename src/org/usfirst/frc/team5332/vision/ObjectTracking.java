@@ -104,6 +104,10 @@ public class ObjectTracking {
 			  double yAngle = yDisplace * 43.3 / centerFrameY;
 			  double xAngle = xDisplace * 70.42 / centerFrameX;
 			  System.out.printf("xAngle: %5.3f, yAngle: %5.3f \n", xAngle, yAngle);
+			  
+			  double distanceToGoal = Constants.constantH/Math.tan(yAngle);
+			  distanceToGoal = distanceToGoal/Math.cos(xAngle);
+			  
 			}
 		}
 	}
