@@ -108,6 +108,30 @@ public class ObjectTracking {
 			  double distanceToGoal = Constants.constantH/Math.tan(yAngle);
 			  distanceToGoal = distanceToGoal/Math.cos(xAngle);
 			  
+			  Point pointTopLeft = new Point(xValues1.get(0), yValues1.get(1));
+			  Point pointBottomLeft = new Point(xValues1.get(1), yValues1.get(2));
+			  Point pointTopRight = new Point(xValues2.get(2), yValues2.get(0));
+			  Point pointBottomRight = new Point(xValues2.get(3), yValues2.get(3));
+			  double yNewOne = (pointTopLeft.y + pointTopRight.y) / 2;
+			  double yNewTwo = (pointBottomLeft.y + pointBottomRight.y) / 2;
+			  Point pointIdealTopLeft = new Point(pointTopLeft.x, yNewOne);
+			  Point pointIdealBottomLeft = new Point(pointBottomLeft.x, yNewTwo);
+			  Point pointIdealTopRight = new Point(pointTopRight.x, yNewOne);
+			  Point pointIdealBottomRight = new Point(pointBottomRight.x, yNewTwo);
+			  double height = pointIdealBottomRight.y - pointIdealTopRight.y;
+			  double width = height * (41 / 20);
+			  double xCenterValue = (pointTopLeft.x + pointTopRight.x) / 2;
+			  Point pointHeadOnOne = new Point((xCenterValue - (width / 2)), pointIdealTopLeft.y);
+			  Point pointHeadOnTwo = new Point((xCenterValue - (width / 2)), pointIdealBottomLeft.y);
+			  Point pointHeadOnThree = new Point((xCenterValue + (width / 2)), pointIdealTopRight.y);
+			  Point pointHeadOnFour = new Point((xCenterValue + (width / 2)), pointIdealBottomRight.y);
+			  MatOfPoint2f rotatedShape = new MatOfPoint2f(pointTopLeft, pointBottomLeft, pointTopRight, pointBottomRight);
+			  MatOfPoint2f idealRotation = new MatOfPoint2f(pointHeadOnOne, pointHeadOnTwo, pointHeadOnThree, pointHeadOnFour);
+			  Mat rotation = Imgproc.getPerspectiveTransform(rotatedShape, idealRotation);
+			  double[] angleData = new double[1];
+			  rotation.get(0, 0, angleData);
+			  double angle = Math.acos(angleData[0]);
+			  System.out.println(angle);
 			}
 		}
 	}
