@@ -37,11 +37,14 @@ public class ObjectTracking {
 		for (MatOfPoint contour: contours) {
 			if (Imgproc.contourArea(contour) > biggestArea1) {
 				biggestArea1 = Imgproc.contourArea(contour);
-				biggestContour1 = contour;
+			    biggestContour1 = contour;
 			}
-			else if (Imgproc.contourArea(contour) > biggestArea2) {
+		}
+		contours.remove(biggestContour1);
+		for (MatOfPoint contour: contours) {
+			if (Imgproc.contourArea(contour) > biggestArea2) {
 				biggestArea2 = Imgproc.contourArea(contour);
-				biggestContour2 = contour;
+			    biggestContour2 = contour;
 			}
 		}
 		ArrayList<MatOfPoint> tape = new ArrayList<>();
@@ -103,11 +106,11 @@ public class ObjectTracking {
 			  //System.out.printf("x: %6.3f,    y: %6.3f \n", xDisplace, yDisplace);
 			  double yAngle = yDisplace * 43.3 / centerFrameY;
 			  double xAngle = xDisplace * 70.42 / centerFrameX;
-			  System.out.printf("xAngle: %5.3f, yAngle: %5.3f \n", xAngle, yAngle);
+			  //System.out.printf("xAngle: %5.3f, yAngle: %5.3f \n", xAngle, yAngle);
 			  
-			  double distanceToGoal = Constants.constantH/Math.tan(yAngle);
-			  distanceToGoal = distanceToGoal/Math.cos(xAngle);
-			  
+			  double distanceY = Constants.constantH/Math.tan(yAngle);
+			  double distanceToGoal = distanceY/Math.cos(xAngle);
+			  System.out.println("D: " + distanceToGoal);
 			  Point pointTopLeft = new Point(xValues1.get(0), yValues1.get(1));
 			  Point pointBottomLeft = new Point(xValues1.get(1), yValues1.get(2));
 			  Point pointTopRight = new Point(xValues2.get(2), yValues2.get(0));
@@ -129,9 +132,9 @@ public class ObjectTracking {
 			  MatOfPoint2f idealRotation = new MatOfPoint2f(pointHeadOnOne, pointHeadOnTwo, pointHeadOnThree, pointHeadOnFour);
 			  Mat rotation = Imgproc.getPerspectiveTransform(rotatedShape, idealRotation);
 			  double[] angleData = new double[1];
-			  rotation.get(0, 0, angleData);
-			  double angle = Math.acos(angleData[0]);
-			  System.out.println(angle);
+			  rotation.get(0, 1, angleData);
+			  double angle = Math.asin(angleData[0])*180/(Math.PI);
+			  System.out.println("A: " + angle);
 			}
 		}
 	}

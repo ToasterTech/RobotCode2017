@@ -13,8 +13,6 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleop;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopDiffDrive;
-import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopPathFollow;
-import org.usfirst.frc.team5332.robot.westtoastdrive.path.Path;
 import org.usfirst.frc.team5332.subsystem.Subsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
