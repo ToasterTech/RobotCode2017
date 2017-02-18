@@ -10,6 +10,10 @@ public class DriveSystem extends DriveSystemBase{
 	private double relativeTheta;
 	private DriveHardwareBase hardwareLayer;
 
+	
+	private double getX;
+	private double getY;
+	
 	private double right;
 	private double left;
 
@@ -67,8 +71,9 @@ public class DriveSystem extends DriveSystemBase{
 		x prime = sqrt(x2 + y2 - y'2)
 		 */
 
-		relativeX = (ArmSink.getX() * Math.tan(ArmSink.getTheta()) + ArmSink.getY() * Math.cos(ArmSink.getTheta()));
-		relativeY = Math.sqrt(Math.pow(2 , ArmSink.getX()) + Math.pow(2, ArmSink.getY()));
+		relativeX = (getX * Math.tan(ArmSink.getTheta()) + getY * Math.cos(ArmSink.getTheta()));
+
+		relativeY = Math.sqrt(Math.pow(2 , getX) + Math.pow(2, getY));
 		
 	}
 
@@ -136,21 +141,22 @@ public class DriveSystem extends DriveSystemBase{
 	}
 
 	@Override
-	public double getRelativeX() {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getRelativeX(double x) {
+		getX = x;
+	
+		return relativeX;
 	}
 
 	@Override
-	public double getRelativeY() {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getRelativeY(double y) {
+		getY = y;
+		return relativeY;
 	}
 
 	@Override
-	public double getRelativeTheta() {
-		// TODO Auto-generated method stub
+	public double getRelativeTheta(double t) {
+		
 		return 0;
 	}
-
+	
 }
