@@ -43,9 +43,6 @@ public class Constants{
 	public static final int driveEncoderRightPort1 = 0;
 	public static final int driveEncoderRightPort2 = 1;
 	
-	// Solenoid ports
-	public static final int gmUpperSolenoidPort1 = 0;
-	public static final int gmUpperSolenoidPort2 = 1;
 	
 	// Joystick axes	
 	public static final int gamePadLeftAxis = 1;
