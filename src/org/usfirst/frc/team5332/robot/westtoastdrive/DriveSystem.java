@@ -55,7 +55,7 @@ public class DriveSystem extends DriveSystemBase{
 			angleMeasure = (encoderCountChangeRight / encoderCountChangeLeft) * 90;
 			curveMeasure = 90;
 		}
-
+		
 		double beta = 90-angleMeasure;
 		double alpha = 180 - 2*beta;
 		double radius = curveMeasure/alpha;  //signum is not complete...?
@@ -67,9 +67,9 @@ public class DriveSystem extends DriveSystemBase{
 		x prime = sqrt(x2 + y2 - y'2)
 		 */
 
-		double xPrime = (ArmSink.getX() * Math.tan(ArmSink.getTheta()) + ArmSink.getY() * Math.cos(ArmSink.getTheta()));
-		double yPrime = Math.sqrt(Math.pow(2 , ArmSink.getX()) + Math.pow(2, ArmSink.getY()));
-
+		relativeX = (ArmSink.getX() * Math.tan(ArmSink.getTheta()) + ArmSink.getY() * Math.cos(ArmSink.getTheta()));
+		relativeY = Math.sqrt(Math.pow(2 , ArmSink.getX()) + Math.pow(2, ArmSink.getY()));
+		
 	}
 
 	@Override
