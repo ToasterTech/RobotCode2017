@@ -66,10 +66,10 @@ public class DriveSystem extends DriveSystemBase{
 		y prime = (xtan0 + y)cos0
 		x prime = sqrt(x2 + y2 - y'2)
 		 */
-		
+
 		double xPrime = (ArmSink.getX() * Math.tan(ArmSink.getTheta()) + ArmSink.getY() * Math.cos(ArmSink.getTheta()));
 		double yPrime = Math.sqrt(Math.pow(2 , ArmSink.getX()) + Math.pow(2, ArmSink.getY()));
-		
+
 	}
 
 	@Override
