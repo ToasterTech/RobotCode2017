@@ -46,4 +46,7 @@ public abstract class DriveSystemBase implements Layer<DriveHardwareBase>{
 	
 	public abstract double getRightMotorSpeed();
 	
+	public abstract double getRelativeX();
+	public abstract double getRelativeY();
+	public abstract double getRelativeTheta();
 }
