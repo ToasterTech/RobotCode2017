@@ -32,10 +32,10 @@ public class Constants{
 	public static final int driveRightPort1 = 0;
 	public static final int driveRightPort2 = 1;
 	
-	public static final int intakeMotorPort = 5;
+	public static final int intakeMotorPort = 4;
 	
 	public static final int shooterShooterMotorPort = 6;
-	public static final int shooterFeederMotorPort = 7;
+	public static final int shooterFeederMotorPort = 5;
 	
 	// Encoder ports
 	public static final int driveEncoderLeftPort1 = 4;
