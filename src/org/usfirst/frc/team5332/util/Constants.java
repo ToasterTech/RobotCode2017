@@ -2,8 +2,6 @@ package org.usfirst.frc.team5332.util;
 
 import org.opencv.core.Scalar;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-
 public class Constants{
 	
 	// Network table string name
@@ -18,8 +16,6 @@ public class Constants{
 	public static final int shootButtonID = 0;
 	public static final int feedButtonID = 1;
 	
-	public static final int gmPistonToggleButton = 2;
-	
 	// File directories
 	public static final String pathDirectory = "D:\\paths\\";
 	
@@ -27,19 +23,14 @@ public class Constants{
 	public static final double turningJoystickFixedSpeed = 0.5;
 	public static final double turningScalar = 1;
 	
-	public static final double gearManipulatorMoveSpeed = 0.5;
-	public static final int gearManipulatorMoveSign = 1;
-	
 	public static final double shooterShooterSpeed = 1;
 	public static final double shooterFeederSpeed = 1;
 	
 	// Motor ports
-	public static final int driveLeftPort1 = 1;
-	public static final int driveLeftPort2 = 2;
-	public static final int driveRightPort1 = 4;
-	public static final int driveRightPort2 = 5;
-	
-	public static final int gmShiftMotorPort = 4;
+	public static final int driveLeftPort1 = 2;
+	public static final int driveLeftPort2 = 3;
+	public static final int driveRightPort1 = 0;
+	public static final int driveRightPort2 = 1;
 	
 	public static final int intakeMotorPort = 5;
 	
@@ -52,18 +43,9 @@ public class Constants{
 	public static final int driveEncoderRightPort1 = 0;
 	public static final int driveEncoderRightPort2 = 1;
 	
-	public static final int gmShiftEncoderPort1 = 4;
-	public static final int gmShiftEncoderPort2 = 5;
-	
 	// Solenoid ports
 	public static final int gmUpperSolenoidPort1 = 0;
 	public static final int gmUpperSolenoidPort2 = 1;
-	
-	// Solenoid values
-	public static final Value gmUpperSolenoidOpenValue = Value.kForward;
-	public static final Value gmUpperSolenoidClosedValue = Value.kReverse;
-	public static final Value gmLowerSolenoidOpenValue = Value.kForward;
-	public static final Value gmLowerSolenoidClosedValue = Value.kReverse;
 	
 	// Joystick axes	
 	public static final int gamePadLeftAxis = 1;
