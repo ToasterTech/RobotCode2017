@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5332.robot.westtoastdrive;
 
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
-import org.usfirst.frc.team5332.util.Constants;
+import org.usfirst.frc.team5332.util.constants.HardwareConstants;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
@@ -30,12 +30,12 @@ public class DriveHardware extends DriveHardwareBase {
 	 * Constructor. Creates Constructor for TalonSRX.
 	 */
 	public DriveHardware(){
-		driveRight1 = new TalonSRX(Constants.driveRightPort1);
-		driveRight2 = new TalonSRX(Constants.driveRightPort2);
-		driveLeft1 = new TalonSRX(Constants.driveLeftPort1);
-		driveLeft2 = new TalonSRX(Constants.driveLeftPort2);
-		leftEncoder = new Encoder(Constants.driveEncoderLeftPort1, Constants.driveEncoderLeftPort2);
-		rightEncoder = new Encoder(Constants.driveEncoderRightPort1, Constants.driveEncoderRightPort2);
+		driveRight1 = new TalonSRX(HardwareConstants.driveRightPort1);
+		driveRight2 = new TalonSRX(HardwareConstants.driveRightPort2);
+		driveLeft1 = new TalonSRX(HardwareConstants.driveLeftPort1);
+		driveLeft2 = new TalonSRX(HardwareConstants.driveLeftPort2);
+		leftEncoder = new Encoder(HardwareConstants.driveEncoderLeftPort1, HardwareConstants.driveEncoderLeftPort2);
+		rightEncoder = new Encoder(HardwareConstants.driveEncoderRightPort1, HardwareConstants.driveEncoderRightPort2);
 		gyro = new ADXRS450_Gyro();
 	}
 	

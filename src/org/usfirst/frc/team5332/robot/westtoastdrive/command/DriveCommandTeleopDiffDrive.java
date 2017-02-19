@@ -2,7 +2,8 @@ package org.usfirst.frc.team5332.robot.westtoastdrive.command;
 
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.path.Path;
-import org.usfirst.frc.team5332.util.Constants;
+import org.usfirst.frc.team5332.util.constants.MeasuredConstants;
+import org.usfirst.frc.team5332.util.constants.TuningConstants;
 
 public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 	
@@ -49,15 +50,15 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 			double deltaLeftCount = systemLayer.getLeftEncoderCounts() - leftCount;
 			double deltaRightCount = systemLayer.getRightEncoderCounts() - rightCount;
 			
-			double leftDist = 2*Math.PI*Constants.radiusOfWheels * (deltaLeftCount/Constants.ticksPerRevolution);
-			double rightDist = 2*Math.PI*Constants.radiusOfWheels * (deltaRightCount/Constants.ticksPerRevolution);
+			double leftDist = 2*Math.PI*MeasuredConstants.radiusOfWheels * (deltaLeftCount/MeasuredConstants.ticksPerRevolution);
+			double rightDist = 2*Math.PI*MeasuredConstants.radiusOfWheels * (deltaRightCount/MeasuredConstants.ticksPerRevolution);
 			
-			double v = Constants.radiusOfWheels/2 * (systemLayer.getRightMotorSpeed() + systemLayer.getLeftMotorSpeed());
-			double w = Constants.radiusOfWheels/Constants.lengthBetweenWheels * (systemLayer.getRightMotorSpeed() - systemLayer.getLeftMotorSpeed());
+			double v = MeasuredConstants.radiusOfWheels/2 * (systemLayer.getRightMotorSpeed() + systemLayer.getLeftMotorSpeed());
+			double w = MeasuredConstants.radiusOfWheels/MeasuredConstants.lengthBetweenWheels * (systemLayer.getRightMotorSpeed() - systemLayer.getLeftMotorSpeed());
 
 			x += (leftDist + rightDist)/2 * Math.cos(theta);
 			y += (leftDist + rightDist)/2 * Math.sin(theta);
-			double totalTheta = theta + (rightDist - leftDist)/Constants.lengthBetweenWheels;
+			double totalTheta = theta + (rightDist - leftDist)/MeasuredConstants.lengthBetweenWheels;
 			theta = Math.atan(Math.tan(totalTheta));
 			System.out.println("Theta: " + theta);
 			mathUpdate(x, y, theta, targetDist, targetTheta, v, w);
@@ -87,18 +88,18 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 			v = 0;
 			angleFirst = true;
 		} else {
-			v = -errorDist * Constants.distConst;
+			v = -errorDist * TuningConstants.distConst;
 		}
 		if (Math.abs(errorTheta) < .2 || !angleFirst) {
 			w = 0;
 			angleFirst = false;
 		} else {
-			w = -errorTheta * Constants.angleConst;
+			w = -errorTheta * TuningConstants.angleConst;
 		}
 		System.out.printf("D: %f, T: %f, Ang: %b \n", errorDist, errorTheta, angleFirst);
 
-		leftSpeed = (2*v+w*Constants.lengthBetweenWheels)/(2*Constants.radiusOfWheels);
-		rightSpeed = (2*v-w*Constants.lengthBetweenWheels)/(2*Constants.radiusOfWheels);
+		leftSpeed = (2*v+w*MeasuredConstants.lengthBetweenWheels)/(2*MeasuredConstants.radiusOfWheels);
+		rightSpeed = (2*v-w*MeasuredConstants.lengthBetweenWheels)/(2*MeasuredConstants.radiusOfWheels);
 	}
 	
 }

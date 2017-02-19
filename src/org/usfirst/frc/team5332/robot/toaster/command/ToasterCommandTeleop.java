@@ -2,14 +2,11 @@ package org.usfirst.frc.team5332.robot.toaster.command;
 
 import org.usfirst.frc.team5332.robot.control.GamePad;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterCommandBase;
-import org.usfirst.frc.team5332.util.Constants;
+import org.usfirst.frc.team5332.util.constants.JoystickConstants;
 
 public class ToasterCommandTeleop extends ToasterCommandBase{
-
-	private GamePad js;
 	
 	public ToasterCommandTeleop() {
-		js = new GamePad();
 	}
 	
 	@Override
@@ -19,13 +16,13 @@ public class ToasterCommandTeleop extends ToasterCommandBase{
 
 	@Override
 	public void periodicUpdate() {
-		if (js.getButton(Constants.feedButtonID)){
+		if (GamePad.getOperatorJoystick().getButton(JoystickConstants.feedButtonID)){
 			systemLayer.feed();
 		}
 		else
 			systemLayer.feedStop();
 		
-		if (js.getButton(Constants.shootButtonID)){
+		if (GamePad.getOperatorJoystick().getButton(JoystickConstants.shootButtonID)){
 			systemLayer.shoot();
 		}
 		else

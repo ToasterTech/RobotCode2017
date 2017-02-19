@@ -2,15 +2,14 @@ package org.usfirst.frc.team5332.robot.westtoastdrive.command;
 
 import org.usfirst.frc.team5332.robot.control.GamePad;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
-import org.usfirst.frc.team5332.util.Constants;
+import org.usfirst.frc.team5332.util.constants.TuningConstants;
 
-public class DriveCommandTeleop extends DriveCommandBase{
+public class DriveCommandTeleopArcade extends DriveCommandBase{
 	
-	private GamePad js;
 	private double gain = 1;
 	
-	public DriveCommandTeleop(){
-		js = new GamePad();
+	public DriveCommandTeleopArcade(){
+		
 	}
 	
 	
@@ -27,14 +26,14 @@ public class DriveCommandTeleop extends DriveCommandBase{
 		 * Throttle: Left joystick
 		 * Turn: Right joystick
 		 */
-		if(js.getLeftAxisValue() < 0.05){
-			turn = js.getRightAxisValue()*(Constants.turningScalar);
+		if(GamePad.getDriverJoystick().getLeftYAxisValue() < 0.05){
+			turn = GamePad.getDriverJoystick().getRightXAxisValue()*(TuningConstants.turningScalar);
 		}
 		
-		turn = js.getRightAxisValue()*(Constants.turningScalar * Math.abs(js.getLeftAxisValue()));
+		turn = GamePad.getDriverJoystick().getRightXAxisValue()*(TuningConstants.turningScalar * Math.abs(GamePad.getDriverJoystick().getLeftYAxisValue()));
 		
-		turnLeft = js.getLeftAxisValue() + turn;
-		turnRight = js.getLeftAxisValue() - turn;
+		turnLeft = GamePad.getDriverJoystick().getLeftYAxisValue() + turn;
+		turnRight = GamePad.getDriverJoystick().getLeftYAxisValue() - turn;
 		
 		leftSpeed = turnLeft + skim(turnRight);
 		rightSpeed = turnRight + skim(turnLeft);
@@ -54,7 +53,7 @@ public class DriveCommandTeleop extends DriveCommandBase{
 	
 	@Override
 	public String getName() {
-		return "TELEOP_USER";
+		return "TELEOP_ARCADE";
 	}
 	
 }

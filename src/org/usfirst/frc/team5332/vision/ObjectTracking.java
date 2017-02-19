@@ -12,7 +12,7 @@ import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
-import org.usfirst.frc.team5332.util.Constants;
+import org.usfirst.frc.team5332.util.constants.TuningConstants;
 
 public class ObjectTracking {
 	
@@ -20,7 +20,7 @@ public class ObjectTracking {
 		Mat coloredImg = new Mat();
 		Mat hsvImage = new Mat();
 		Imgproc.cvtColor(unedited, hsvImage, Imgproc.COLOR_BGR2HSV);
-		Core.inRange(unedited, Constants.colorTrackingMin, Constants.colorTrackingMax, coloredImg);
+		Core.inRange(unedited, TuningConstants.colorTrackingMin, TuningConstants.colorTrackingMax, coloredImg);
 		return coloredImg;
 	}
 		
@@ -108,7 +108,7 @@ public class ObjectTracking {
 			  double xAngle = xDisplace * 70.42 / centerFrameX;
 			  //System.out.printf("xAngle: %5.3f, yAngle: %5.3f \n", xAngle, yAngle);
 			  
-			  double distanceY = Constants.constantH/Math.tan(yAngle);
+			  double distanceY = TuningConstants.constantH/Math.tan(yAngle);
 			  double distanceToGoal = distanceY/Math.cos(xAngle);
 			  System.out.println("D: " + distanceToGoal);
 			  Point pointTopLeft = new Point(xValues1.get(0), yValues1.get(1));

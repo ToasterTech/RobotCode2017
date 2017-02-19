@@ -2,7 +2,7 @@ package org.usfirst.frc.team5332.robot.control;
 
 import java.util.HashMap;
 
-import org.usfirst.frc.team5332.util.Constants;
+import org.usfirst.frc.team5332.util.constants.MeasuredConstants;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
@@ -19,7 +19,7 @@ public class Dashboard {
 	
 	public void init() {
 		doubleValMap=new HashMap<String,Double>();
-		datatable = NetworkTable.getTable(Constants.netTableName);
+		datatable = NetworkTable.getTable(MeasuredConstants.netTableName);
 		System.out.println("NT Connected: "+datatable.isConnected());
 	}
 

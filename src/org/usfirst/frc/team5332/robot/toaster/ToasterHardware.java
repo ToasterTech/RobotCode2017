@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5332.robot.toaster;
 
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterHardwareBase;
-import org.usfirst.frc.team5332.util.Constants;
+import org.usfirst.frc.team5332.util.constants.HardwareConstants;
 
 import edu.wpi.first.wpilibj.TalonSRX;
 
@@ -14,8 +14,8 @@ public class ToasterHardware extends ToasterHardwareBase{
 	private double feederSpeed = 0;
 	
 	public ToasterHardware(){
-//		shooterMotor = new TalonSRX(Constants.shooterShooterMotorPort);
-//		feederMotor = new TalonSRX(Constants.shooterFeederMotorPort);
+//		shooterMotor = new TalonSRX(HardwareConstants.shooterShooterMotorPort);
+//		feederMotor = new TalonSRX(HardwareConstants.shooterFeederMotorPort);
 		shooterSpeed = 0;
 		feederSpeed = 0;
 	}

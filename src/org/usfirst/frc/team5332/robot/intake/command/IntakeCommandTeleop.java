@@ -5,10 +5,8 @@ import org.usfirst.frc.team5332.robot.intake.base.IntakeCommandBase;
 
 public class IntakeCommandTeleop extends IntakeCommandBase{
 	
-	private GamePad js;
-	
 	public IntakeCommandTeleop(){
-		js = new GamePad();
+		
 	}
 	
 	@Override
@@ -18,9 +16,9 @@ public class IntakeCommandTeleop extends IntakeCommandBase{
 
 	@Override
 	public void periodicUpdate(){
-		if(js.getLeftBumper()){
+		if(GamePad.getDriverJoystick().getLeftBumper()){
 			systemLayer.intake();
-		}else if(js.getRightBumper()){
+		}else if(GamePad.getDriverJoystick().getRightBumper()){
 			systemLayer.reverse();
 		}else{
 			systemLayer.stopIntake();

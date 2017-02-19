@@ -2,7 +2,7 @@ package org.usfirst.frc.team5332.robot.toaster;
 
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterHardwareBase;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterSystemBase;
-import org.usfirst.frc.team5332.util.Constants;
+import org.usfirst.frc.team5332.util.constants.TuningConstants;
 
 public class ToasterSystem extends ToasterSystemBase{
 
@@ -39,13 +39,13 @@ public class ToasterSystem extends ToasterSystemBase{
 
 	@Override
 	public void shoot() {
-		shooterSpeed = Constants.shooterShooterSpeed;
+		shooterSpeed = TuningConstants.shooterShooterSpeed;
 		
 	}
 
 	@Override
 	public void feed() {
-		feederSpeed = Constants.shooterFeederSpeed;
+		feederSpeed = TuningConstants.shooterFeederSpeed;
 		
 	}
 

@@ -5,7 +5,7 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.DriveSystem;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
-import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleop;
+import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopArcade;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopDiffDrive;
 import org.usfirst.frc.team5332.subsystem.Subsystem;
 
@@ -18,7 +18,7 @@ public class Robot extends IterativeRobot{
 	
 	// Drive Subsystem component.
 	Subsystem<DriveHardwareBase,DriveSystemBase,DriveCommandBase> drive = new Subsystem
-			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), new DriveCommandTeleop());
+			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), new DriveCommandTeleopArcade());
 	
 	/*
 	 * Robot-wide initialization code goes here.

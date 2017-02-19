@@ -3,7 +3,7 @@ package org.usfirst.frc.team5332.robot.westtoastdrive.path;
 import java.io.*;
 import java.util.ArrayList;
 
-import org.usfirst.frc.team5332.util.Constants;
+import org.usfirst.frc.team5332.util.constants.HardwareConstants;
 
 /**
  * 
@@ -83,7 +83,7 @@ public class Path{
 	public Path(File path){
 		try{
 			// Create the BufferedReader.
-			BufferedReader br = new BufferedReader(new FileReader(Constants.pathDirectory+path));
+			BufferedReader br = new BufferedReader(new FileReader(HardwareConstants.pathDirectory+path));
 			
 			// Create the line being read.
 			String line;

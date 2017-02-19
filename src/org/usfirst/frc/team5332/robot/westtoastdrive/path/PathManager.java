@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 
-import org.usfirst.frc.team5332.util.Constants;
+import org.usfirst.frc.team5332.util.constants.HardwareConstants;
 
 public class PathManager{
 	
@@ -15,7 +15,7 @@ public class PathManager{
 	 * @return The Path object loaded.
 	 */
 	public static Path getPathFromFile(String name){
-		return new Path(new File(Constants.pathDirectory+"name"));
+		return new Path(new File(HardwareConstants.pathDirectory+"name"));
 	}
 	
 	/**
@@ -24,7 +24,7 @@ public class PathManager{
 	 * @param name The name of the Path to delete.
 	 */
 	public static void deletePath(String name){
-		new File(Constants.pathDirectory+name).delete();
+		new File(HardwareConstants.pathDirectory+name).delete();
 	}
 	
 	/**
@@ -33,7 +33,7 @@ public class PathManager{
 	 * @param path The Path object to write.
 	 */
 	public static void serializePath(Path path){
-		File file = new File(Constants.pathDirectory+path.getName());
+		File file = new File(HardwareConstants.pathDirectory+path.getName());
 		try{
 			// Create a print stream that writes to the given file.
 			PrintStream fileWriter = new PrintStream(file);
@@ -55,7 +55,7 @@ public class PathManager{
 	 * @return
 	 */
 	public static String[] listPaths(){
-		return new File(Constants.pathDirectory).list();
+		return new File(HardwareConstants.pathDirectory).list();
 	}
 	
 }

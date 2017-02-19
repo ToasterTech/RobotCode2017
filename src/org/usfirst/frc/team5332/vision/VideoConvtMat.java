@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5332.vision;
 import org.opencv.videoio.VideoCapture;
-import org.usfirst.frc.team5332.util.Constants;
+import org.usfirst.frc.team5332.util.constants.HardwareConstants;
 import org.opencv.core.Mat;
 
 public class VideoConvtMat {
@@ -9,7 +9,7 @@ public class VideoConvtMat {
 	private int address;
 	
 	public VideoConvtMat() {
-		address = Constants.address;
+		address = HardwareConstants.address;
 		vidCapture = new VideoCapture(address);
 	}
 	
