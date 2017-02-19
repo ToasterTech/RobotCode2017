@@ -1,12 +1,13 @@
 package org.usfirst.frc.team5332.robot.westtoastdrive.command;
 
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
-import org.usfirst.frc.team5332.robot.westtoastdrive.path.Path;
 import org.usfirst.frc.team5332.util.constants.MeasuredConstants;
 import org.usfirst.frc.team5332.util.constants.TuningConstants;
 
 public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 	
+	// TODO Figure out if we need this or not
+	@SuppressWarnings("unused")
 	private long lastUpdateTime;
 	
 	private double x;

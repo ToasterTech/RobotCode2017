@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5332.robot.toaster;
 
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterHardwareBase;
-import org.usfirst.frc.team5332.util.constants.HardwareConstants;
 
 import edu.wpi.first.wpilibj.TalonSRX;
 

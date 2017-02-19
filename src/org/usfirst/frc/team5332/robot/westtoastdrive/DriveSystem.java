@@ -7,6 +7,7 @@ import org.usfirst.frc.team5332.vision.ArmSink;
 public class DriveSystem extends DriveSystemBase{
 	private double relativeX;
 	private double relativeY;
+	@SuppressWarnings("unused")
 	private double relativeTheta;
 	private DriveHardwareBase hardwareLayer;
 
@@ -63,6 +64,7 @@ public class DriveSystem extends DriveSystemBase{
 		double beta = 90-angleMeasure;
 		double alpha = 180 - 2*beta;
 		double radius = curveMeasure/alpha;  //signum is not complete...?
+		@SuppressWarnings("unused")
 		double distTraveled = Math.signum(encoderCountChangeRight) * Math.sqrt(2* Math.pow(radius, 2) - (2* Math.pow(radius, 2)* Math.cos((alpha*Math.PI)/180)));
 
 
