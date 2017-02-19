@@ -6,6 +6,8 @@ public class JoystickConstants{
 	public static final int shootButtonID = 0;
 	public static final int feedButtonID = 1;
 	
+	public static final int intakeButtonID = 0;
+	public static final int outtakeButtonID = 1;
 	
 	// Joystick axes	
 	public static final int gamePadLeftYAxis = 1;

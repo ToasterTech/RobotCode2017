@@ -55,6 +55,14 @@ public class GamePad{
 		return js.getRawAxis(JoystickConstants.gamePadLeftBumperAxisIndex) > TuningConstants.gamePadBumperThresh;
 	}
 	
+	public double getRightBumperRaw(){
+		return js.getRawAxis(JoystickConstants.gamePadRightBumperAxisIndex);
+	}
+	
+	public double getLeftBumperRaw(){
+		return js.getRawAxis(JoystickConstants.gamePadLeftBumperAxisIndex);
+	}
+	
 	public boolean getButton(int index){
 		return js.getRawButton(index);
 	}

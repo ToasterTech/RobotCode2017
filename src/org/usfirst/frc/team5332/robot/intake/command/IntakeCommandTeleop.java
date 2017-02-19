@@ -2,6 +2,7 @@ package org.usfirst.frc.team5332.robot.intake.command;
 
 import org.usfirst.frc.team5332.robot.control.GamePad;
 import org.usfirst.frc.team5332.robot.intake.base.IntakeCommandBase;
+import org.usfirst.frc.team5332.util.constants.JoystickConstants;
 
 public class IntakeCommandTeleop extends IntakeCommandBase{
 	
@@ -16,9 +17,9 @@ public class IntakeCommandTeleop extends IntakeCommandBase{
 
 	@Override
 	public void periodicUpdate(){
-		if(GamePad.getDriverJoystick().getLeftBumper()){
+		if(GamePad.getDriverJoystick().getButton(JoystickConstants.intakeButtonID)){
 			systemLayer.intake();
-		}else if(GamePad.getDriverJoystick().getRightBumper()){
+		}else if(GamePad.getDriverJoystick().getButton(JoystickConstants.outtakeButtonID)){
 			systemLayer.reverse();
 		}else{
 			systemLayer.stopIntake();
