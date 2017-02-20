@@ -19,7 +19,6 @@ public class Dashboard {
 	
 	public void init() {
 		doubleValMap=new HashMap<String,Double>();
-		datatable = NetworkTable.getTable(MeasuredConstants.netTableName);
 		System.out.println("NT Connected: "+datatable.isConnected());
 	}
 

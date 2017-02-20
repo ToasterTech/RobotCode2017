@@ -47,6 +47,14 @@ public class GamePad{
 		return js.getRawAxis(JoystickConstants.gamePadRightYAxis);
 	}
 	
+	public double getLeftZAxisValue(){
+		return js.getRawAxis(JoystickConstants.gamePadLeftZAxis);
+	}
+	
+	public double getRightZAxisValue(){
+		return js.getRawAxis(JoystickConstants.gamePadRightZAxis);
+	}
+	
 	public boolean getRightBumper(){
 		return js.getRawAxis(JoystickConstants.gamePadRightBumperAxisIndex) > TuningConstants.gamePadBumperThresh;
 	}

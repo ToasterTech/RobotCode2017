@@ -5,8 +5,14 @@ import org.usfirst.frc.team5332.robot.toaster.base.ToasterCommandBase;
 import org.usfirst.frc.team5332.util.constants.JoystickConstants;
 
 public class ToasterCommandTeleop extends ToasterCommandBase{
+	private boolean shooterIsSped;
+	private boolean spinningUp;
+	private long spinStartTime;
 	
 	public ToasterCommandTeleop() {
+		shooterIsSped = false;
+		spinningUp = false;
+		spinStartTime = System.currentTimeMillis();
 	}
 	
 	@Override
@@ -16,17 +22,52 @@ public class ToasterCommandTeleop extends ToasterCommandBase{
 
 	@Override
 	public void periodicUpdate() {
-		if (GamePad.getOperatorJoystick().getButton(JoystickConstants.feedButtonID)){
-			systemLayer.feed();
-		}
-		else
-			systemLayer.feedStop();
-		
-		if (GamePad.getOperatorJoystick().getButton(JoystickConstants.shootButtonID)){
+		//Fancy partial trigger pushing shooting and feeding
+		if (GamePad.getDriverJoystick().getRightZAxisValue() < -0.25) {
+			if (GamePad.getDriverJoystick().getRightZAxisValue() < -0.75) {
+				if (!shooterIsSped) {
+					if (!spinningUp) {
+						spinStartTime = System.currentTimeMillis();
+						spinningUp = true;
+					} else if (System.currentTimeMillis() - spinStartTime > 1500) {
+							shooterIsSped = true;
+							spinningUp = false;
+					}
+					systemLayer.shoot();
+					systemLayer.feedStop();
+				}
+				systemLayer.feed();
+			}
 			systemLayer.shoot();
+		//left trigger just if pressed shooting and feed
+		} else if (GamePad.getDriverJoystick().getLeftZAxisValue() < -.25) {
+			if (!shooterIsSped) {
+				if (!spinningUp) {
+					spinStartTime = System.currentTimeMillis();
+					spinningUp = true;
+				} else if (System.currentTimeMillis() - spinStartTime > 1500) {
+						shooterIsSped = true;
+						spinningUp = false;
+				}
+				systemLayer.shoot();
+				systemLayer.feedStop();
+			}
+			systemLayer.shoot();
+			systemLayer.feed();
+		//separate buttons for feeding and shooting 
+		} else {
+			if (GamePad.getDriverJoystick().getButton(JoystickConstants.feedButtonID)){
+				systemLayer.feed();
+			} else {
+				systemLayer.feedStop();
+			}
+			if (GamePad.getDriverJoystick().getButton(JoystickConstants.shootButtonID)){
+				systemLayer.shoot();
+			} else {
+				systemLayer.shootStop();
+				shooterIsSped = false;
+			}
 		}
-		else
-			systemLayer.shootStop();
 	}
 
 	@Override

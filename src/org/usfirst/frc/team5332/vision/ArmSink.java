@@ -1,18 +1,36 @@
 package org.usfirst.frc.team5332.vision;
+import java.io.*;
+import java.net.*;
+
 
 public class ArmSink {
-
-	public static double getDist(){
-		return 0;
+	
+	private DatagramSocket clientSocket;
+	private double distance;
+	private double angle;
+	
+	public ArmSink() throws SocketException {
+		clientSocket = new DatagramSocket();
 	}
-	public static  double getTheta(){
-		return 0;
+	
+	public void recievePacket() throws IOException {
+		byte[] data = new byte[1024];
+		DatagramPacket recievedPacket = new DatagramPacket(data, data.length);
+		clientSocket.receive(recievedPacket);
+		String distAndAngle = new String(recievedPacket.getData());
+		distance = Double.parseDouble(distAndAngle.substring(0, distAndAngle.indexOf(',')));
+		angle = Double.parseDouble(distAndAngle.substring(distAndAngle.indexOf(',') + 1));
 	}
-	public static double getX() {
-		return 0;
+	
+	public void close() {
+		clientSocket.close();
 	}
-	public static double getY() {
-		return 0;
+	
+	public double getDist(){
+		return distance;
+	}
+	public double getAngle(){
+		return angle;
 	}
 	
 } 

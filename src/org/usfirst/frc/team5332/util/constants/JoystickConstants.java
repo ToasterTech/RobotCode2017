@@ -12,8 +12,10 @@ public class JoystickConstants{
 	// Joystick axes	
 	public static final int gamePadLeftYAxis = 1;
 	public static final int gamePadRightYAxis = 5;
-	public static final int gamePadLeftXAxis = 1;
-	public static final int gamePadRightXAxis = 1;
+	public static final int gamePadLeftXAxis = 0;
+	public static final int gamePadRightXAxis = 4;
+	public static final int gamePadLeftZAxis = 2;
+	public static final int gamePadRightZAxis = 3;
 	public static final int gamePadRightBumperAxisIndex = 3;
 	public static final int gamePadLeftBumperAxisIndex = 4;
 	

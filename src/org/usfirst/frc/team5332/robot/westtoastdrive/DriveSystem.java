@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5332.robot.westtoastdrive;
 
+import java.net.SocketException;
+
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
 import org.usfirst.frc.team5332.vision.ArmSink;
@@ -20,6 +22,8 @@ public class DriveSystem extends DriveSystemBase{
 
 	private double[] localCoords;
 	private double[] globalCoords;
+	
+	private ArmSink input;
 
 	public DriveSystem(){
 		localCoords = new double[2];
@@ -32,6 +36,11 @@ public class DriveSystem extends DriveSystemBase{
 		localCoords[1] = 0;
 		globalCoords[0] = 0;
 		globalCoords[1] = 0;
+		try {
+			input = new ArmSink();
+		} catch (SocketException e) {
+			System.out.println("Couldn't communicate with Jetson");
+		}
 	}
 
 	@Override
@@ -73,7 +82,7 @@ public class DriveSystem extends DriveSystemBase{
 		x prime = sqrt(x2 + y2 - y'2)
 		 */
 
-		relativeX = (getX * Math.tan(ArmSink.getTheta()) + getY * Math.cos(ArmSink.getTheta()));
+		relativeX = (getX * Math.tan(input.getAngle()) + getY * Math.cos(input.getAngle()));
 
 		relativeY = Math.sqrt(Math.pow(2 , getX) + Math.pow(2, getY));
 		
@@ -145,7 +154,6 @@ public class DriveSystem extends DriveSystemBase{
 	@Override
 	public double getRelativeX(double x) {
 		getX = x;
-	
 		return relativeX;
 	}
 
