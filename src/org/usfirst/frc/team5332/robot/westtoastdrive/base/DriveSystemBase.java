@@ -42,6 +42,8 @@ public abstract class DriveSystemBase implements Layer<DriveHardwareBase>{
 	
 	public abstract double getOrientation();
 	
+	public abstract void resetOrientation();
+	
 	public abstract double getLeftMotorSpeed();
 	
 	public abstract double getRightMotorSpeed();

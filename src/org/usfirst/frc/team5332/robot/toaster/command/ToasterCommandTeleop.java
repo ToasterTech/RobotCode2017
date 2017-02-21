@@ -23,39 +23,39 @@ public class ToasterCommandTeleop extends ToasterCommandBase{
 	@Override
 	public void periodicUpdate() {
 		//Fancy partial trigger pushing shooting and feeding
-		if (GamePad.getDriverJoystick().getRightZAxisValue() < -0.25) {
-			if (GamePad.getDriverJoystick().getRightZAxisValue() < -0.75) {
-				if (!shooterIsSped) {
-					if (!spinningUp) {
-						spinStartTime = System.currentTimeMillis();
-						spinningUp = true;
-					} else if (System.currentTimeMillis() - spinStartTime > 1500) {
-							shooterIsSped = true;
-							spinningUp = false;
-					}
-					systemLayer.shoot();
-					systemLayer.feedStop();
-				}
-				systemLayer.feed();
-			}
-			systemLayer.shoot();
-		//left trigger just if pressed shooting and feed
-		} else if (GamePad.getDriverJoystick().getLeftZAxisValue() < -.25) {
-			if (!shooterIsSped) {
-				if (!spinningUp) {
-					spinStartTime = System.currentTimeMillis();
-					spinningUp = true;
-				} else if (System.currentTimeMillis() - spinStartTime > 1500) {
-						shooterIsSped = true;
-						spinningUp = false;
-				}
-				systemLayer.shoot();
-				systemLayer.feedStop();
-			}
-			systemLayer.shoot();
-			systemLayer.feed();
-		//separate buttons for feeding and shooting 
-		} else {
+//		if (GamePad.getDriverJoystick().getRightZAxisValue() < -0.25) {
+//			if (GamePad.getDriverJoystick().getRightZAxisValue() < -0.75) {
+//				if (!shooterIsSped) {
+//					if (!spinningUp) {
+//						spinStartTime = System.currentTimeMillis();
+//						spinningUp = true;
+//					} else if (System.currentTimeMillis() - spinStartTime > 1500) {
+//							shooterIsSped = true;
+//							spinningUp = false;
+//					}
+//					systemLayer.shoot();
+//					systemLayer.feedStop();
+//				}
+//				systemLayer.feed();
+//			}
+//			systemLayer.shoot();
+//		//left trigger just if pressed shooting and feed
+//		} else if (GamePad.getDriverJoystick().getLeftZAxisValue() < -.25) {
+//			if (!shooterIsSped) {
+//				if (!spinningUp) {
+//					spinStartTime = System.currentTimeMillis();
+//					spinningUp = true;
+//				} else if (System.currentTimeMillis() - spinStartTime > 1500) {
+//						shooterIsSped = true;
+//						spinningUp = false;
+//				}
+//				systemLayer.shoot();
+//				systemLayer.feedStop();
+//			}
+//			systemLayer.shoot();
+//			systemLayer.feed();
+//		//separate buttons for feeding and shooting 
+//		} else {
 			if (GamePad.getDriverJoystick().getButton(JoystickConstants.feedButtonID)){
 				systemLayer.feed();
 			} else {
@@ -67,7 +67,7 @@ public class ToasterCommandTeleop extends ToasterCommandBase{
 				systemLayer.shootStop();
 				shooterIsSped = false;
 			}
-		}
+//		}
 	}
 
 	@Override

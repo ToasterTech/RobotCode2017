@@ -52,4 +52,8 @@ public abstract class DriveHardwareBase implements BaseLayer{
 	 */
 	public abstract double getGyroRotationRate();
 	
+	/**
+	 * Resets the gyro to 0.
+	 */
+	public abstract void resetGyro();
 }

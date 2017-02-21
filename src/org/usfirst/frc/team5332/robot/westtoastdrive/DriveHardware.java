@@ -54,12 +54,12 @@ public class DriveHardware extends DriveHardwareBase {
 
 	@Override
 	public void setDriveRight(double speed) {
-		right = speed;
+		right = .7*speed;
 	}
 
 	@Override
 	public void setDriveLeft(double speed) {
-		left = -speed;
+		left = -.7*speed;
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class DriveHardware extends DriveHardwareBase {
 
 	@Override
 	public int leftDriveCount() {
-		return -leftEncoder.get();
+		return leftEncoder.get();
 	}
 
 	@Override
@@ -87,6 +87,12 @@ public class DriveHardware extends DriveHardwareBase {
 	public double getGyroRotationRate(){
 		return gyro.getRate();
 	}
+	
+	@Override
+	public void resetGyro() {
+		gyro.reset();
+	}
+	
 	
 	@Override
 	public String getName() {

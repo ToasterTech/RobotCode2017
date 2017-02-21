@@ -51,8 +51,9 @@ public class DriveSystem extends DriveSystemBase{
 		// Getting encoder change over time period.
 		double  encoderCountTotalRight = this.getRightEncoderCounts();
 		double  encoderCountTotalLeft = this.getLeftEncoderCounts();
+		double angle = this.getOrientation();
 
-		System.out.printf("R.T: %f, L.T: %f \n", encoderCountTotalRight, encoderCountTotalLeft);
+		System.out.printf("R.T: %f, L.T: %f, YAW: %f \n", encoderCountTotalRight, encoderCountTotalLeft, angle);
 
 		double encoderCountChangeRight = this.getRightEncoderCounts() - encoderCountTotalRight;
 		double encoderCountChangeLeft = this.getLeftEncoderCounts() - encoderCountTotalLeft;
@@ -129,6 +130,11 @@ public class DriveSystem extends DriveSystemBase{
 	public double getOrientation() {
 		return hardwareLayer.getGyroAngle();
 	} 
+	
+	@Override
+	public void resetOrientation() {
+		hardwareLayer.resetGyro();
+	}
 
 	@Override
 	public void resetLocalCoords(){

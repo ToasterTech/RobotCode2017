@@ -34,6 +34,10 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 		lastUpdateTime = System.nanoTime();
 		leftSpeed = 0;
 		rightSpeed = 0;
+		//GYRO CODE
+		theta = 0;
+		systemLayer.resetOrientation();
+		//END GYRO CODE
 		systemLayer.resetLocalCoords();
 		double[] coords = systemLayer.getCurrentLocalCoords();
 		x = coords[0];
@@ -85,6 +89,9 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 		double errorDist = targetDist - currentDist;
 		double errorTheta = targetTheta - theta;
 		
+		//GYRO CODE
+		double gyroErrorTheta = getAngleError();
+		
 		if (Math.abs(errorDist) < 1 || errorDist < 0 || angleFirst) {
 			v = 0;
 			angleFirst = true;
@@ -101,6 +108,11 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 
 		leftSpeed = (2*v+w*MeasuredConstants.lengthBetweenWheels)/(2*MeasuredConstants.radiusOfWheels);
 		rightSpeed = (2*v-w*MeasuredConstants.lengthBetweenWheels)/(2*MeasuredConstants.radiusOfWheels);
+	}
+	
+	//GYRO CODE
+	private double getAngleError() {
+		return Math.atan(Math.tan(targetTheta - systemLayer.getOrientation()));
 	}
 	
 }

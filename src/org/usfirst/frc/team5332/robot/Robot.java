@@ -1,5 +1,11 @@
 package org.usfirst.frc.team5332.robot;
 
+import org.usfirst.frc.team5332.robot.toaster.base.ToasterCommandBase;
+import org.usfirst.frc.team5332.robot.toaster.base.ToasterHardwareBase;
+import org.usfirst.frc.team5332.robot.toaster.base.ToasterSystemBase;
+import org.usfirst.frc.team5332.robot.toaster.ToasterHardware;
+import org.usfirst.frc.team5332.robot.toaster.ToasterSystem;
+import org.usfirst.frc.team5332.robot.toaster.command.ToasterCommandTeleop;
 import org.usfirst.frc.team5332.robot.westtoastdrive.DriveHardware;
 import org.usfirst.frc.team5332.robot.westtoastdrive.DriveSystem;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
@@ -7,6 +13,7 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopArcade;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopDiffDrive;
+import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopTank;
 import org.usfirst.frc.team5332.subsystem.Subsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -18,7 +25,9 @@ public class Robot extends IterativeRobot{
 	
 	// Drive Subsystem component.
 	Subsystem<DriveHardwareBase,DriveSystemBase,DriveCommandBase> drive = new Subsystem
-			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), new DriveCommandTeleopArcade());
+			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), new DriveCommandTeleopTank());
+	Subsystem<ToasterHardwareBase, ToasterSystemBase, ToasterCommandBase> toaster = new Subsystem
+			<ToasterHardwareBase, ToasterSystemBase, ToasterCommandBase>(new ToasterHardware(), new ToasterSystem(), new ToasterCommandTeleop());
 	
 	/*
 	 * Robot-wide initialization code goes here.
@@ -31,6 +40,7 @@ public class Robot extends IterativeRobot{
 	public void robotInit(){
 		// Initialize the drive subsystem.
 		drive.init();
+		toaster.init();
 	}
 	
 	/*
@@ -80,6 +90,7 @@ public class Robot extends IterativeRobot{
 	public void teleopPeriodic(){
 		// Call the periodicUpdate method for the drive Subsystem.
 		drive.periodicUpdate();
+		toaster.periodicUpdate();
 	}
 	
 	/*
