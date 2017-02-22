@@ -7,5 +7,7 @@ public abstract class ToasterHardwareBase implements BaseLayer{
 	public abstract void setShooterSpeed(double speed);
 
 	public abstract void setFeedSpeed(double speed);
+	
+	public abstract double readEncoder();
 
 }

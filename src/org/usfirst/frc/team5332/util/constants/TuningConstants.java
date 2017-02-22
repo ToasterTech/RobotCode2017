@@ -5,11 +5,11 @@ import org.opencv.core.Scalar;
 public class TuningConstants{
 	
 	// Shooter variables
-	public static final double shooterShooterSpeed = 0.85;
-	public static final double shooterFeederSpeed = 0.3;
+	public static final double shooterShooterSpeed = 0.9;
+	public static final double shooterFeederSpeed = 1.0;
 	
 	// Driver variables
-	public static final double turningScalar = 1;
+	public static final double turningScalar = 1.0;
 	
 	// Joystick variables
 	public static final double gamePadBumperThresh = 0.5;

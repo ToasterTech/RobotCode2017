@@ -28,6 +28,7 @@ public class ToasterSystem extends ToasterSystemBase{
 	public void periodicUpdate() {
 		hardwareLayer.setFeedSpeed(feederSpeed);
 		hardwareLayer.setShooterSpeed(shooterSpeed);
+		System.out.printf("ShooterEncoder: %d \n", hardwareLayer.readEncoder());
 		
 	}
 
@@ -60,5 +61,6 @@ public class ToasterSystem extends ToasterSystemBase{
 		feederSpeed = 0.0;
 		
 	}
+	
 	
 }

@@ -30,5 +30,7 @@ public class HardwareConstants{
 	public static final int driveEncoderLeftPort2 = 3;
 	public static final int driveEncoderRightPort1 = 0;
 	public static final int driveEncoderRightPort2 = 1;
+	public static final int shooterEncoderPort1 = 4;
+	public static final int shooterEncoderPort2 = 5;
 	
 }
