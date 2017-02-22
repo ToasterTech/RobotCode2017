@@ -9,12 +9,12 @@ package org.usfirst.frc.team5332.subsystem;
  * @param <Child> The type of class to accept as a child.
  */
 public interface Layer<Child extends BaseLayer> extends BaseLayer{
-	
+
 	/**
 	 * Set the new child of this Layer.
 	 * 
 	 * @param c The Child object to set to.
 	 */
 	public void setChild(Child c);
-	
+
 }

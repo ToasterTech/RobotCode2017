@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5332.robot.ToastYaw.base;
 
-public abstract class ToastYawHardwareBase {
+import org.usfirst.frc.team5332.subsystem.BaseLayer;
+
+public abstract class ToastYawHardwareBase implements BaseLayer{
 
 }
