@@ -5,8 +5,8 @@ public class JoystickConstants{
 	// Joystick Action IDs
 	public static final int shootButtonID = 1;
 	public static final int feedButtonID = 3;
-	
-	public static final int intakeButtonID = 0;
+	public static final int unfeedButtonID = 2;
+	public static final int intakeButtonID = 6;
 	public static final int outtakeButtonID = 1;
 	
 	// Joystick axes	

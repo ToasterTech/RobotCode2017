@@ -5,6 +5,8 @@ import org.usfirst.frc.team5332.robot.intake.base.IntakeCommandBase;
 import org.usfirst.frc.team5332.util.constants.JoystickConstants;
 
 public class IntakeCommandTeleop extends IntakeCommandBase{
+	private boolean toggleIntake = false;
+	private boolean lastPress = false;
 	
 	public IntakeCommandTeleop(){
 		
@@ -17,13 +19,22 @@ public class IntakeCommandTeleop extends IntakeCommandBase{
 
 	@Override
 	public void periodicUpdate(){
-		if(GamePad.getDriverJoystick().getButton(JoystickConstants.intakeButtonID)){
+		if(GamePad.getDriverJoystick().getButton(JoystickConstants.intakeButtonID) && toggleIntake == true && !lastPress) {
+			toggleIntake = false;
+		} else if(GamePad.getDriverJoystick().getButton(JoystickConstants.intakeButtonID) && toggleIntake == false && !lastPress) {
+			toggleIntake = true;
+		}
+		
+		lastPress = GamePad.getDriverJoystick().getButton(JoystickConstants.intakeButtonID);
+		
+		if(toggleIntake){
 			systemLayer.intake();
-		}else if(GamePad.getDriverJoystick().getButton(JoystickConstants.outtakeButtonID)){
-			systemLayer.reverse();
-		}else{
+		} else{
 			systemLayer.stopIntake();
 		}
+		
+		
+		
 	}
 
 	@Override

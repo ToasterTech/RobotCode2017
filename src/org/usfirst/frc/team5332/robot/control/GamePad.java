@@ -75,4 +75,8 @@ public class GamePad{
 		return js.getRawButton(index);
 	}
 	
+	public int getPOV(){
+		return js.getPOV();
+	}
+	
 }

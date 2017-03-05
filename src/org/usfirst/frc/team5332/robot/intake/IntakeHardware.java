@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5332.robot.intake;
 
 import org.usfirst.frc.team5332.robot.intake.base.IntakeHardwareBase;
+import org.usfirst.frc.team5332.util.constants.HardwareConstants;
 
 import edu.wpi.first.wpilibj.TalonSRX;
 
@@ -17,7 +18,7 @@ public class IntakeHardware extends IntakeHardwareBase{
 	 */
 	public IntakeHardware(){
 		//Sets TalonSRX to a new intake motor port constant.
-//		motor = new TalonSRX(HardwareConstants.intakeMotorPort);
+		motor = new TalonSRX(HardwareConstants.intakeMotorPort);
 		//speed set to 0 by default
 		speed = 0;
 	}

@@ -3,6 +3,12 @@ package org.usfirst.frc.team5332.robot;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterCommandBase;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterHardwareBase;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterSystemBase;
+import org.usfirst.frc.team5332.robot.intake.IntakeHardware;
+import org.usfirst.frc.team5332.robot.intake.IntakeSystem;
+import org.usfirst.frc.team5332.robot.intake.base.IntakeCommandBase;
+import org.usfirst.frc.team5332.robot.intake.base.IntakeHardwareBase;
+import org.usfirst.frc.team5332.robot.intake.base.IntakeSystemBase;
+import org.usfirst.frc.team5332.robot.intake.command.IntakeCommandTeleop;
 import org.usfirst.frc.team5332.robot.toaster.ToasterHardware;
 import org.usfirst.frc.team5332.robot.toaster.ToasterSystem;
 import org.usfirst.frc.team5332.robot.toaster.command.ToasterCommandTeleop;
@@ -14,6 +20,7 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopArcade;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopDiffDrive;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopTank;
+import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAutoStraight;
 import org.usfirst.frc.team5332.subsystem.Subsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -29,6 +36,8 @@ public class Robot extends IterativeRobot{
 	Subsystem<ToasterHardwareBase, ToasterSystemBase, ToasterCommandBase> toaster = new Subsystem
 			<ToasterHardwareBase, ToasterSystemBase, ToasterCommandBase>(new ToasterHardware(), new ToasterSystem(), new ToasterCommandTeleop());
 	
+	Subsystem<IntakeHardwareBase,IntakeSystemBase,IntakeCommandBase> intake = new Subsystem
+			<IntakeHardwareBase,IntakeSystemBase,IntakeCommandBase>(new IntakeHardware(), new IntakeSystem(), new IntakeCommandTeleop());
 	/*
 	 * Robot-wide initialization code goes here.
 	 * NOTE: This is called when the robot first boots up and ONLY when the robot first boots up.
@@ -41,21 +50,7 @@ public class Robot extends IterativeRobot{
 		// Initialize the drive subsystem.
 		drive.init();
 		toaster.init();
-	}
-	
-	/*
-	 * This method is called once the driver station is attached.
-	 */
-	public void dsInitTasks(){
-		
-	}
-	
-	// Runs the dsInitTasks once the DS is attached. No other usage for this method.
-	@Override
-	public void robotPeriodic(){
-		if(m_ds.isDSAttached()){
-			dsInitTasks();
-		}
+		intake.init();
 	}
 	
 	/*
@@ -63,7 +58,6 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void autonomousInit(){
-		drive.setCommandLayer(new DriveCommandTeleopDiffDrive(new double[]{48,48}));
 		drive.init();
 	}
 	
@@ -91,6 +85,7 @@ public class Robot extends IterativeRobot{
 		// Call the periodicUpdate method for the drive Subsystem.
 		drive.periodicUpdate();
 		toaster.periodicUpdate();
+		intake.periodicUpdate();
 	}
 	
 	/*

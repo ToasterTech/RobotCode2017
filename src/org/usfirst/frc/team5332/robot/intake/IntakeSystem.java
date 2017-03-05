@@ -37,13 +37,13 @@ public class IntakeSystem extends IntakeSystemBase{
 	@Override
 	public void intake(){
 		// Set the intake speed to 1.
-		speed = 1;
+		speed = -1;
 	}
 
 	@Override
 	public void reverse(){
 		// Set the intake reverse speed to -1.
-		speed = -1;
+		speed = 1;
 	}
 
 	@Override

@@ -51,6 +51,7 @@ public class Subsystem<H extends BaseLayer, S extends Layer<H>, C extends Layer<
 	 * @param commandLayer The new command layer to run.
 	 */
 	public void setCommandLayer(C commandLayer){
+		this.commandLayer.setChild(null);
 		// Set the command layer.
 		this.commandLayer = commandLayer;
 		

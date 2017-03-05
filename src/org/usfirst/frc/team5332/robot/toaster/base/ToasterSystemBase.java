@@ -13,6 +13,7 @@ public abstract class ToasterSystemBase implements Layer<ToasterHardwareBase>{
 	public abstract void shoot();
 
 	public abstract void feed();
+	public abstract void unfeed();
 
 	public abstract void shootStop();
 

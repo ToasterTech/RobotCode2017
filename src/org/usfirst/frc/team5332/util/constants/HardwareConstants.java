@@ -5,6 +5,8 @@ public class HardwareConstants{
 	// Joystick USB ports
 	public static int driverJoystickPort = 0;
 	public static int operatorJoystickPort = 1;
+	
+	 public static boolean reverseDrive = false;
 
 	// File directories
 	public static final String pathDirectory = "D:\\paths\\";

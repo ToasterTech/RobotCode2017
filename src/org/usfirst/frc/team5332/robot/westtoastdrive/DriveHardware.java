@@ -25,6 +25,7 @@ public class DriveHardware extends DriveHardwareBase {
 	//Create double variables.
 	private double right;
 	private double left;
+	public static boolean reverseDrive = false;
 	
 	/** 
 	 * Constructor. Creates Constructor for TalonSRX.
@@ -46,20 +47,34 @@ public class DriveHardware extends DriveHardwareBase {
 
 	@Override
 	public void periodicUpdate() {
-		driveRight1.set(right);
-		driveRight2.set(right);
-		driveLeft1.set(left);
-		driveLeft2.set(left);
+		//DriveHardware.reverseDrive = true;
+		if(reverseDrive) {
+		driveRight1.set(left);
+		driveRight2.set(left);
+		driveLeft1.set(right);
+		driveLeft2.set(right);
+		}
+		else {
+			driveRight1.set(right);
+			driveRight2.set(right);
+			driveLeft1.set(left);
+			driveLeft2.set(left);
+			}
+		
+		
 	}
 
 	@Override
 	public void setDriveRight(double speed) {
-		right = .7*speed;
+	
+		right = speed;
 	}
 
 	@Override
 	public void setDriveLeft(double speed) {
-		left = -.7*speed;
+		
+			left = -speed;
+		
 	}
 
 	@Override
