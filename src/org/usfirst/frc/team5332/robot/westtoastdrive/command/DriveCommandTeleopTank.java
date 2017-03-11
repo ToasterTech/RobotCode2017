@@ -29,10 +29,19 @@ public class DriveCommandTeleopTank extends DriveCommandBase{
 		}
 		
 		//DriveHardware.reverseDrive = true;
-		systemLayer.setDriveLeft(GamePad.getDriverJoystick().getLeftYAxisValue());
-		systemLayer.setDriveRight(GamePad.getDriverJoystick().getRightYAxisValue());
-		//System.out.println("driving mode: " + DriveHardware.reverseDrive);
+//		systemLayer.setDriveLeft(GamePad.getDriverJoystick().getLeftYAxisValue());
+//		systemLayer.setDriveRight(GamePad.getDriverJoystick().getRightYAxisValue());
+//		//System.out.println("driving mode: " + DriveHardware.reverseDrive);
 		
+		if (GamePad.getDriverJoystick().getLeftZAxisValue() > 0.05) {
+			systemLayer.setDriveLeft(-GamePad.getDriverJoystick().getLeftZAxisValue());
+			systemLayer.setDriveRight(-GamePad.getDriverJoystick().getLeftZAxisValue());		
+		} else if (GamePad.getDriverJoystick().getRightZAxisValue() > 0.05) {
+			systemLayer.setDriveLeft(GamePad.getDriverJoystick().getRightZAxisValue());
+			systemLayer.setDriveRight(GamePad.getDriverJoystick().getRightZAxisValue());
+		} else {
+			systemLayer.setDriveLeft(GamePad.getDriverJoystick().getLeftYAxisValue());
+			systemLayer.setDriveRight(GamePad.getDriverJoystick().getRightYAxisValue());		}
 	}
 	
 	@Override
