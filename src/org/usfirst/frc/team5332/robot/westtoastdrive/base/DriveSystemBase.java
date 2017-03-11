@@ -34,12 +34,6 @@ public abstract class DriveSystemBase implements Layer<DriveHardwareBase>{
 	
 	public abstract int getRightEncoderCounts();
 	
-	public abstract double[] getCurrentGlobalCoords();
-	
-	public abstract double[] getCurrentLocalCoords();
-	
-	public abstract void resetLocalCoords();
-	
 	public abstract double getOrientation();
 	
 	public abstract void resetOrientation();
@@ -48,7 +42,4 @@ public abstract class DriveSystemBase implements Layer<DriveHardwareBase>{
 	
 	public abstract double getRightMotorSpeed();
 	
-	public abstract double getRelativeX(double x);
-	public abstract double getRelativeY(double y);
-	public abstract double getRelativeTheta(double t);
 }
