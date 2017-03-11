@@ -17,8 +17,6 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.DriveSystem;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
-import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopArcade;
-import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopDiffDrive;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopTank;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAutoStraight;
 import org.usfirst.frc.team5332.subsystem.Subsystem;
