@@ -53,8 +53,6 @@ public class DriveSystem extends DriveSystemBase{
 		double  encoderCountTotalLeft = this.getLeftEncoderCounts();
 		double angle = this.getOrientation();
 
-		System.out.printf("R.T: %f, L.T: %f, YAW: %f \n", encoderCountTotalRight, encoderCountTotalLeft, angle);
-
 		double encoderCountChangeRight = this.getRightEncoderCounts() - encoderCountTotalRight;
 		double encoderCountChangeLeft = this.getLeftEncoderCounts() - encoderCountTotalLeft;
 		double angleMeasure;

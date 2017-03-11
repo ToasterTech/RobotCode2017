@@ -6,6 +6,7 @@ import org.usfirst.frc.team5332.util.constants.HardwareConstants;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TalonSRX;
+import edu.wpi.first.wpilibj.Ultrasonic;
 
 public class DriveHardware extends DriveHardwareBase {
 
@@ -21,6 +22,9 @@ public class DriveHardware extends DriveHardwareBase {
 	
 	// Create gyro variable.
 	private ADXRS450_Gyro gyro;
+	
+	// Ultrasonic sensor.
+	private Ultrasonic ultrasonicSensor;
 	
 	//Create double variables.
 	private double right;
@@ -38,6 +42,9 @@ public class DriveHardware extends DriveHardwareBase {
 		leftEncoder = new Encoder(HardwareConstants.driveEncoderLeftPort1, HardwareConstants.driveEncoderLeftPort2);
 		rightEncoder = new Encoder(HardwareConstants.driveEncoderRightPort1, HardwareConstants.driveEncoderRightPort2);
 		gyro = new ADXRS450_Gyro();
+		ultrasonicSensor = new Ultrasonic(HardwareConstants.ultrasonicSensorPortO, HardwareConstants.ultrasonicSensorPortI);
+		ultrasonicSensor.setDistanceUnits(Ultrasonic.Unit.kMillimeters);
+		ultrasonicSensor.setEnabled(true);
 	}
 	
 	@Override
@@ -47,12 +54,13 @@ public class DriveHardware extends DriveHardwareBase {
 
 	@Override
 	public void periodicUpdate() {
+		System.out.println(ultrasonicSensor.getRangeMM());
 		//DriveHardware.reverseDrive = true;
 		if(reverseDrive) {
-		driveRight1.set(left);
-		driveRight2.set(left);
-		driveLeft1.set(right);
-		driveLeft2.set(right);
+			driveRight1.set(left);
+			driveRight2.set(left);
+			driveLeft1.set(right);
+			driveLeft2.set(right);
 		}
 		else {
 			driveRight1.set(right);

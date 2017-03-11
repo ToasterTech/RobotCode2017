@@ -14,6 +14,10 @@ public class HardwareConstants{
 	// Camera address
 	public static final int address = 0;
 	
+	// Ultrasonic sensor
+	public static final int ultrasonicSensorPortI = 7;
+	public static final int ultrasonicSensorPortO = 8;
+	
 	// Motor ports
 	public static final int driveLeftPort1 = 3;
 	public static final int driveLeftPort2 = 4;

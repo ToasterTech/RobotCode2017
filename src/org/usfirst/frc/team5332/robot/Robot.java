@@ -30,9 +30,11 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  */
 public class Robot extends IterativeRobot{
 	
+	DriveCommandBase tankDrive = new DriveCommandTeleopTank();
+	
 	// Drive Subsystem component.
 	Subsystem<DriveHardwareBase,DriveSystemBase,DriveCommandBase> drive = new Subsystem
-			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), new DriveCommandTeleopTank());
+			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), tankDrive);
 	Subsystem<ToasterHardwareBase, ToasterSystemBase, ToasterCommandBase> toaster = new Subsystem
 			<ToasterHardwareBase, ToasterSystemBase, ToasterCommandBase>(new ToasterHardware(), new ToasterSystem(), new ToasterCommandTeleop());
 	
@@ -58,6 +60,7 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void autonomousInit(){
+		drive.setCommandLayer(new DriveCommandAutoStraight(0.4,3));
 		drive.init();
 	}
 	
@@ -74,7 +77,7 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void teleopInit(){
-		
+		drive.setCommandLayer(tankDrive);
 	}
 	
 	/*
