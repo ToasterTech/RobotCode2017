@@ -4,15 +4,12 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
 
 public class DriveCommandAutoRight extends DriveCommandBase{
 
-	private double speed;
-	private double seconds;
 	private long startTime;
-	
-	public DriveCommandAutoRight(double speed, double seconds){
-		this.speed = speed;
-		this.seconds = seconds;
+
+	public DriveCommandAutoRight(){
+
 	}
-	
+
 	@Override
 	public void init() {
 		startTime = System.currentTimeMillis();
@@ -20,9 +17,15 @@ public class DriveCommandAutoRight extends DriveCommandBase{
 
 	@Override
 	public void periodicUpdate() {
-		if((System.currentTimeMillis() - startTime)/1000 < seconds){
-			systemLayer.setDriveLeft(speed);
-			systemLayer.setDriveRight(speed);
+		if((System.currentTimeMillis() - startTime)/1000 < 3){
+			systemLayer.setDriveLeft(0.4);
+			systemLayer.setDriveRight(0.4);
+		}else if((System.currentTimeMillis() - startTime)/1000 > 3 && (System.currentTimeMillis() - startTime)/1000 < 3.3){
+			systemLayer.setDriveLeft(0);
+			systemLayer.setDriveRight(0.4);
+		}else if((System.currentTimeMillis() - startTime)/1000 > 3.3 && (System.currentTimeMillis() - startTime)/1000 < 5.5){
+			systemLayer.setDriveLeft(0.4);
+			systemLayer.setDriveRight(0.4);	
 		}else{
 			systemLayer.setDriveLeft(0);
 			systemLayer.setDriveRight(0);
