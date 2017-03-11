@@ -38,10 +38,8 @@ public class DriveCommandTeleopDiffDrive extends DriveCommandBase{
 		theta = 0;
 		systemLayer.resetOrientation();
 		//END GYRO CODE
-		systemLayer.resetLocalCoords();
-		double[] coords = systemLayer.getCurrentLocalCoords();
-		x = coords[0];
-		y = coords[1];
+		x = 0;
+		y = 0;
 		leftCount = systemLayer.getLeftEncoderCounts();
 		rightCount = systemLayer.getRightEncoderCounts();
 		angleFirst = true;
