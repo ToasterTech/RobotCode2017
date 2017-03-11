@@ -21,7 +21,7 @@ public class DriveCommandAutoRight extends DriveCommandBase{
 			systemLayer.setDriveLeft(0.4);
 			systemLayer.setDriveRight(0.4);
 		}else if((System.currentTimeMillis() - startTime)/1000 > 3 && (System.currentTimeMillis() - startTime)/1000 < 3.3){
-			systemLayer.setDriveLeft(0);
+			systemLayer.setDriveLeft(-0.4);
 			systemLayer.setDriveRight(0.4);
 		}else if((System.currentTimeMillis() - startTime)/1000 > 3.3 && (System.currentTimeMillis() - startTime)/1000 < 5.5){
 			systemLayer.setDriveLeft(0.4);
