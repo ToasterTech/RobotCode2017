@@ -14,6 +14,12 @@ public class DriveCommandAutoLeft extends DriveCommandBase{
 
 	public DriveCommandAutoLeft(double autoSpeedStraight , double autoSpeedLeftTurn , double autoSpeedRightTurn , 
 								double autoTime1 , double autoTime2 , double autoTime3) {
+		this.autoSpeedStraight = autoSpeedStraight;
+		this.autoSpeedRightTurn = autoSpeedRightTurn;
+		this.autoSpeedLeftTurn = autoSpeedLeftTurn;
+		this.autoTime1 = autoTime1;
+		this.autoTime2 = autoTime2;
+		this.autoTime3 = autoTime3;
 
 	}
 
