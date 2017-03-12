@@ -1,14 +1,24 @@
 package org.usfirst.frc.team5332.robot.westtoastdrive.command.auto;
 
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
-import org.usfirst.frc.team5332.util.constants.TuningConstants;
 
 public class DriveCommandAutoRight extends DriveCommandBase{
 
 	private long startTime;
-
-	public DriveCommandAutoRight(){
-
+	private double autoSpeedStraight;
+	private double autoSpeedRightTurn;
+	private double autoSpeedLeftTurn;
+	private double autoTime1;
+	private double autoTime2;
+	private double autoTime3;
+	
+	public DriveCommandAutoRight(double autoSpeedStraight, double autoSpeedRightTurn, double autoSpeedLeftTurn, double autoTime1, double autoTime2, double autoTime3){
+		this.autoSpeedStraight = autoSpeedStraight;
+		this.autoSpeedRightTurn = autoSpeedRightTurn;
+		this.autoSpeedLeftTurn = autoSpeedLeftTurn;
+		this.autoTime1 = autoTime1;
+		this.autoTime2 = autoTime2;
+		this.autoTime3 = autoTime3;
 	}
 
 	@Override
@@ -18,17 +28,17 @@ public class DriveCommandAutoRight extends DriveCommandBase{
 
 	@Override
 	public void periodicUpdate() {
-		if((System.currentTimeMillis() - startTime)/1000 < TuningConstants.autoTime1){
-			systemLayer.setDriveLeft(TuningConstants.autoSpeedStraight);
-			systemLayer.setDriveRight(TuningConstants.autoSpeedStraight);
-		}else if((System.currentTimeMillis() - startTime)/1000 > TuningConstants.autoTime1 
-				&& (System.currentTimeMillis() - startTime)/1000 < TuningConstants.autoTime2){
-			systemLayer.setDriveLeft(-TuningConstants.autoSpeedLeftTurn);
-			systemLayer.setDriveRight(TuningConstants.autoSpeedRightTurn);
-		}else if((System.currentTimeMillis() - startTime)/1000 > TuningConstants.autoTime2 
-				&& (System.currentTimeMillis() - startTime)/1000 < TuningConstants.autoTime3){
-			systemLayer.setDriveLeft(TuningConstants.autoSpeedStraight);
-			systemLayer.setDriveRight(TuningConstants.autoSpeedStraight);	
+		if((System.currentTimeMillis() - startTime)/1000 < autoTime1){
+			systemLayer.setDriveLeft(autoSpeedStraight);
+			systemLayer.setDriveRight(autoSpeedStraight);
+		}else if((System.currentTimeMillis() - startTime)/1000 > autoTime1 
+				&& (System.currentTimeMillis() - startTime)/1000 < autoTime2){
+			systemLayer.setDriveLeft(-autoSpeedLeftTurn);
+			systemLayer.setDriveRight(autoSpeedRightTurn);
+		}else if((System.currentTimeMillis() - startTime)/1000 > autoTime2 
+				&& (System.currentTimeMillis() - startTime)/1000 < autoTime3){
+			systemLayer.setDriveLeft(autoSpeedStraight);
+			systemLayer.setDriveRight(autoSpeedStraight);	
 		}else{
 			systemLayer.setDriveLeft(0);
 			systemLayer.setDriveRight(0);
