@@ -18,6 +18,8 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopTank;
+import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAutoLeft;
+import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAutoRight;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAutoStraight;
 import org.usfirst.frc.team5332.subsystem.Subsystem;
 
@@ -59,6 +61,8 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void autonomousInit(){
 		drive.setCommandLayer(new DriveCommandAutoStraight(0.4,3));
+		drive.setCommandLayer(new DriveCommandAutoLeft(0.4 , 0.4 , 0.4 , 3 , 3.3 , 5.5));
+		drive.setCommandLayer(new DriveCommandAutoRight(0.4 , 0.4 , 0.4 , 3 , 3.3 , 5.5));
 		drive.init();
 	}
 	
