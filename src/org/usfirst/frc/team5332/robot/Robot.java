@@ -62,7 +62,7 @@ public class Robot extends IterativeRobot{
 	public void autonomousInit(){
 		drive.setCommandLayer(new DriveCommandAutoStraight(0.4,3));
 		drive.setCommandLayer(new DriveCommandAutoLeft(0.4 , 0.4 , 0.4 , 3 , 3.3 , 5.5));
-		drive.setCommandLayer(new DriveCommandAutoRight(0.4 , 0.4 , 0.4 , 3 , 3.3 , 5.5));
+		drive.setCommandLayer(new DriveCommandAutoRight(0.4 , 0.4 , 0.4 , 4.247 , 3.3 , 3.900)); //experimental, to be tested at JRD; 3.3 is arbitrary
 		drive.init();
 	}
 	
