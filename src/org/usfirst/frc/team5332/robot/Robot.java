@@ -3,6 +3,8 @@ package org.usfirst.frc.team5332.robot;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterCommandBase;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterHardwareBase;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterSystemBase;
+import org.usfirst.frc.team5332.autoselect.ToastSelector;
+import org.usfirst.frc.team5332.dashboard.LabviewDashboard;
 import org.usfirst.frc.team5332.robot.intake.IntakeHardware;
 import org.usfirst.frc.team5332.robot.intake.IntakeSystem;
 import org.usfirst.frc.team5332.robot.intake.base.IntakeCommandBase;
@@ -19,6 +21,7 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.DriveCommandTeleopTank;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAutoLeft;
+import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAutoNothing;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAutoRight;
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAutoStraight;
 import org.usfirst.frc.team5332.subsystem.Subsystem;
@@ -31,7 +34,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 public class Robot extends IterativeRobot{
 	
 	DriveCommandBase tankDrive = new DriveCommandTeleopTank();
-	
+	String autoSelected;
 	// Drive Subsystem component.
 	Subsystem<DriveHardwareBase,DriveSystemBase,DriveCommandBase> drive = new Subsystem
 			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), tankDrive);
@@ -50,6 +53,10 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void robotInit(){
 		// Initialize the drive subsystem.
+    	LabviewDashboard.getDashboard().init();
+    	LabviewDashboard.getDashboard().addData("Status",1000);
+    	LabviewDashboard.getDashboard().run();
+		
 		drive.init();
 		toaster.init();
 		intake.init();
@@ -60,6 +67,25 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void autonomousInit(){
+		System.out.println("Running Autonomous");
+    	LabviewDashboard.getDashboard().run();
+    	
+    	boolean runAuto = LabviewDashboard.getDashboard().getBoolean("RunAuto");
+    	String autoMode= LabviewDashboard.getDashboard().getString("AutoMode");
+    	ToastSelector selector=new ToastSelector();
+    	System.out.println("runAuto: " + runAuto);
+    	System.out.println("autoMode: " + autoMode);
+
+    	LabviewDashboard.getDashboard().addData("Status",4000);
+    	if(runAuto){
+	        drive.setCommandLayer(selector.getDriveAuto(autoMode));
+	       	System.out.println(selector.getDriveAuto(autoMode));
+	    	LabviewDashboard.getDashboard().run();
+
+    	}else{
+	        drive.setCommandLayer(new DriveCommandAutoNothing());
+    	}
+		
 		drive.setCommandLayer(new DriveCommandAutoStraight(0.4,3));
 		drive.setCommandLayer(new DriveCommandAutoLeft(0.4 , 0.4 , 0.4 , 3 , 3.3 , 5.5));
 		drive.setCommandLayer(new DriveCommandAutoRight(0.4 , 0.4 , 0.4 , 4.247 , 3.3 , 3.900)); //experimental, to be tested at JRD; 3.3 is arbitrary
