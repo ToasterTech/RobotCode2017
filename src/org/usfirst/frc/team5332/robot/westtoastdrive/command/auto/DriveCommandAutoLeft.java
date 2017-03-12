@@ -2,11 +2,13 @@ package org.usfirst.frc.team5332.robot.westtoastdrive.command.auto;
 
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveCommandBase;
 
+import org.usfirst.frc.team5332.util.constants.TuningConstants;
+
 public class DriveCommandAutoLeft extends DriveCommandBase{
 
 	private long startTime;
 
-	public DriveCommandAutoLeft(){
+	public DriveCommandAutoLeft(double autoSpeedStraight){
 
 	}
 
@@ -17,15 +19,17 @@ public class DriveCommandAutoLeft extends DriveCommandBase{
 
 	@Override
 	public void periodicUpdate() {
-		if((System.currentTimeMillis() - startTime)/1000 < 3){
-			systemLayer.setDriveLeft(0.4);
-			systemLayer.setDriveRight(0.4);
-		}else if((System.currentTimeMillis() - startTime)/1000 > 3 && (System.currentTimeMillis() - startTime)/1000 < 3.3){
-			systemLayer.setDriveLeft(0.4);
-			systemLayer.setDriveRight(-0.4);
-		}else if((System.currentTimeMillis() - startTime)/1000 > 3.3 && (System.currentTimeMillis() - startTime)/1000 < 5.5){
-			systemLayer.setDriveLeft(0.4);
-			systemLayer.setDriveRight(0.4);	
+		if((System.currentTimeMillis() - startTime)/1000 < TuningConstants.autoTime1){
+			systemLayer.setDriveLeft(TuningConstants.autoSpeedStraight);
+			systemLayer.setDriveRight(TuningConstants.autoSpeedStraight);
+		}else if((System.currentTimeMillis() - startTime)/1000 > TuningConstants.autoTime1
+				&& (System.currentTimeMillis() - startTime)/1000 < TuningConstants.autoTime2){
+			systemLayer.setDriveLeft(TuningConstants.autoSpeedLeftTurn);
+			systemLayer.setDriveRight(-TuningConstants.autoSpeedRightTurn);
+		}else if((System.currentTimeMillis() - startTime)/1000 > TuningConstants.autoTime2 
+				&& (System.currentTimeMillis() - startTime)/1000 < TuningConstants.autoTime3){
+			systemLayer.setDriveLeft(TuningConstants.autoSpeedStraight);
+			systemLayer.setDriveRight(TuningConstants.autoSpeedStraight);	
 		}else{
 			systemLayer.setDriveLeft(0);
 			systemLayer.setDriveRight(0);

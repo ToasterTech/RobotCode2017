@@ -27,4 +27,12 @@ public class TuningConstants{
 	public static final double distConst = .1;
 	public static final double angleConst = .2;
 	
+	//Auto
+	public static final double autoSpeedStraight = 0.4;
+	public static final double autoSpeedRightTurn = 0.4;
+	public static final double autoSpeedLeftTurn = 0.4;
+	public static final double autoTime1 = 3.0;
+	public static final double autoTime2 = 3.3;
+	public static final double autoTime3 = 5.5;
+	
 }
