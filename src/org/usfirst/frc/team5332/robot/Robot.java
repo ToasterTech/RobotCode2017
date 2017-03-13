@@ -26,6 +26,7 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAu
 import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAutoStraight;
 import org.usfirst.frc.team5332.subsystem.Subsystem;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 /*
@@ -60,6 +61,12 @@ public class Robot extends IterativeRobot{
 		drive.init();
 		toaster.init();
 		intake.init();
+		
+		try {
+			CameraServer.getInstance().startAutomaticCapture();
+			} catch (Exception yolo420) {
+			yolo420.printStackTrace();
+			}
 	}
 
 	/*
