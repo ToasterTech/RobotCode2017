@@ -3,6 +3,9 @@ package org.usfirst.frc.team5332.robot;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterCommandBase;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterHardwareBase;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterSystemBase;
+
+import java.util.Arrays;
+
 import org.usfirst.frc.team5332.autoselect.ToastSelector;
 import org.usfirst.frc.team5332.dashboard.LabviewDashboard;
 import org.usfirst.frc.team5332.robot.intake.IntakeHardware;
@@ -28,6 +31,7 @@ import org.usfirst.frc.team5332.subsystem.Subsystem;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /*
  * The Linux JVM on the robot is configured to run this class upon startup. Do not refactor it. 
@@ -44,6 +48,7 @@ public class Robot extends IterativeRobot{
 
 	Subsystem<IntakeHardwareBase,IntakeSystemBase,IntakeCommandBase> intake = new Subsystem
 			<IntakeHardwareBase,IntakeSystemBase,IntakeCommandBase>(new IntakeHardware(), new IntakeSystem(), new IntakeCommandTeleop());
+	
 	/*
 	 * Robot-wide initialization code goes here.
 	 * NOTE: This is called when the robot first boots up and ONLY when the robot first boots up.
@@ -53,11 +58,6 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void robotInit(){
-		// Initialize the drive subsystem.
-		LabviewDashboard.getDashboard().init();
-		LabviewDashboard.getDashboard().addData("Status",0000);
-		LabviewDashboard.getDashboard().sendAllData();
-
 		drive.init();
 		toaster.init();
 		intake.init();
@@ -74,39 +74,25 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void autonomousInit(){
-		System.out.println("Running Autonomous");
-		LabviewDashboard.getDashboard().sendAllData();
-		String[] autoDatas = LabviewDashboard.getDashboard().getString("autoData").split(",");
-		String auto = LabviewDashboard.getDashboard().getString("autoNum");
-		
-		if(autoDatas.length != 6){
-			System.err.println("Ya done goofed now )we needed 6 auto parameters, you gave "+autoDatas.length+")");
-			Object o = null; // null pointer exception to stop stuff
-			o.equals(o);
-		}
+		String[] autoDatas = SmartDashboard.getString("DB/String 1", "0,0,0,0,0,0,err").split(",");
 		
 		// structured
 		// sketchy
-		switch(auto.toLowerCase()){
+		switch(autoDatas[6].toLowerCase()){
 			case "left":
 				drive.setCommandLayer(new DriveCommandAutoRight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
-				LabviewDashboard.getDashboard().addData("Status",1001);
 				break;
 			case "right":
 				drive.setCommandLayer(new DriveCommandAutoRight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
-				LabviewDashboard.getDashboard().addData("Status",1003);
 				break;
 			case "middle":
 				drive.setCommandLayer(new DriveCommandAutoStraight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[3].trim())));
-				LabviewDashboard.getDashboard().addData("Status",1002);
 				break;
 			case "nothing":
 				drive.setCommandLayer(new DriveCommandAutoNothing());
-				LabviewDashboard.getDashboard().addData("Status",1004);
 				break;
 			default:
 				drive.setCommandLayer(new DriveCommandAutoNothing());
-				LabviewDashboard.getDashboard().addData("Status",1005);
 				break;
 		}
 		
@@ -119,7 +105,6 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void autonomousPeriodic(){
-		LabviewDashboard.getDashboard().addData("Status",1010);
 		drive.periodicUpdate();
 	}
 
@@ -129,7 +114,6 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void teleopInit(){
 		drive.setCommandLayer(tankDrive);
-		LabviewDashboard.getDashboard().addData("Status",2000);
 	}
 
 	/*
@@ -141,7 +125,6 @@ public class Robot extends IterativeRobot{
 		drive.periodicUpdate();
 		toaster.periodicUpdate();
 		intake.periodicUpdate();
-		LabviewDashboard.getDashboard().addData("Status",2010);
 	}
 
 	/*
