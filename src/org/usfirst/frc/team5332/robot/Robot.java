@@ -49,6 +49,8 @@ public class Robot extends IterativeRobot{
 	Subsystem<IntakeHardwareBase,IntakeSystemBase,IntakeCommandBase> intake = new Subsystem
 			<IntakeHardwareBase,IntakeSystemBase,IntakeCommandBase>(new IntakeHardware(), new IntakeSystem(), new IntakeCommandTeleop());
 	
+	String chosenAuto;
+	
 	/*
 	 * Robot-wide initialization code goes here.
 	 * NOTE: This is called when the robot first boots up and ONLY when the robot first boots up.
@@ -61,12 +63,26 @@ public class Robot extends IterativeRobot{
 		drive.init();
 		toaster.init();
 		intake.init();
-		
+		chosenAuto = "middle";
 		try {
 			CameraServer.getInstance().startAutomaticCapture();
 			} catch (Exception yolo420) {
 			yolo420.printStackTrace();
 			}
+	}
+	
+	@Override
+	public void robotPeriodic(){
+		if(SmartDashboard.getBoolean("DB/Button 1", true)){
+			chosenAuto = "left";
+		}else if(SmartDashboard.getBoolean("DB/Button 2", true)){
+			chosenAuto = "middle";
+		}else if(SmartDashboard.getBoolean("DB/Button 3", true)){
+			chosenAuto = "right";
+		}
+		if(SmartDashboard.getBoolean("DB/Button 3", false)){
+			
+		}
 	}
 
 	/*
@@ -74,11 +90,11 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void autonomousInit(){
-		String[] autoDatas = SmartDashboard.getString("DB/String 1", "0,0,0,0,0,0,err").split(",");
+		String[] autoDatas = SmartDashboard.getString("DB/String 0", "0,0,0,0,0,0").split(",");
 		
 		// structured
 		// sketchy
-		switch(autoDatas[6].toLowerCase()){
+		switch(chosenAuto){
 			case "left":
 				drive.setCommandLayer(new DriveCommandAutoRight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
 				break;

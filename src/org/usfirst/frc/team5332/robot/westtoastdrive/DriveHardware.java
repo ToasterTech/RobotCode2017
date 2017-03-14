@@ -54,7 +54,6 @@ public class DriveHardware extends DriveHardwareBase {
 
 	@Override
 	public void periodicUpdate() {
-		System.out.println(ultrasonicSensor.getRangeMM());
 		//DriveHardware.reverseDrive = true;
 		if(reverseDrive) {
 			driveRight1.set(left);
