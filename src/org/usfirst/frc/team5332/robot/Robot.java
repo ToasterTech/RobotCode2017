@@ -96,21 +96,30 @@ public class Robot extends IterativeRobot{
 	
 	@Override
 	public void robotPeriodic(){
-		station = DriverStation.getInstance().getLocation();
+		if(DriverStation.getInstance().isDSAttached()) {
+			station = DriverStation.getInstance().getLocation();
+		}
 		if(DriverStation.getInstance().isDSAttached() && !DriverStation.getInstance().isEnabled()) {
 			led0.set(true);
 			led1.set(true);
 		}
+		
 		if(SmartDashboard.getBoolean("DB/Button 1", true)){
 			chosenAuto = "left";
+			SmartDashboard.putBoolean("DB/Button 2", false);
+			SmartDashboard.putBoolean("DB/Button 3", false);
 		}else if(SmartDashboard.getBoolean("DB/Button 2", true)){
 			chosenAuto = "middle";
+			SmartDashboard.putBoolean("DB/Button 1", false);
+			SmartDashboard.putBoolean("DB/Button 3", false);
 		}else if(SmartDashboard.getBoolean("DB/Button 3", true)){
 			chosenAuto = "right";
+			SmartDashboard.putBoolean("DB/Button 1", false);
+			SmartDashboard.putBoolean("DB/Button 2", false);
 		}
-		if(SmartDashboard.getBoolean("DB/Button 3", false)){
-			
-		}
+//		if(SmartDashboard.getBoolean("DB/Button 3", false)){
+//			
+//		}
 	}
 
 	/*
@@ -124,7 +133,7 @@ public class Robot extends IterativeRobot{
 		// sketchy
 		switch(chosenAuto){
 			case "left":
-				drive.setCommandLayer(new DriveCommandAutoRight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
+				drive.setCommandLayer(new DriveCommandAutoLeft(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
 				break;
 			case "right":
 				drive.setCommandLayer(new DriveCommandAutoRight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
@@ -140,8 +149,8 @@ public class Robot extends IterativeRobot{
 				break;
 		}
 		
-		//drive.setCommandLayer(new DriveCommandAutoStraight(0.4,3));
-		drive.init();
+			//drive.setCommandLayer(new DriveCommandAutoStraight(0.4,3));
+			drive.init();
 		
 			color = DriverStation.getInstance().getAlliance();
 			if(color == DriverStation.Alliance.Blue){
