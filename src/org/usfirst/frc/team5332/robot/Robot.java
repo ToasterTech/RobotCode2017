@@ -30,6 +30,9 @@ import org.usfirst.frc.team5332.robot.westtoastdrive.command.auto.DriveCommandAu
 import org.usfirst.frc.team5332.subsystem.Subsystem;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -50,6 +53,10 @@ public class Robot extends IterativeRobot{
 			<IntakeHardwareBase,IntakeSystemBase,IntakeCommandBase>(new IntakeHardware(), new IntakeSystem(), new IntakeCommandTeleop());
 	
 	String chosenAuto;
+	DigitalOutput led0  = new DigitalOutput(9);
+	DigitalOutput led1 = new DigitalOutput(10);
+	Alliance color;
+	int station;
 	
 	/*
 	 * Robot-wide initialization code goes here.
@@ -64,15 +71,36 @@ public class Robot extends IterativeRobot{
 		toaster.init();
 		intake.init();
 		chosenAuto = "middle";
+		
 		try {
 			CameraServer.getInstance().startAutomaticCapture();
 			} catch (Exception yolo420) {
 			yolo420.printStackTrace();
 			}
+		
+		//set the default state of the led strip
+		//led states table
+		//0		1
+		//false false	set color to red blue alternate
+		//true false	set color to blue
+		//false true	set color to red
+		//true true		set color to rainbow
+		//red blue alternate until ds attached
+		//rainbow until enable
+		//alliance color after that
+		
+		led0.set(false);
+		led1.set(false);
+		
 	}
 	
 	@Override
 	public void robotPeriodic(){
+		station = DriverStation.getInstance().getLocation();
+		if(DriverStation.getInstance().isDSAttached() && !DriverStation.getInstance().isEnabled()) {
+			led0.set(true);
+			led1.set(true);
+		}
 		if(SmartDashboard.getBoolean("DB/Button 1", true)){
 			chosenAuto = "left";
 		}else if(SmartDashboard.getBoolean("DB/Button 2", true)){
@@ -114,6 +142,16 @@ public class Robot extends IterativeRobot{
 		
 		//drive.setCommandLayer(new DriveCommandAutoStraight(0.4,3));
 		drive.init();
+		
+			color = DriverStation.getInstance().getAlliance();
+			if(color == DriverStation.Alliance.Blue){
+				led0.set(true);
+				led1.set(false);
+			} else if(color == DriverStation.Alliance.Red){
+				led0.set(false);
+				led1.set(true);
+			}
+
 	}
 
 	/*
