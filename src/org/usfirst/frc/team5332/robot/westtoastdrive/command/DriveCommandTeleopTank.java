@@ -27,11 +27,11 @@ public class DriveCommandTeleopTank extends DriveCommandBase{
 		}
 
 		if (GamePad.getDriverJoystick().getLeftZAxisValue() > 0.05) {
-			systemLayer.setDriveLeft(-GamePad.getDriverJoystick().getLeftZAxisValue());
-			systemLayer.setDriveRight(-GamePad.getDriverJoystick().getLeftZAxisValue());		
+			systemLayer.setDriveLeft(GamePad.getDriverJoystick().getLeftZAxisValue());
+			systemLayer.setDriveRight(GamePad.getDriverJoystick().getLeftZAxisValue());		
 		} else if (GamePad.getDriverJoystick().getRightZAxisValue() > 0.05) {
-			systemLayer.setDriveLeft(GamePad.getDriverJoystick().getRightZAxisValue());
-			systemLayer.setDriveRight(GamePad.getDriverJoystick().getRightZAxisValue());
+			systemLayer.setDriveLeft(-GamePad.getDriverJoystick().getRightZAxisValue());
+			systemLayer.setDriveRight(-GamePad.getDriverJoystick().getRightZAxisValue());
 		} else {
 			systemLayer.setDriveLeft(GamePad.getDriverJoystick().getLeftYAxisValue());
 			systemLayer.setDriveRight(GamePad.getDriverJoystick().getRightYAxisValue());		}

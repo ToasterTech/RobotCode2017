@@ -25,10 +25,10 @@ public class ToasterCommandTeleop extends ToasterCommandBase{
 			}
 		} else if (GamePad.getDriverJoystick().getButton(JoystickConstants.unfeedButtonID)){
 			systemLayer.unfeed();
-		}
-		else {
+		} else {
 			systemLayer.feedStop();
 		}
+		
 		if (GamePad.getDriverJoystick().getButton(JoystickConstants.shootButtonID)){
 			systemLayer.shoot();
 		} else {

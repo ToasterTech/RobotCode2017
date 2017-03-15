@@ -57,7 +57,9 @@ public class Robot extends IterativeRobot{
 	DigitalOutput led1 = new DigitalOutput(10);
 	Alliance color;
 	int station;
-	
+	boolean lastPressLeft;
+	boolean lastPressMiddle;
+	boolean lastPressRight;
 	/*
 	 * Robot-wide initialization code goes here.
 	 * NOTE: This is called when the robot first boots up and ONLY when the robot first boots up.
@@ -99,27 +101,44 @@ public class Robot extends IterativeRobot{
 		if(DriverStation.getInstance().isDSAttached()) {
 			station = DriverStation.getInstance().getLocation();
 		}
+		
 		if(DriverStation.getInstance().isDSAttached() && !DriverStation.getInstance().isEnabled()) {
 			led0.set(true);
 			led1.set(true);
 		}
 		
-		if(SmartDashboard.getBoolean("DB/Button 1", true)){
+		if(SmartDashboard.getBoolean("DB/Button 1", true) && !lastPressLeft){
 			chosenAuto = "left";
 			SmartDashboard.putBoolean("DB/Button 2", false);
 			SmartDashboard.putBoolean("DB/Button 3", false);
-		}else if(SmartDashboard.getBoolean("DB/Button 2", true)){
+			lastPressLeft = true;
+			lastPressRight = false;
+			lastPressMiddle = false;
+		} else if(SmartDashboard.getBoolean("DB/Button 2", true) && !lastPressMiddle){
 			chosenAuto = "middle";
 			SmartDashboard.putBoolean("DB/Button 1", false);
 			SmartDashboard.putBoolean("DB/Button 3", false);
-		}else if(SmartDashboard.getBoolean("DB/Button 3", true)){
+			lastPressLeft = false;
+			lastPressRight = false;
+			lastPressMiddle = true;
+		} else if(SmartDashboard.getBoolean("DB/Button 3", true) && !lastPressRight){
 			chosenAuto = "right";
 			SmartDashboard.putBoolean("DB/Button 1", false);
 			SmartDashboard.putBoolean("DB/Button 2", false);
+			lastPressLeft = false;
+			lastPressRight = true;
+			lastPressMiddle = false;
 		}
-//		if(SmartDashboard.getBoolean("DB/Button 3", false)){
-//			
-//		}
+		
+		if(SmartDashboard.getBoolean("DB/Button 1", false)) {
+			lastPressLeft=false;
+		}
+		if(SmartDashboard.getBoolean("DB/Button 2", false)) {
+			lastPressMiddle=false;
+		}
+		if(SmartDashboard.getBoolean("DB/Button 3", false)) { 
+			lastPressRight=false;
+		}
 	}
 
 	/*
