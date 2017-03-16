@@ -46,6 +46,7 @@ public class Robot extends IterativeRobot{
 	// Drive Subsystem component.
 	Subsystem<DriveHardwareBase,DriveSystemBase,DriveCommandBase> drive = new Subsystem
 			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), tankDrive);
+	
 	Subsystem<ToasterHardwareBase, ToasterSystemBase, ToasterCommandBase> toaster = new Subsystem
 			<ToasterHardwareBase, ToasterSystemBase, ToasterCommandBase>(new ToasterHardware(), new ToasterSystem(), new ToasterCommandTeleop());
 
@@ -74,11 +75,11 @@ public class Robot extends IterativeRobot{
 		intake.init();
 		chosenAuto = "middle";
 		
-		try {
+		try{
 			CameraServer.getInstance().startAutomaticCapture();
-			} catch (Exception yolo420) {
+		}catch(Exception yolo420){
 			yolo420.printStackTrace();
-			}
+		}
 		
 		//set the default state of the led strip
 		//led states table
@@ -196,6 +197,7 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void teleopInit(){
 		drive.setCommandLayer(tankDrive);
+		drive.init();
 	}
 
 	/*

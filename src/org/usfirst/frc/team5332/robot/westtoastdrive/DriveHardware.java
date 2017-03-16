@@ -15,22 +15,22 @@ public class DriveHardware extends DriveHardwareBase {
 	private TalonSRX driveRight2;
 	private TalonSRX driveLeft1;
 	private TalonSRX driveLeft2;
-	
+
 	// Create encoder variables.
 	private Encoder leftEncoder;
 	private Encoder rightEncoder;
-	
+
 	// Create gyro variable.
 	private ADXRS450_Gyro gyro;
-	
+
 	// Ultrasonic sensor.
 	private Ultrasonic ultrasonicSensor;
-	
+
 	//Create double variables.
 	private double right;
 	private double left;
 	public static boolean reverseDrive = false;
-	
+
 	/** 
 	 * Constructor. Creates Constructor for TalonSRX.
 	 */
@@ -46,42 +46,37 @@ public class DriveHardware extends DriveHardwareBase {
 		ultrasonicSensor.setDistanceUnits(Ultrasonic.Unit.kMillimeters);
 		ultrasonicSensor.setEnabled(true);
 	}
-	
+
 	@Override
 	public void init() {
-		
+		reverseDrive = false;
 	}
 
 	@Override
 	public void periodicUpdate() {
 		//DriveHardware.reverseDrive = true;
 		if(reverseDrive) {
+			// Rotates the robot 180 degrees
 			driveRight1.set(left);
 			driveRight2.set(left);
 			driveLeft1.set(right);
 			driveLeft2.set(right);
-		}
-		else {
+		}else{
 			driveRight1.set(right);
 			driveRight2.set(right);
 			driveLeft1.set(left);
 			driveLeft2.set(left);
-			}
-		
-		
+		}
 	}
 
 	@Override
 	public void setDriveRight(double speed) {
-	
 		right = speed;
 	}
 
 	@Override
 	public void setDriveLeft(double speed) {
-		
-			left = -speed;
-		
+		left = -speed;
 	}
 
 	@Override
@@ -99,23 +94,22 @@ public class DriveHardware extends DriveHardwareBase {
 		rightEncoder.reset();
 		leftEncoder.reset();
 	}
-	
+
 	@Override
 	public double getGyroAngle(){
 		return gyro.getAngle();
 	}
-	
+
 	@Override
 	public double getGyroRotationRate(){
 		return gyro.getRate();
 	}
-	
+
 	@Override
 	public void resetGyro() {
 		gyro.reset();
 	}
-	
-	
+
 	@Override
 	public String getName() {
 		return "FIXED_LAYER_DNU";

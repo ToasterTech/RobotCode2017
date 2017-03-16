@@ -1,19 +1,16 @@
 package org.usfirst.frc.team5332.robot.westtoastdrive;
 
-
-
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
 
-
 public class DriveSystem extends DriveSystemBase{
-	@SuppressWarnings("unused")
 	private DriveHardwareBase hardwareLayer;
 	
 	private double right;
 	private double left;
 
 	public DriveSystem(){
+
 	}
 
 	@Override
