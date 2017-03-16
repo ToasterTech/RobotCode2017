@@ -15,8 +15,12 @@ public class HardwareConstants{
 	public static final int address = 0;
 	
 	// Ultrasonic sensor
-	public static final int ultrasonicSensorPortI = 7;
-	public static final int ultrasonicSensorPortO = 8;
+	public static final int ultrasonicSensorLeftPortI = 7;
+	public static final int ultrasonicSensorLeftPortO = 8;
+	
+	// Ultrasonic sensor
+	public static final int ultrasonicSensorRightPortI = 7;
+	public static final int ultrasonicSensorRightPortO = 8;
 	
 	// Motor ports
 	public static final int driveLeftPort1 = 3;
@@ -32,11 +36,11 @@ public class HardwareConstants{
 	public static final int shooterFeederMotorPort = 8;
 	
 	// Encoder ports
-	public static final int driveEncoderLeftPort1 = 2;
-	public static final int driveEncoderLeftPort2 = 3;
-	public static final int driveEncoderRightPort1 = 0;
-	public static final int driveEncoderRightPort2 = 1;
-	public static final int shooterEncoderPort1 = 4;
-	public static final int shooterEncoderPort2 = 5;
+//	public static final int driveEncoderLeftPort1 = 2;
+//	public static final int driveEncoderLeftPort2 = 3;
+//	public static final int driveEncoderRightPort1 = 0;
+//	public static final int driveEncoderRightPort2 = 1;
+//	public static final int shooterEncoderPort1 = 4;
+//	public static final int shooterEncoderPort2 = 5;
 	
 }

@@ -42,4 +42,6 @@ public abstract class DriveSystemBase implements Layer<DriveHardwareBase>{
 	
 	public abstract double getRightMotorSpeed();
 	
+	public abstract double getDistanceFront();
+	public abstract double getDistanceBack();
 }

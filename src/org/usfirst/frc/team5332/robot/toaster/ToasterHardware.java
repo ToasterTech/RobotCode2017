@@ -1,3 +1,4 @@
+
 package org.usfirst.frc.team5332.robot.toaster;
 
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterHardwareBase;
@@ -18,7 +19,7 @@ public class ToasterHardware extends ToasterHardwareBase{
 	public ToasterHardware(){
 		shooterMotor = new TalonSRX(HardwareConstants.shooterShooterMotorPort);
 		feederMotor = new TalonSRX(HardwareConstants.shooterFeederMotorPort);
-		shooterEncoder = new Encoder(HardwareConstants.shooterEncoderPort1, HardwareConstants.shooterEncoderPort2);
+//		shooterEncoder = new Encoder(HardwareConstants.shooterEncoderPort1, HardwareConstants.shooterEncoderPort2);
 		shooterSpeed = 0;
 		feederSpeed = 0;
 	}

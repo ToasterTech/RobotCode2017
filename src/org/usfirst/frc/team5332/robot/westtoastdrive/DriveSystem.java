@@ -71,6 +71,19 @@ public class DriveSystem extends DriveSystemBase{
 	public double getRightMotorSpeed(){
 		return right;
 	}
+	
+	@Override
+	public double getDistanceBack(){
+		if(hardwareLayer.getDistanceBack() <= 0){
+			return -1;
+		}
+		return hardwareLayer.getDistanceBack();
+	}
+	
+	@Override
+	public double getDistanceFront(){
+		return hardwareLayer.getDistanceFront();
+	}
 
 	@Override
 	public String getName() {

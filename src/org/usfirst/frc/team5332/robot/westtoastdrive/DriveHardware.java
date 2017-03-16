@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveHardware extends DriveHardwareBase {
 
@@ -23,13 +24,16 @@ public class DriveHardware extends DriveHardwareBase {
 	// Create gyro variable.
 	private ADXRS450_Gyro gyro;
 
-	// Ultrasonic sensor.
-	private Ultrasonic ultrasonicSensor;
+	// Ultrasonic sensors.
+	private Ultrasonic ultrasonicSensorBack;
+	private Ultrasonic ultrasonicSensorFront;
 
 	//Create double variables.
 	private double right;
 	private double left;
 	public static boolean reverseDrive = false;
+	private double distanceFront;
+	private double distanceBack;
 
 	/** 
 	 * Constructor. Creates Constructor for TalonSRX.
@@ -39,12 +43,15 @@ public class DriveHardware extends DriveHardwareBase {
 		driveRight2 = new TalonSRX(HardwareConstants.driveRightPort2);
 		driveLeft1 = new TalonSRX(HardwareConstants.driveLeftPort1);
 		driveLeft2 = new TalonSRX(HardwareConstants.driveLeftPort2);
-		leftEncoder = new Encoder(HardwareConstants.driveEncoderLeftPort1, HardwareConstants.driveEncoderLeftPort2);
-		rightEncoder = new Encoder(HardwareConstants.driveEncoderRightPort1, HardwareConstants.driveEncoderRightPort2);
+//		leftEncoder = new Encoder(HardwareConstants.driveEncoderLeftPort1, HardwareConstants.driveEncoderLeftPort2);
+//		rightEncoder = new Encoder(HardwareConstants.driveEncoderRightPort1, HardwareConstants.driveEncoderRightPort2);
 		gyro = new ADXRS450_Gyro();
-		ultrasonicSensor = new Ultrasonic(HardwareConstants.ultrasonicSensorPortO, HardwareConstants.ultrasonicSensorPortI);
-		ultrasonicSensor.setDistanceUnits(Ultrasonic.Unit.kMillimeters);
-		ultrasonicSensor.setEnabled(true);
+		ultrasonicSensorBack = new Ultrasonic(HardwareConstants.ultrasonicSensorLeftPortO, HardwareConstants.ultrasonicSensorLeftPortI);
+		ultrasonicSensorBack.setDistanceUnits(Ultrasonic.Unit.kMillimeters);
+		ultrasonicSensorBack.setEnabled(true);
+		ultrasonicSensorFront = new Ultrasonic(HardwareConstants.ultrasonicSensorRightPortO, HardwareConstants.ultrasonicSensorRightPortI);
+		ultrasonicSensorFront.setDistanceUnits(Ultrasonic.Unit.kMillimeters);
+		ultrasonicSensorFront.setEnabled(true);
 	}
 
 	@Override
@@ -67,6 +74,10 @@ public class DriveHardware extends DriveHardwareBase {
 			driveLeft1.set(left);
 			driveLeft2.set(left);
 		}
+		distanceFront = ultrasonicSensorFront.getRangeMM();
+		distanceBack = ultrasonicSensorBack.getRangeMM();
+		SmartDashboard.putString("DB/String 1", "FRONT U/S:"+distanceFront);
+		SmartDashboard.putString("DB/String 2", "BACK U/S:"+distanceBack);
 	}
 
 	@Override
@@ -108,6 +119,16 @@ public class DriveHardware extends DriveHardwareBase {
 	@Override
 	public void resetGyro() {
 		gyro.reset();
+	}
+	
+	@Override
+	public double getDistanceBack(){
+		return distanceBack;
+	}
+	
+	@Override
+	public double getDistanceFront(){
+		return distanceFront;
 	}
 
 	@Override

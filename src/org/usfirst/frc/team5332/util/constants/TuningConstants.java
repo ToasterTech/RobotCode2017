@@ -26,6 +26,7 @@ public class TuningConstants{
 	public static final double followSecondsBetweenChecks = 0.01;
 	public static final double distConst = .1;
 	public static final double angleConst = .2;
+	public static final double ultrasonicDistInRobot = 12;
 
 	
 }
