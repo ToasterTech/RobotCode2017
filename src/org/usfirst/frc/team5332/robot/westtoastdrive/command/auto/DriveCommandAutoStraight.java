@@ -15,6 +15,7 @@ public class DriveCommandAutoStraight extends DriveCommandBase{
 	
 	@Override
 	public void init() {
+		
 		startTime = System.currentTimeMillis();
 	}
 
