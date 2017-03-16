@@ -11,20 +11,26 @@ public class DriveCommandAutoLeft extends DriveCommandBase{
 	private double autoTime1;
 	private double autoTime2;
 	private double autoTime3;
-
+	private double autoTimeTemp1;
+	private double autoTimeTemp2;
+	private double autoTimeTemp3;
+	
 	public DriveCommandAutoLeft(double autoSpeedStraight , double autoSpeedLeftTurn , double autoSpeedRightTurn , 
 								double autoTime1 , double autoTime2 , double autoTime3) {
 		this.autoSpeedStraight = autoSpeedStraight;
 		this.autoSpeedRightTurn = autoSpeedRightTurn;
 		this.autoSpeedLeftTurn = autoSpeedLeftTurn;
-		this.autoTime1 = autoTime1;
-		this.autoTime2 = autoTime2;
-		this.autoTime3 = autoTime3;
+		this.autoTimeTemp1 = autoTime1;
+		this.autoTimeTemp2 = autoTime2;
+		this.autoTimeTemp3 = autoTime3;
 
 	}
 
 	@Override
 	public void init() {
+		autoTime1 = autoTimeTemp1;
+		autoTime2 = autoTimeTemp1 + autoTimeTemp2;
+		autoTime3 = autoTimeTemp1 + autoTimeTemp2 + autoTimeTemp3;
 		startTime = System.currentTimeMillis();
 	}
 
