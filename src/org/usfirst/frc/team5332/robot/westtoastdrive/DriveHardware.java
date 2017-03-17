@@ -46,10 +46,10 @@ public class DriveHardware extends DriveHardwareBase {
 //		leftEncoder = new Encoder(HardwareConstants.driveEncoderLeftPort1, HardwareConstants.driveEncoderLeftPort2);
 //		rightEncoder = new Encoder(HardwareConstants.driveEncoderRightPort1, HardwareConstants.driveEncoderRightPort2);
 		gyro = new ADXRS450_Gyro();
-		ultrasonicSensorBack = new Ultrasonic(HardwareConstants.ultrasonicSensorLeftPortO, HardwareConstants.ultrasonicSensorLeftPortI);
+		ultrasonicSensorBack = new Ultrasonic(HardwareConstants.ultrasonicSensorBackPortO, HardwareConstants.ultrasonicSensorBackPortI);
 		ultrasonicSensorBack.setDistanceUnits(Ultrasonic.Unit.kMillimeters);
 		ultrasonicSensorBack.setEnabled(true);
-		ultrasonicSensorFront = new Ultrasonic(HardwareConstants.ultrasonicSensorRightPortO, HardwareConstants.ultrasonicSensorRightPortI);
+		ultrasonicSensorFront = new Ultrasonic(HardwareConstants.ultrasonicSensorFrontPortO, HardwareConstants.ultrasonicSensorFrontPortI);
 		ultrasonicSensorFront.setDistanceUnits(Ultrasonic.Unit.kMillimeters);
 		ultrasonicSensorFront.setEnabled(true);
 	}

@@ -15,12 +15,12 @@ public class HardwareConstants{
 	public static final int address = 0;
 	
 	// Ultrasonic sensor
-	public static final int ultrasonicSensorLeftPortI = 7;
-	public static final int ultrasonicSensorLeftPortO = 8;
+	public static final int ultrasonicSensorFrontPortI = 7;
+	public static final int ultrasonicSensorFrontPortO = 8;
 	
 	// Ultrasonic sensor
-	public static final int ultrasonicSensorRightPortI = 7;
-	public static final int ultrasonicSensorRightPortO = 8;
+	public static final int ultrasonicSensorBackPortI = 5;
+	public static final int ultrasonicSensorBackPortO = 6;
 	
 	// Motor ports
 	public static final int driveLeftPort1 = 3;
