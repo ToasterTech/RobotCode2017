@@ -1,5 +1,44 @@
 package org.usfirst.frc.team5332.robot.gearintake.command;
 
-public class GearIntakeCommandTeleop {
+import org.usfirst.frc.team5332.robot.control.GamePad;
+import org.usfirst.frc.team5332.robot.gearintake.GearIntakeSystem;
+import org.usfirst.frc.team5332.robot.gearintake.base.GearIntakeCommandBase;
+import org.usfirst.frc.team5332.robot.gearintake.base.GearIntakeSystemBase;
+import org.usfirst.frc.team5332.util.constants.JoystickConstants;
 
+public class GearIntakeCommandTeleop extends GearIntakeCommandBase {
+
+	private GearIntakeSystemBase systemLayer;
+	private GamePad joystick;
+	
+	public GearIntakeCommandTeleop() {
+		systemLayer = new GearIntakeSystem();
+		joystick = GamePad.getDriverJoystick();
+	}	
+	
+	@Override
+	public void setChild(GearIntakeSystemBase c) {
+		systemLayer = c;
+	}
+
+	@Override
+	public void init() {
+		//TODO
+	}
+
+	@Override
+	public void periodicUpdate() {
+		if (joystick.getButton(JoystickConstants.lowerGearIntake)) {
+			systemLayer.moveIntakeDown();
+		}
+		else if (joystick.getButton(JoystickConstants.raiseGearIntake)) {
+			systemLayer.moveIntakeUp();
+		}
+	}
+
+	@Override
+	public String getName() {
+		return null;
+	}
+	
 }

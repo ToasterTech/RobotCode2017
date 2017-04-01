@@ -9,6 +9,10 @@ public class JoystickConstants{
 	public static final int intakeButtonID = 6;
 	public static final int outtakeButtonID = 1;
 	
+	// Button Numbers
+	public static final int lowerGearIntake = 3;
+	public static final int raiseGearIntake = 4;
+	
 	// Joystick axes	
 	public static final int gamePadLeftYAxis = 1;
 	public static final int gamePadRightYAxis = 5;

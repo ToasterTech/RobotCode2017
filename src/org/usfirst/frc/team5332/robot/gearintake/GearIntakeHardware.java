@@ -3,6 +3,7 @@ package org.usfirst.frc.team5332.robot.gearintake;
 import org.usfirst.frc.team5332.robot.gearintake.base.GearIntakeHardwareBase;
 import org.usfirst.frc.team5332.util.constants.HardwareConstants;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.TalonSRX;
 
@@ -36,6 +37,8 @@ public class GearIntakeHardware extends GearIntakeHardwareBase {
 	public void init() {
 		speed = 0;
 		retractPneumatics();
+		Compressor c = new Compressor(0);
+		c.setClosedLoopControl(true);
 	}
 
 	@Override
