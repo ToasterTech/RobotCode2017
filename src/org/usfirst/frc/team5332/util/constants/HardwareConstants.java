@@ -31,6 +31,10 @@ public class HardwareConstants{
 	public static final int shooterShooterMotorPort = 5;
 	public static final int shooterFeederMotorPort = 8;
 	
+	//pnuematics
+	public static final int solenoidGatePort = 0;
+	public static final int gearIntakeMotor = 9;
+	
 	// Encoder ports
 	public static final int driveEncoderLeftPort1 = 2;
 	public static final int driveEncoderLeftPort2 = 3;

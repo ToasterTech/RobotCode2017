@@ -1,8 +1,8 @@
 package org.usfirst.frc.team5332.robot.gearintake.base;
 
-import org.usfirst.frc.team5332.subsystem.BaseLayer;;
+import org.usfirst.frc.team5332.subsystem.BaseLayer;
 
-public abstract class GearIntakeHardwareBase {
+public abstract class GearIntakeHardwareBase implements BaseLayer {
 	
 	public abstract void extendPneumatics();
 	
