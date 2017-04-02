@@ -34,6 +34,15 @@ public class GearIntakeCommandTeleop extends GearIntakeCommandBase {
 		else if (joystick.getButton(JoystickConstants.raiseGearIntake)) {
 			systemLayer.moveIntakeUp();
 		}
+		if (joystick.getButton(JoystickConstants.intakeWheelsForwards)) {
+			systemLayer.runForwards();
+		}
+		else if (joystick.getButton(JoystickConstants.intakeWheelsReverse)) {
+			systemLayer.runReverse();
+		}
+		else {
+			systemLayer.runStop();
+		}
 	}
 
 	@Override
