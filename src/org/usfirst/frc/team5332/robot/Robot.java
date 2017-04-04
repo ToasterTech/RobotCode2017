@@ -147,27 +147,27 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void autonomousInit(){
-		String[] autoDatas = SmartDashboard.getString("DB/String 0", "0,0,0,0,0,0").split(",");
-		
-		// structured
-		// sketchy
-		switch(chosenAuto){
-			case "left":
-				drive.setCommandLayer(new DriveCommandAutoLeft(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
-				break;
-			case "right":
-				drive.setCommandLayer(new DriveCommandAutoRight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
-				break;
-			case "middle":
-				drive.setCommandLayer(new DriveCommandAutoStraight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[3].trim())));
-				break;
-			case "nothing":
-				drive.setCommandLayer(new DriveCommandAutoNothing());
-				break;
-			default:
-				drive.setCommandLayer(new DriveCommandAutoNothing());
-				break;
-		}
+//		String[] autoDatas = SmartDashboard.getString("DB/String 0", "0,0,0,0,0,0").split(",");
+//		
+//		// structured
+//		// sketchy
+//		switch(chosenAuto){
+//			case "left":
+//				drive.setCommandLayer(new DriveCommandAutoLeft(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
+//				break;
+//			case "right":
+//				drive.setCommandLayer(new DriveCommandAutoRight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
+//				break;
+//			case "middle":
+//				drive.setCommandLayer(new DriveCommandAutoStraight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[3].trim())));
+//				break;
+//			case "nothing":
+//				drive.setCommandLayer(new DriveCommandAutoNothing());
+//				break;
+//			default:
+//				drive.setCommandLayer(new DriveCommandAutoNothing());
+//				break;
+//		}
 		
 			//drive.setCommandLayer(new DriveCommandAutoStraight(0.4,3));
 			drive.init();

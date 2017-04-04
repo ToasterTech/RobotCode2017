@@ -3,6 +3,8 @@ package org.usfirst.frc.team5332.robot.westtoastdrive;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveHardwareBase;
 import org.usfirst.frc.team5332.robot.westtoastdrive.base.DriveSystemBase;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class DriveSystem extends DriveSystemBase{
 	private DriveHardwareBase hardwareLayer;
 	
@@ -23,6 +25,11 @@ public class DriveSystem extends DriveSystemBase{
 		// Set the motors to what our current motor speed variable is.
 		hardwareLayer.setDriveLeft(left);
 		hardwareLayer.setDriveRight(right);
+		
+//		SmartDashboard.putString("DB/String 1", ""+hardwareLayer.getDistanceBack());
+//		SmartDashboard.putString("DB/String 2", ""+hardwareLayer.getDistanceFront());
+		
+		System.out.println(hardwareLayer.getDistanceBack());
 	}
 
 	@Override
@@ -88,6 +95,7 @@ public class DriveSystem extends DriveSystemBase{
 	@Override
 	public String getName() {
 		return "FIXED_LAYER_DNU";
-	}
 	
+	}
+
 }
