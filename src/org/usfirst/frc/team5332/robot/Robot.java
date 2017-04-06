@@ -178,7 +178,7 @@ public class Robot extends IterativeRobot{
 		
 		
 			drive.setCommandLayer(new DriveCommandAutoStraight(-0.4,3));
-//			drive.setCommandLayer(new DriveCommandAutoLeft(-0.4, -0.4, 0.4, 1.85, 0.85, 2.25));
+//			drive.setCommandLayer(new DriveCommandAutoLeft(-0.4, -0.4, 0.4, 1.85, 0.85, 2.52));
 			drive.init();
 		
 			color = DriverStation.getInstance().getAlliance();
