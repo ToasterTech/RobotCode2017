@@ -4,6 +4,9 @@ import org.usfirst.frc.team5332.robot.toaster.base.ToasterCommandBase;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterHardwareBase;
 import org.usfirst.frc.team5332.robot.toaster.base.ToasterSystemBase;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.Arrays;
 
 import org.usfirst.frc.team5332.autoselect.ToastSelector;
@@ -61,6 +64,7 @@ public class Robot extends IterativeRobot{
 	boolean lastPressLeft;
 	boolean lastPressMiddle;
 	boolean lastPressRight;
+	
 	/*
 	 * Robot-wide initialization code goes here.
 	 * NOTE: This is called when the robot first boots up and ONLY when the robot first boots up.
@@ -73,6 +77,7 @@ public class Robot extends IterativeRobot{
 		drive.init();
 		toaster.init();
 		intake.init();
+		
 		chosenAuto = "middle";
 		
 		try{
@@ -99,6 +104,7 @@ public class Robot extends IterativeRobot{
 	
 	@Override
 	public void robotPeriodic(){
+		
 		if(DriverStation.getInstance().isDSAttached()) {
 			station = DriverStation.getInstance().getLocation();
 		}
@@ -147,29 +153,32 @@ public class Robot extends IterativeRobot{
 	 */
 	@Override
 	public void autonomousInit(){
-		String[] autoDatas = SmartDashboard.getString("DB/String 0", "0,0,0,0,0,0").split(",");
+		
+//		String[] autoDatas = SmartDashboard.getString("DB/String 0", "0,0,0,0,0,0").split(",");
 		
 		// structured
 		// sketchy
-		switch(chosenAuto){
-			case "left":
-				drive.setCommandLayer(new DriveCommandAutoLeft(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
-				break;
-			case "right":
-				drive.setCommandLayer(new DriveCommandAutoRight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
-				break;
-			case "middle":
-				drive.setCommandLayer(new DriveCommandAutoStraight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[3].trim())));
-				break;
-			case "nothing":
-				drive.setCommandLayer(new DriveCommandAutoNothing());
-				break;
-			default:
-				drive.setCommandLayer(new DriveCommandAutoNothing());
-				break;
-		}
+//		switch(chosenAuto){
+//			case "left":
+//				drive.setCommandLayer(new DriveCommandAutoLeft(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
+//				break;
+//			case "right":
+//				drive.setCommandLayer(new DriveCommandAutoRight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[1].trim()),Double.parseDouble(autoDatas[2].trim()),Double.parseDouble(autoDatas[3].trim()),Double.parseDouble(autoDatas[4].trim()),Double.parseDouble(autoDatas[5].trim())));
+//				break;
+//			case "middle":
+//				drive.setCommandLayer(new DriveCommandAutoStraight(Double.parseDouble(autoDatas[0].trim()),Double.parseDouble(autoDatas[3].trim())));
+//				break;
+//			case "nothing":
+//				drive.setCommandLayer(new DriveCommandAutoNothing());
+//				break;
+//			default:
+//				drive.setCommandLayer(new DriveCommandAutoNothing());
+//				break;
+//		}
 		
-			//drive.setCommandLayer(new DriveCommandAutoStraight(0.4,3));
+		
+			drive.setCommandLayer(new DriveCommandAutoStraight(-0.4,3));
+//			drive.setCommandLayer(new DriveCommandAutoLeft(-0.4, -0.4, 0.4, 1.85, 0.85, 2.25));
 			drive.init();
 		
 			color = DriverStation.getInstance().getAlliance();
