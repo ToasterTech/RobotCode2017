@@ -4,28 +4,29 @@ import org.usfirst.frc.team5332.robot.gearintake.base.GearIntakeHardwareBase;
 import org.usfirst.frc.team5332.util.constants.HardwareConstants;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.TalonSRX;
 
 public class GearIntakeHardware extends GearIntakeHardwareBase {
 	
-	private Solenoid solenoidGate;
+	private DoubleSolenoid solenoidGate;
 	private TalonSRX intakeMotor;
 	private double speed;
 	
 	public GearIntakeHardware() {
-		solenoidGate = new Solenoid(HardwareConstants.solenoidGatePort);
+		solenoidGate = new DoubleSolenoid(HardwareConstants.solenoidGatePort1,HardwareConstants.solenoidGatePort2);
 		intakeMotor = new TalonSRX(HardwareConstants.gearIntakeMotor);
 	}
 	
 	@Override
 	public void extendPneumatics() {
-		solenoidGate.set(true);
+		solenoidGate.set(DoubleSolenoid.Value.kForward);
 	}
 
 	@Override
 	public void retractPneumatics() {
-		solenoidGate.set(false);
+		solenoidGate.set(DoubleSolenoid.Value.kReverse);
 	}
 
 	@Override

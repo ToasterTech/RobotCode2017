@@ -12,7 +12,6 @@ public class GearIntakeCommandTeleop extends GearIntakeCommandBase {
 	private GamePad joystick;
 	
 	public GearIntakeCommandTeleop() {
-		systemLayer = new GearIntakeSystem();
 		joystick = GamePad.getDriverJoystick();
 	}	
 	

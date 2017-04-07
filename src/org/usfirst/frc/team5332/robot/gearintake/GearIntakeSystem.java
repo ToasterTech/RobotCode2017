@@ -8,7 +8,7 @@ public class GearIntakeSystem extends GearIntakeSystemBase {
 	private GearIntakeHardwareBase hardwareLayer;	
 	
 	public GearIntakeSystem() {
-		hardwareLayer = new GearIntakeHardware();
+		
 	}
 	
 	@Override

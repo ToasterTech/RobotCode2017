@@ -11,6 +11,12 @@ import java.util.Arrays;
 
 import org.usfirst.frc.team5332.autoselect.ToastSelector;
 import org.usfirst.frc.team5332.dashboard.LabviewDashboard;
+import org.usfirst.frc.team5332.robot.gearintake.base.GearIntakeCommandBase;
+import org.usfirst.frc.team5332.robot.gearintake.base.GearIntakeHardwareBase;
+import org.usfirst.frc.team5332.robot.gearintake.base.GearIntakeSystemBase;
+import org.usfirst.frc.team5332.robot.gearintake.GearIntakeSystem;
+import org.usfirst.frc.team5332.robot.gearintake.GearIntakeHardware;
+import org.usfirst.frc.team5332.robot.gearintake.command.GearIntakeCommandTeleop;
 import org.usfirst.frc.team5332.robot.intake.IntakeHardware;
 import org.usfirst.frc.team5332.robot.intake.IntakeSystem;
 import org.usfirst.frc.team5332.robot.intake.base.IntakeCommandBase;
@@ -50,11 +56,9 @@ public class Robot extends IterativeRobot{
 	Subsystem<DriveHardwareBase,DriveSystemBase,DriveCommandBase> drive = new Subsystem
 			<DriveHardwareBase,DriveSystemBase,DriveCommandBase>(new DriveHardware(), new DriveSystem(), tankDrive);
 	
-	Subsystem<ToasterHardwareBase, ToasterSystemBase, ToasterCommandBase> toaster = new Subsystem
-			<ToasterHardwareBase, ToasterSystemBase, ToasterCommandBase>(new ToasterHardware(), new ToasterSystem(), new ToasterCommandTeleop());
-
-	Subsystem<IntakeHardwareBase,IntakeSystemBase,IntakeCommandBase> intake = new Subsystem
-			<IntakeHardwareBase,IntakeSystemBase,IntakeCommandBase>(new IntakeHardware(), new IntakeSystem(), new IntakeCommandTeleop());
+	
+	Subsystem<GearIntakeHardwareBase,GearIntakeSystemBase,GearIntakeCommandBase> gearIntake = new Subsystem<GearIntakeHardwareBase,GearIntakeSystemBase,GearIntakeCommandBase>(new GearIntakeHardware(), new GearIntakeSystem(), new GearIntakeCommandTeleop());
+	
 	
 	String chosenAuto;
 	DigitalOutput led0  = new DigitalOutput(9);
@@ -75,9 +79,7 @@ public class Robot extends IterativeRobot{
 	@Override
 	public void robotInit(){
 		drive.init();
-		toaster.init();
-		intake.init();
-		
+		gearIntake.init();
 		chosenAuto = "middle";
 		
 		try{
@@ -177,8 +179,8 @@ public class Robot extends IterativeRobot{
 //		}
 		
 		
-			drive.setCommandLayer(new DriveCommandAutoStraight(-0.4,3));
-//			drive.setCommandLayer(new DriveCommandAutoLeft(-0.4, -0.4, 0.4, 1.85, 0.85, 2.52));
+//			drive.setCommandLayer(new DriveCommandAutoStraight(-0.4,3));
+			drive.setCommandLayer(new DriveCommandAutoLeft(-0.4, -0.4, 0.4, 1.85, 0.85, 2.52));
 			drive.init();
 		
 			color = DriverStation.getInstance().getAlliance();
@@ -216,8 +218,7 @@ public class Robot extends IterativeRobot{
 	public void teleopPeriodic(){
 		// Call the periodicUpdate method for the drive Subsystem.
 		drive.periodicUpdate();
-		toaster.periodicUpdate();
-		intake.periodicUpdate();
+		gearIntake.periodicUpdate();
 	}
 
 	/*
