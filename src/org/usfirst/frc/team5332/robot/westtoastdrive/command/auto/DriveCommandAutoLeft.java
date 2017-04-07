@@ -39,12 +39,10 @@ public class DriveCommandAutoLeft extends DriveCommandBase{
 		if((System.currentTimeMillis() - startTime)/1000 < autoTime1){
 			systemLayer.setDriveLeft(autoSpeedStraight);
 			systemLayer.setDriveRight(autoSpeedStraight);
-		}else if((System.currentTimeMillis() - startTime)/1000 > autoTime1
-				&& (System.currentTimeMillis() - startTime)/1000 < autoTime2){
-			systemLayer.setDriveLeft(-autoSpeedLeftTurn);
+		}else if((System.currentTimeMillis() - startTime)/1000 < autoTime2){
+			systemLayer.setDriveLeft(autoSpeedLeftTurn);
 			systemLayer.setDriveRight(autoSpeedRightTurn);
-		}else if((System.currentTimeMillis() - startTime)/1000 > autoTime2 
-				&& (System.currentTimeMillis() - startTime)/1000 < autoTime3){
+		}else if((System.currentTimeMillis() - startTime)/1000 < autoTime3){
 			systemLayer.setDriveLeft(autoSpeedStraight);
 			systemLayer.setDriveRight(autoSpeedStraight);	
 		}else{
